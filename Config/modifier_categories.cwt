@@ -1,19 +1,19 @@
 modifier_categories = {
-    country = {
-        supported_scopes = { country }
-    }
-    state = {
-        supported_scopes = { state }
-    }
-    unit_leader = {
-        supported_scopes = { unit_leader }
-    }
-    air = {
-        supported_scopes = { air unit_leader country }
-    }
-    intelligence_agency = {
-        supported_scopes = { country unit_leader }
-    }
+	country = {
+		supported_scopes = { country }
+	}
+	state = {
+		supported_scopes = { state }
+	}
+	unit_leader = {
+		supported_scopes = { unit_leader }
+	}
+	air = {
+		supported_scopes = { air unit_leader country }
+	}
+	intelligence_agency = {
+		supported_scopes = { country unit_leader }
+	}
 	aggressive = {
 		supported_scopes = { aggressive unit_leader country }
 	}
@@ -33,7 +33,7 @@ modifier_categories = {
 		supported_scopes = { government_in_exile unit_leader country }
 	}
 	military_advancements = {
-		supported_scopes = { military_advancements unit_leader country  }
+		supported_scopes = { military_advancements unit_leader country }
 	}
 	naval = {
 		supported_scopes = { naval unit_leader country }

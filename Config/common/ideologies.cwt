@@ -35,9 +35,10 @@ ideology = {
 		}
 
 		### RGB color of ideology.
+		## color_type = rgb
 		color = {
 			## cardinality = 3..3
-			int
+			int[0..255]
 		}
 
 		rules = {

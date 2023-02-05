@@ -104,13 +104,15 @@ spriteType = {
 		textureFile2 = scalar
 		size = { x = int y = int }
 		horizontal = bool
+		## color_type = hsv
 		color = {
 			## cardinality = 3..3
-			float
+			float[0..1]
 		}
+		## color_type = hsv
 		colortwo = {
 			## cardinality = 3..3
-			float
+			float[0..1]
 		}
 		steps = int
 	}

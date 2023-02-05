@@ -28,10 +28,10 @@ types = {
 }
 
 terrain = {
+	## color_type = rgb
 	color = {
 		## cardinality = 3..3
-		int
-
+		int[0..255]
 	}
 
 	subtype[!unknown] = {
@@ -84,7 +84,11 @@ terrain = {
 
 graphical_terrain = {
 	type = <terrain>
-	color = { int }
+	## color_type = rgb
+	color = {
+		## cardinality = 3..3
+		int[0..255]
+	}
 	texture = int
 	## cardinality = 0..1
 	spawn_city = yes

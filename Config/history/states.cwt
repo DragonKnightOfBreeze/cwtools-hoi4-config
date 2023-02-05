@@ -80,8 +80,9 @@ state = {
 
 state_category = {
 	local_building_slots = int
+	## color_type = rgb
 	color = {
 		## cardinality = 3..3
-		int
+		int[0..255]
 	}
 }

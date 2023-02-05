@@ -76,12 +76,15 @@ spriteType = {
 	## cardinality = 0..1
 	generate_mip_maps = bool
 	subtype[spriteType] = {
+		## file_extensions = { .dds .png }
 		textureFile = filepath
 	}
 	subtype[frameAnimatedSpriteType] = {
+		## file_extensions = { .dds .png }
 		textureFile = filepath
 	}
 	subtype[corneredTileSpriteType] = {
+		## file_extensions = { .dds .png }
 		textureFile = filepath
 		borderSize = { x = int y = int }
 		## cardinality = 0..1
@@ -95,6 +98,7 @@ spriteType = {
 		textureFile2 = scalar
 	}
 	subtype[textSpriteType] = {
+		## file_extensions = { .dds .png }
 		textureFile = filepath
 		## cardinality = 0..1
 		clicksound = click

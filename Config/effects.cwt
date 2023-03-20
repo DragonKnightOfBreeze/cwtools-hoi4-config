@@ -1,5 +1,5 @@
 ## scope = any
-alias[effect:<scripted_effect>] = yes
+alias[effect:<scripted_effect>] = bool
 
 ### Adds the stability to the country in scope. Example: add_stability = 5.
 ## scope = country

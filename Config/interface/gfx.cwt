@@ -111,12 +111,12 @@ spriteType = {
 		## color_type = hsv
 		color = {
 			## cardinality = 3..3
-			float[0..1]
+			float
 		}
 		## color_type = hsv
 		colortwo = {
 			## cardinality = 3..3
-			float[0..1]
+			float
 		}
 		steps = int
 	}

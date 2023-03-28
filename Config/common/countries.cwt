@@ -34,7 +34,7 @@ country_file = {
 		## color_type = hsv
 		color = {
 			## cardinality = 3..3
-			float[0..1]
+			float
 		}
 	}
 	subtype[cosmetic] = {
@@ -48,7 +48,7 @@ country_file = {
 			## color_type = hsv
 			color = {
 				## cardinality = 3..3
-				float[0..1]
+				float
 			}
 			## color_type = rgb
 			## cardinality = 0..1
@@ -60,7 +60,7 @@ country_file = {
 			## cardinality = 0..1
 			color_ui = {
 				## cardinality = 3..3
-				float[0..1]
+				float
 			}
 		}
 	}

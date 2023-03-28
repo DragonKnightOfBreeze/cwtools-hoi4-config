@@ -86,10 +86,10 @@ spriteType = {
 	subtype[corneredTileSpriteType] = {
 		## file_extensions = { .dds .png .tga }
 		textureFile = filepath
-		borderSize = { x = int y = int }
+		borderSize = { x = float y = float }
 		## cardinality = 0..1
 		tilingCenter = bool
-		size = { x = int y = int }
+		size = { x = float y = float }
 		## cardinality = 0..1
 		animation_rate_spf = int
 	}
@@ -106,7 +106,7 @@ spriteType = {
 	subtype[progressbartype] = {
 		textureFile1 = scalar
 		textureFile2 = scalar
-		size = { x = int y = int }
+		size = { x = float y = float }
 		horizontal = bool
 		## color_type = hsv
 		color = {

@@ -378,7 +378,7 @@ alias[gui:instantTextBoxType] = {
     ## cardinality = 0..1
     #DEBUG
     ### Pixel Border
-    borderSize = { x = int y = int }
+    borderSize = { x = float y = float }
     ## cardinality = 0..1
     #DEBUG
     ### Missing Description, need testing
@@ -425,7 +425,7 @@ alias[gui:editBoxType] = {
     ## cardinality = 0..1
     #DEBUG
     ### Pixel Border
-    borderSize = { x = int y = int }
+    borderSize = { x = float y = float }
     ## cardinality = 0..1
     #DEBUG
     ### Missing Descriptiion, need testing

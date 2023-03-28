@@ -10,19 +10,16 @@ types = {
 
 containerWindowType = {
     name = scalar
+	### Origin of position field
     ## cardinality = 0..1
-    ### Mouse Draggable
-    moveable = bool
+    orientation = enum[containerOrientation]
+	### Will remove elements outside of size bounding box
     ## cardinality = 0..1
-    ### Origin of position field
-    orientation = enum[containerOrientations]
-    ## cardinality = 0..1
-    ### Will remove elements outside of size bounding box
     clipping = bool
     ## cardinality = 0..1
     fullscreen = bool
+	### Background texture
     ## cardinality = 0..inf
-    ### Background texture
     background = {
         ## cardinality = 0..1
         name = scalar
@@ -46,11 +43,11 @@ containerWindowType = {
         ## cardinality = 0..inf
         enum[dragScrollType]
     }
+	###Allows clicking to reorder windows
     ## cardinality = 0..1
-    ###Allows clicking to reorder windows
     click_to_front = bool
+	###Smoothly scroll a scrollbar -- container version
     ## cardinality = 0..1
-    ###Smoothly scroll a scrollbar -- container version
     smooth_scrolling = bool
     ##cardinality  = 0..1
     scroll_wheel_factor = float
@@ -58,19 +55,16 @@ containerWindowType = {
 ###Container Window
 alias[gui:containerWindowType] = {
     name = scalar
+	### Origin of position field
     ## cardinality = 0..1
-    ### Mouse Draggable
-    moveable = bool
+    orientation = enum[containerOrientation]
+	### Will remove elements outside of size bounding box
     ## cardinality = 0..1
-    ### Origin of position field
-    orientation = enum[containerOrientations]
-    ## cardinality = 0..1
-    ### Will remove elements outside of size bounding box
     clipping = bool
     ## cardinality = 0..1
     fullscreen = bool
+	### Background texture
     ## cardinality = 0..inf
-    ### Background texture
     background = {
         ## cardinality = 0..1
         name = scalar
@@ -93,8 +87,8 @@ alias[gui:containerWindowType] = {
     }
     ## cardinality = 0..1
     click_to_front = bool
+	###Smoothly scroll a scrollbar -- container version
     ## cardinality = 0..1
-    ###Smoothly scroll a scrollbar -- container version
     smooth_scrolling = bool
     ##cardinality  = 0..1
     scroll_wheel_factor = float
@@ -102,14 +96,11 @@ alias[gui:containerWindowType] = {
 ###Drop Down Box, seems to be hardcoded
 alias[gui:dropDownBoxType] = {
     name = scalar
+	### Origin of position field
     ## cardinality = 0..1
-    ### Mouse Draggable
-    moveable = bool
+    orientation = enum[containerOrientation]
+	### Will remove elements outside of size bounding box
     ## cardinality = 0..1
-    ### Origin of position field
-    orientation = enum[containerOrientations]
-    ## cardinality = 0..1
-    ### Will remove elements outside of size bounding box
     clipping = bool
     ## cardinality = 0..1
     fullscreen = bool
@@ -171,7 +162,7 @@ alias[gui:dropDownBoxType] = {
         hint_tag = localization
         alias_name[gui_sound] = alias_match_left[gui_sound]
         ## cardinality = 0..1
-        format = enum[guiTextFormats]
+        format = enum[guiTextFormat]
         ## cardinality = 0..1
         multiline = bool
         ## cardinality = 0..1
@@ -183,11 +174,8 @@ alias[gui:dropDownBoxType] = {
     expandedWindow = {
         name = scalar
         ## cardinality = 0..1
-        ### Mouse Draggable
-        moveable = bool
-        ## cardinality = 0..1
         ### Origin of position field
-        orientation = enum[containerOrientations]
+        orientation = enum[containerOrientation]
         ## cardinality = 0..1
         ### Will remove elements outside of size bounding box
         clipping = bool
@@ -248,7 +236,7 @@ alias[gui:buttonType] = {
     hint_tag = localization
     alias_name[gui_sound] = alias_match_left[gui_sound]
     ## cardinality = 0..1
-    format = enum[guiTextFormats]
+    format = enum[guiTextFormat]
     ## cardinality = 0..1
     multiline = bool
     ## cardinality = 0..1
@@ -266,7 +254,7 @@ alias[gui:OverlappingElementsBoxType] = {
     ## cardinality = 0..1
     spacing = float
     ## cardinality = 0..1
-    format = enum[guiTextFormats]
+    format = enum[guiTextFormat]
 }
 ### Dynamic List
 alias[gui:gridBoxType] = {
@@ -307,7 +295,7 @@ alias[gui:gridBoxType] = {
         right = int
     }
     ## cardinality = 0..1
-    format = enum[containerOrientations]
+    format = enum[containerOrientation]
     ## cardinality = 0..1
     background = {
         ## cardinality = 0..1
@@ -368,7 +356,7 @@ alias[gui:instantTextBoxType] = {
 	## cardinality = 0..1
 	maxHeight = percentage_field
     ## cardinality = 0..2
-    format = enum[guiTextFormats]
+    format = enum[guiTextFormat]
     ## cardinality = 0..1
     multiline = bool
     alias_name[gui_standard] = alias_match_left[gui_standard]
@@ -413,7 +401,7 @@ alias[gui:editBoxType] = {
     ## cardinality = 0..1
     maxHeight = int
     ## cardinality = 0..2
-    format = enum[guiTextFormats]
+    format = enum[guiTextFormat]
     ## cardinality = 0..1
     only_numbers = bool
     ## cardinality = 0..1
@@ -645,7 +633,7 @@ alias[gui_standard:background_margin] = {
 alias[gui_standard:scale] = float
 alias[gui_standard:rotation] = float
 ### Orientation of window in parent
-alias[gui_standard:orientation] = enum[containerOrientations]
+alias[gui_standard:orientation] = enum[containerOrientation]
 ### Origin of window
 alias[gui_standard:origo] = enum[containerOrigo]
 ### Hide element
@@ -705,12 +693,14 @@ alias[gui_animation:hide_position] = {
 	y = float
     y = percentage_field
 }
-alias[gui_animation:show_animation_type] = enum[animationTypes]
-alias[gui_animation:hide_animation_type] = enum[animationTypes]
-alias[gui_animation:animation_type] = enum[animationTypes]
+alias[gui_animation:show_animation_type] = enum[animationType]
+alias[gui_animation:hide_animation_type] = enum[animationType]
+alias[gui_animation:animation_type] = enum[animationType]
 alias[gui_animation:animation_time] = float
 alias[gui_animation:fade_time] = float
 alias[gui_animation:fade_type] = linear
+### Mouse Draggable
+alias[gui_animation:moveable] = bool
 
 # GUI Sound
 alias[gui_sound:upsound] = scalar
@@ -721,12 +711,12 @@ alias[gui_sound:clicksound] = scalar
 alias[gui_sound:oversound] = scalar
 
 enums = {
-    enum[animationTypes] = {
+    enum[animationType] = {
         decelerated
         accelerated
         linear
     }
-    enum[containerOrientations] = {
+    enum[containerOrientation] = {
         CENTER
         CENTER_LEFT
         CENTER_RIGHT
@@ -760,7 +750,7 @@ enums = {
         middle
         right
     }
-    enum[guiTextFormats] = {
+    enum[guiTextFormat] = {
         left
         center
         centre
@@ -772,7 +762,7 @@ enums = {
         centre
         bottom
     }
-    complex_enum[horizontal_scrollbar_types] = {
+    complex_enum[horizontal_scrollbar_type] = {
         path = "game/interface"
         name = {
             extendedScrollbarType = {
@@ -785,7 +775,7 @@ enums = {
             }
         }
     }
-    complex_enum[scrollbar_types] = {
+    complex_enum[scrollbar_type] = {
         path = "game/interface"
         name = {
             extendedScrollbarType = {
@@ -796,7 +786,7 @@ enums = {
             }
         }
     }
-    complex_enum[guiElementsProperties] = {
+    complex_enum[guiElementsProperty] = {
         path = "game/interface"
         name = {
             buttonType = {
@@ -809,7 +799,7 @@ enums = {
             }
         }
     }
-    complex_enum[guiButtons] = {
+    complex_enum[guiButton] = {
         path = "game/interface"
         name = {
             buttonType = {
@@ -817,7 +807,7 @@ enums = {
             }
         }
     }
-    complex_enum[guiDynamicLists] = {
+    complex_enum[guiDynamicList] = {
         path = "game/interface"
         name = {
             gridBoxType = {

@@ -42,7 +42,6 @@ light = {
 
 		## cardinality = 0..1
 		minValue = float
-
 		## cardinality = 0..1
 		maxValue = float
 

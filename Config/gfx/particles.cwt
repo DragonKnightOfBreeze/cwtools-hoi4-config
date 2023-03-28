@@ -44,6 +44,10 @@ particle = {
 		## cardinality = 0..1
 		trail = bool
 		## cardinality = 0..1
+		spritesheet_animation = bool
+		## cardinality = 0..1
+		spritesheet_animation_loop = float
+		## cardinality = 0..1
 		local_space = bool
 		## cardinality = 0..1
 		billboard = bool
@@ -163,19 +167,19 @@ particle = {
 		## cardinality = 0..1
 		box_emitter_z = scalar
 		## cardinality = 0..1
-		velocity = float
+		velocity = scalar
 		## cardinality = 0..1
 		velocity = {
 			## cardinality = 1..2
-			float
-		}
-		## cardinality = 0..1
-		velocity_pitch = {
-			## cardinality = 2..2
-			float
+			scalar
 		}
 		## cardinality = 0..1
 		velocity_pitch = scalar
+		## cardinality = 0..1
+		velocity_pitch = {
+			## cardinality = 2..2
+			scalar
+		}
 		## cardinality = 0..1
 		velocity_yaw = {
 			## cardinality = 2..2
@@ -200,7 +204,17 @@ particle = {
 		## cardinality = 0..1
 		emission_pulse_duration = float
 		## cardinality = 0..1
+		emission_pulse_duration = {
+			## cardinality = 2..2
+			float
+		}
+		## cardinality = 0..1
 		emission_pulse_silence = float
+		## cardinality = 0..1
+		emission_pulse_silence = {
+			## cardinality = 2..2
+			float
+		}
 		## cardinality = 0..1
 		particle_pitch = {
 			## cardinality = 2..2
@@ -217,6 +231,13 @@ particle = {
 		particle_yaw = scalar
 		## cardinality = 0..1
 		particle_roll = {
+			## cardinality = 2..2
+			float
+		}
+		## cardinality = 0..1
+		mass = float
+		## cardinality = 0..1
+		mass = {
 			## cardinality = 2..2
 			float
 		}

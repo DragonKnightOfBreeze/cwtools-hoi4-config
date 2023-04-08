@@ -1,31 +1,30 @@
 types = {
-	## graph_related_types = { }
+	## graph_related_types = {}
 	type[event] = {
 		path = "game/events"
-		name_field = "id"
-		## type_key_filter = country_event
-		## push_scope = country
-		subtype[country_event] = {
-		}
-		## type_key_filter = state_event
-		## replace_scope = { this = state root = country }
-		subtype[state_event] = {
-		}
-		## type_key_filter = news_event
-		## push_scope = country
-		subtype[news_event] = {
-		}
-		## type_key_filter = unit_leader_event
-		## push_scope = any
-		subtype[unit_leader_event] = {
-		}
-		## type_key_filter = operative_leader_event
-		## push_scope = any
-		subtype[operative_leader_event] = {
-		}
+		file_extension = .txt
+		name_field = id
+
 		subtype[hidden] = {
 			hidden = yes
 		}
+
+		## type_key_filter = country_event
+		## push_scope = country
+		subtype[country_event] = {}
+		## type_key_filter = state_event
+		## replace_scope = { this = state root = country }
+		subtype[state_event] = {}
+		## type_key_filter = news_event
+		## push_scope = country
+		subtype[news_event] = {}
+		## type_key_filter = unit_leader_event
+		## push_scope = any
+		subtype[unit_leader_event] = {}
+		## type_key_filter = operative_leader_event
+		## push_scope = any
+		subtype[operative_leader_event] = {}
+
 		localisation = {
 			## primary
 			title = title

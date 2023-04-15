@@ -9,19 +9,19 @@ occupation_law = {
     ### tooltip description for the law
     ## cardinality = 0..1
 	tooltip = localisation
-	
+
 	### gfx entry & frame for law entry icon. gfx entry can be omitted, in that case it will default to GFX_occupation_policy_icon_strip
     ## cardinality = 0..1
     icon = scalar # we should have something like <spriteType>:int
-    
+
 	### gfx entry & frame for law entry icon. gfx entry can be omitted, in that case it will default to GFX_occupation_policy_icon_strip
     ## cardinality = 0..1
 	icon = int
-	
+
     ### plays when the law is selected
     ## cardinality = 0..1
-	sound_effect = scalar 
-	
+	sound_effect = scalar
+
 	### if a law is not visible, it won't show up in gui at all. scope is occupier country, occupied country is not set (this is only check at country level, not target level)
     ## replace_scope = { this = country root = country }
     ## cardinality = 0..1
@@ -41,17 +41,17 @@ occupation_law = {
     ### if a current modifier is no longer active (visible/available is false) it will fallback to this law
     ## cardinality = 0..1
     fallback_law = <occupation_law>
-    
+
     ## cardinality = 0..1
 	default_law = bool
-    
+
     ## cardinality = 0..1
 	starting_law = bool
-	
+
     ### main fallback modifier will be used when previous modifier is no longer active and there is no fallback_law, there must be exactly one fallback modifier. if you are lacking manpower/equipments for your current laws, fallback modifier bonuses will apply instead (will lerp to fallback and at 0 manpower you will be forced to switch)
     ## cardinality = 0..1
 	main_fallback_law = bool
-	
+
     ### applies to states if the law is selected
     ## cardinality = 0..1
     ## push_scope = state
@@ -59,15 +59,15 @@ occupation_law = {
         ## cardinality = ~1..inf
         alias_name[modifier] = alias_match_left[modifier]
 	}
-	
-    ### states with resistance supressed (at 0) will get this modifier instead (if defined)
+
+    ### states with resistance suppressed (at 0) will get this modifier instead (if defined)
     ## cardinality = 0..1
     ## push_scope = state
 	suppressed_state_modifier = {
         ## cardinality = ~1..inf
         alias_name[modifier] = alias_match_left[modifier]
 	}
-	
+
     ## #by default laws are sorted by load order, gui_order can be used to reorder them in gui. by default it is 0
     ## cardinality = 0..1
 	gui_order = int

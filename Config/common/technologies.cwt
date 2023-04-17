@@ -16,7 +16,7 @@ types = {
 				name = bba_air_techs_folder
 				position = { x = float y = float }
 			}
-		}	
+		}
 	}
 	type[tech_sharing_group] = {
 		path = "game/common/technology_sharing"
@@ -77,7 +77,7 @@ technology = {
 		limit = {
 			alias_name[trigger] = alias_match_left[trigger]
 		}
-		
+
 		## cardinality = 0..inf
 		<equipment>
 		## cardinality = 0..inf
@@ -225,7 +225,7 @@ tech_sharing_group = {
 	name = localisation
 	desc = localisation
 	## severity = warning
-	picture = <spriteType>
+	picture = <sprite>
 
 	research_sharing_per_country_bonus = float
 	## cardinality = 0..1

@@ -20,10 +20,10 @@ resistance_compliance_modifier = {
 	type = enum[resistance_compliance_modifier_types]
 
 	### GFX entry & frame for law entry icon. both frame and gfx name can be ommited, in that case it will default to GFX_occupation_modifier_strip
-	icon = scalar # we should have something like <spriteType>:int
+	icon = scalar # we should have something like <sprite>:int
 
 	### Small icon will be used for progress bars (GFX_occupation_modifier_small_strip is default gfx)
-	small_icon = scalar # we should have something like <spriteType>:int
+	small_icon = scalar # we should have something like <sprite>:int
 
 	### Percentage threshold to enable.
 	threshold = int

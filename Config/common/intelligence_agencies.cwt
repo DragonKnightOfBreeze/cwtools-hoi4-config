@@ -6,7 +6,7 @@ types = {
 }
 
 intelligence_agency = {
-	picture = <spriteType>
+	picture = <sprite>
     names = {
         ## cardinality = 0..inf
         localisation

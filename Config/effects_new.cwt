@@ -87,7 +87,7 @@ alias[effect:create_operative_leader] = {
 	portrait_path = scalar
 	## cardinality = 0..1
 	## severity = warning
-	gfx = <spriteType>
+	gfx = <sprite>
 	### Sets starting traits for this leader. If empty, sets no traits. If missing, assigns a random trait
 	## cardinality = 0..1
 	traits = {
@@ -619,7 +619,7 @@ alias[effect:create_intelligence_agency] = yes
 ## scopes = { COUNTRY }
 alias[effect:create_intelligence_agency] = {
   name = localisation
-  icon = <spriteType>
+  icon = <sprite>
 }
 
 ###Add an upgrade to the Intelligence Agency (must be created).
@@ -1009,7 +1009,7 @@ alias[effect:set_country_leader_name] = {
 ###Changes the portrait of country leader. No tooltip is generated.
 ## scope = { COUNTRY }
 alias[effect:set_country_leader_portrait] = {
-	portrait = <spriteType>
+	portrait = <sprite>
 	## cardinality = 0..1
 	ideology = <ideology>
 	## cardinality = 0..1
@@ -1032,7 +1032,7 @@ alias[effect:set_leader_name] = localisation_inline
 
 ###Changes the portrait of unit leader. No tooltip is generated.
 ## scope = { unit_leader }
-alias[effect:set_leader_portrait] = <spriteType>
+alias[effect:set_leader_portrait] = <sprite>
 
 ###Changes the description of unit leader. No tooltip is generated.
 ## scope = { character unit_leader }

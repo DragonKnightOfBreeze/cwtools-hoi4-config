@@ -7,8 +7,8 @@ types = {
 
 
 operation = {
-	icon = <spriteType>
-	map_icon = <spriteType>
+	icon = <sprite>
+	map_icon = <sprite>
 
 	name = localisation
 
@@ -36,7 +36,7 @@ operation = {
 	### Used for rescue operative operations
 	## cardinality = 0..1
 	prevent_captured_operative_to_die = bool
-	
+
 	### Used for coups
 	## cardinality = 0..1
 	is_staged_coup = yes

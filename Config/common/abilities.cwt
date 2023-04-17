@@ -11,7 +11,7 @@ ability = {
 	desc = localisation
 	## cardinality = 0..1
 	## severity = warning
-	icon = <spriteType>
+	icon = <sprite>
 
 	## cardinality = 0..1
 	sound_effect = scalar

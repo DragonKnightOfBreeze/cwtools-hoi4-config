@@ -8,22 +8,22 @@ types = {
 operation_phase = {
 	### Every phase needs a name to be displayed
 	name = localisation
-	
+
 	### Every phase needs a description to show what it is about
 	desc = localisation
-	
+
 	### Every phase needs an icon for display purposes
-	icon = <spriteType>
-	picture = <spriteType>
+	icon = <sprite>
+	picture = <sprite>
 
 	### Outcome text that is used to build the final outcome string
 	## cardinality = 0..1
 	outcome = localisation
-	
+
 	### map icon, will use regular icon if none specified
 	## cardinality = 0..1
-	map_icon = <spriteType>
-	
+	map_icon = <sprite>
+
 	### Outcome text that is used to build the final outcome string - This happens if a risk_extra has happened ( something bad ) to at least one of the operatives. We usually only specify outcome_extra for exfiltration phases, technically all phases use outcome_extra, but if none is defined for it ( as in our use case it would not make sense ) then it will default fallback to outcome. Some modders might have a different use case for this, so support is there and it uses outocme_extra for all phases of an operation that had something risky happen. Can be used to build a different storyline from an operation where everthing went smooth.
 	## cardinality = 0..1
 	outcome_extra = localisation
@@ -38,7 +38,7 @@ operation_phase = {
 		## cardinality = ~1..inf
 		alias_name[trigger] = alias_match_left[trigger]
 	}
-	
+
 	### Default: no - will refund all equipment cost for this operation phase at the end of the operation [ operation costs have their own specifier in the operation database ]
 	## cardinality = 0..1
 	return_on_complete = bool

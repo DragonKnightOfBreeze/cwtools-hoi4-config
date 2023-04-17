@@ -16,7 +16,7 @@ game_rule = {
 	### Optional icon.
 	## cardinality = 0..1
 	## severity = warning
-	icon = <spriteType>
+	icon = <sprite>
 	### Unless other specified, the first option is the default option.
 	## cardinality = 0..inf
 	option = {

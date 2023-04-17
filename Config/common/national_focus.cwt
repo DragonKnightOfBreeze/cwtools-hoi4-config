@@ -83,7 +83,7 @@ focus_tree = {
 
 		## cardinality = ~1..1
 		## severity = warning
-		icon = <spriteType>
+		icon = <sprite>
 
 		## severity = warning
 		cost = float
@@ -258,7 +258,7 @@ shared_focus = {
 
 	## cardinality = ~1..1
 	## severity = warning
-	icon = <spriteType>
+	icon = <sprite>
 	cost = float
 	x = int
 	y = int

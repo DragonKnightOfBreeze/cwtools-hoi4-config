@@ -370,7 +370,7 @@ alias[gui:instantTextBoxType] = {
     ## cardinality = 0..1
     #DEBUG
     ### Missing Description, need testing
-    textureFile = <spriteType>
+    textureFile = <sprite>
     ## cardinality = 0..1
     #DEBUG
     ### Vertical alignment in text box
@@ -417,7 +417,7 @@ alias[gui:editBoxType] = {
     ## cardinality = 0..1
     #DEBUG
     ### Missing Descriptiion, need testing
-    textureFile = <spriteType>
+    textureFile = <sprite>
     ## cardinality = 0..1
     #DEBUG
     ### Vertical alignement in text box
@@ -643,9 +643,9 @@ alias[gui_standard:vertical_scroll_step] = int
 
 #GUI Image
 ### Sprite for image
-alias[gui_image:spriteType] = <spriteType>
+alias[gui_image:spriteType] = <sprite>
 ### Tiliing Sprite
-alias[gui_image:quadTextureSprite] = <spriteType>
+alias[gui_image:quadTextureSprite] = <sprite>
 ### Image Sprite
 single_alias[gui_image:any_image_type] = {
     alias_name[gui_image:spriteType] = alias_match_left[gui_image:spriteType]

@@ -434,7 +434,7 @@ module = {
 
 critical_part = {
 	## severity = warning
-	icon = <spriteType>
+	icon = <sprite>
 	frame = int
 	## cardinality = 0..1
 	stat_penalties = {

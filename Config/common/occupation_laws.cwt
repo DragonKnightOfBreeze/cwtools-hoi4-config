@@ -12,7 +12,7 @@ occupation_law = {
 
 	### gfx entry & frame for law entry icon. gfx entry can be omitted, in that case it will default to GFX_occupation_policy_icon_strip
     ## cardinality = 0..1
-    icon = scalar # we should have something like <spriteType>:int
+    icon = scalar # we should have something like <sprite>:int
 
 	### gfx entry & frame for law entry icon. gfx entry can be omitted, in that case it will default to GFX_occupation_policy_icon_strip
     ## cardinality = 0..1

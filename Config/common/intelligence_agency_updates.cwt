@@ -12,14 +12,14 @@ types = {
 ### Note : There is no "description" field. To add a description, you only need to add an entry "upgrade name" + "_desc" in the localisation files.
 ## replace_scope = { root = country this = country }
 intelligence_agency_upgrade = {
-    picture = <spriteType>
+    picture = <sprite>
     ## cardinality = 0..1
     ### GFX entry of the border for the icon, without the suffixe (suffix are _available, _completed and _unavailable ) Optional, "upgrade_frame_1" by default.
-    frame = <spriteType>
+    frame = <sprite>
     ## cardinality = 0..1
     ### Optional, "click_default" by default.
     sound = scalar
-    
+
     ## cardinality = 0..1
     ai_will_do = {
         ## cardinality = 0..1
@@ -34,7 +34,7 @@ intelligence_agency_upgrade = {
         ## cardinality = ~1..inf
         alias_name[modifier] = alias_match_left[modifier]
     }
-    
+
     ## cardinality = 0..1
     ### trigger available, like decisions. Optional. If not available, the upgrade will be visible but locked.
     available = {

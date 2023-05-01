@@ -383,8 +383,10 @@ alias[effect:set_variable] = {
 ### A random effect.
 ## scope = any
 alias[effect:random] = {
-	chance = int
+	chance = int[1...99]
+	## cardinality = 0..inf
 	alias_name[modifier_rule] = alias_match_left[modifier_rule]
+	## cardinality = 0..inf
 	alias_name[effect] = alias_match_left[effect]
 }
 

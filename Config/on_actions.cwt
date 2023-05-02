@@ -1,235 +1,235 @@
 on_actions = {
 	## replace_scopes = { this = country root = country }
-	on_new_term_election = country_event
+	on_new_term_election = country
 
 	## replace_scopes = { this = country root = country from = any }
-	on_ace_promoted = country_event
+	on_ace_promoted = country
 
 	## replace_scopes = { this = country root = country from = any }
-	on_aces_killed_each_other = country_event
+	on_aces_killed_each_other = country
 
 	## replace_scopes = { this = country root = country from = any }
-	on_ace_killed_by_ace = country_event
+	on_ace_killed_by_ace = country
 
 	## replace_scopes = { this = country root = country from = any }
-	on_ace_killed_other_ace = country_event
+	on_ace_killed_other_ace = country
 
 	## replace_scopes = { this = country root = country from = any }
-	on_ace_killed = country_event
+	on_ace_killed = country
 
 	## replace_scopes = { this = country root = country from = country }
-	on_justifying_wargoal_pulse = country_event
+	on_justifying_wargoal_pulse = country
 
 	## replace_scopes = { this = country root = country from = country }
-	on_wargoal_expire = country_event
+	on_wargoal_expire = country
 
 	## replace_scopes = { this = country root = country from = state }
-	on_nuke_drop = country_event
+	on_nuke_drop = country
 
 	## replace_scopes = { this = country root = country }
-	on_border_war_lost = country_event
+	on_border_war_lost = country
 
 	## replace_scopes = { this = country root = country }
-	on_leave_faction = country_event
+	on_leave_faction = country
 
 	## replace_scopes = { this = country root = country }
-	on_create_faction = country_event
+	on_create_faction = country
 
 	## replace_scopes = { this = country root = country from = country }
-	on_offer_join_faction = country_event
+	on_offer_join_faction = country
 
 	## replace_scopes = { this = country root = country from = country }
-	on_join_faction = country_event
+	on_join_faction = country
 
 	## replace_scopes = { this = country root = country from = country }
-	on_declare_war = country_event
+	on_declare_war = country
 
 	## replace_scopes = { this = country root = country }
-	on_faction_formed = country_event
+	on_faction_formed = country
 
 	## replace_scopes = { this = country root = country from = country }
-	on_capitulation = country_event
+	on_capitulation = country
 
 	## replace_scopes = { this = country root = country }
-	on_uncapitulation = country_event
+	on_uncapitulation = country
 
 	## replace_scopes = { this = country root = country }
-	on_government_change = country_event
+	on_government_change = country
 
 	## replace_scopes = { this = country root = country }
-	on_ruling_party_change = country_event
+	on_ruling_party_change = country
 
 	## replace_scopes = { this = country root = country }
-	on_coup_succeeded = country_event
+	on_coup_succeeded = country
 
 	## replace_scopes = { this = country root = country from = country }
-	on_civil_war_end = country_event
+	on_civil_war_end = country
 
 	## replace_scopes = { this = country root = country from = country }
-	on_puppet = country_event
+	on_puppet = country
 
 	## replace_scopes = { this = country root = country from = country }
-	on_release_as_puppet = country_event
+	on_release_as_puppet = country
 
 	## replace_scopes = { this = country root = country from = country }
-	on_annex = country_event
+	on_annex = country
 
 	## replace_scopes = { this = country root = country from = country }
-	on_subject_free = country_event
+	on_subject_free = country
 
 	## replace_scopes = { this = country root = country from = country }
-	on_subject_autonomy_level_change = country_event
+	on_subject_autonomy_level_change = country
 
 	## replace_scopes = { this = country root = country from = country }
-	on_subject_annexed = country_event
+	on_subject_annexed = country
 
 	## replace_scopes = { this = country root = country from = country }
-	on_release_as_free = country_event
+	on_release_as_free = country
 
 	## replace_scopes = { this = country root = country from = country }
-	on_peaceconference_ended = country_event
+	on_peaceconference_ended = country
 
 	## replace_scopes = { this = country root = country from = country }
-	on_generate_wargoal = country_event
+	on_generate_wargoal = country
 
 	## replace_scopes = { this = country root = country from = country }
-	on_guarantee = country_event
+	on_guarantee = country
 
 	## replace_scopes = { this = country root = country from = country }
-	on_military_access = country_event
+	on_military_access = country
 
 	## replace_scopes = { this = country root = country from = country }
-	on_offer_military_access = country_event
+	on_offer_military_access = country
 
 	## replace_scopes = { this = country root = country from = country }
-	on_call_allies = country_event
+	on_call_allies = country
 
 	## replace_scopes = { this = country root = country from = country }
-	on_join_allies = country_event
+	on_join_allies = country
 
 	## replace_scopes = { this = country root = country from = country }
-	on_lend_lease = country_event
+	on_lend_lease = country
 
 	## replace_scopes = { this = country root = country from = country }
-	on_incoming_lend_lease = country_event
+	on_incoming_lend_lease = country
 
 	## replace_scopes = { this = country root = country from = country }
-	on_incoming_lend_lease = country_event
+	on_incoming_lend_lease = country
 
 	## replace_scopes = { this = country root = country from = country }
-	on_send_volunteers = country_event
+	on_send_volunteers = country
 
 	## replace_scopes = { this = country root = country from = country }
-	on_send_expeditionary_force = country_event
+	on_send_expeditionary_force = country
 
 	## replace_scopes = { this = country root = country from = country }
-	on_return_expeditionary_forces = country_event
+	on_return_expeditionary_forces = country
 
 	## replace_scopes = { this = country root = country from = country }
-	on_request_expeditionary_forces = country_event
+	on_request_expeditionary_forces = country
 
 	## replace_scopes = { this = country root = country from = country }
-	on_ask_for_state_control = country_event
+	on_ask_for_state_control = country
 
 	## replace_scopes = { this = country root = country from = country }
-	on_give_state_control = country_event
+	on_give_state_control = country
 
 	## replace_scopes = { this = country root = country from = country }
-	on_war_relation_added = country_event
+	on_war_relation_added = country
 
 	## replace_scopes = { this = country root = country from = country }
-	on_liberate = country_event
+	on_liberate = country
 
 	## replace_scopes = { this = country root = country }
-	on_daily = country_event
+	on_daily = country
 
 	## replace_scopes = { this = country root = country }
-	on_weekly = country_event
+	on_weekly = country
 
 	## replace_scopes = { this = country root = country }
-	on_monthly = country_event
+	on_monthly = country
 
 	## replace_scopes = { this = country root = country }
-	on_yearly = country_event
+	on_yearly = country
 
 	## replace_scopes = { this = country root = country }
-	on_bi_yearly_pulse = country_event
+	on_bi_yearly_pulse = country
 
 	## replace_scopes = { this = country root = country }
-	on_thri_yearly_pulse = country_event
+	on_thri_yearly_pulse = country
 
 	## replace_scopes = { this = country from = country fromfrom = state }
-	on_state_control_changed = country_event
+	on_state_control_changed = country
 
 	## replace_scopes = { this = unit_leader root = unit_leader }
-	on_unit_leader_created = unit_leader_event
+	on_unit_leader_created = unit_leader
 
 	## replace_scopes = { this = unit_leader root = unit_leader }
-	on_unit_leader_level_up = unit_leader_event
+	on_unit_leader_level_up = unit_leader
 
 	## replace_scopes = { this = unit_leader root = unit_leader from = country }
-	on_army_leader_daily = unit_leader_event
+	on_army_leader_daily = unit_leader
 
 	## replace_scopes = { this = unit_leader root = unit_leader from = country }
-	on_army_leader_won_combat = unit_leader_event
+	on_army_leader_won_combat = unit_leader
 
 	## replace_scopes = { this = unit_leader root = unit_leader from = country }
-	on_army_leader_lost_combat = unit_leader_event
+	on_army_leader_lost_combat = unit_leader
 
 	## replace_scopes = { this = unit_leader root = unit_leader }
-	on_army_leader_promoted = unit_leader_event
+	on_army_leader_promoted = unit_leader
 
 	## replace_scopes = { this = country root = country from = country fromfrom = country }
-	on_host_changed_from_capitulation = country_event
+	on_host_changed_from_capitulation = country
 
 	## replace_scopes = { this = country root = country from = country fromfrom = country }
-	on_exile_government_reinstated = country_event
+	on_exile_government_reinstated = country
 
 	## replace_scopes = { this = country root = country from = country }
-	on_civil_war_end_before_annexation = country_event
+	on_civil_war_end_before_annexation = country
 
 	## replace_scopes = { this = country root = country }
-	on_government_exiled = country_event
+	on_government_exiled = country
 
 	## replace_scopes = { this = country root = country from = country }
-	on_pride_of_the_fleet_sunk = country_event
+	on_pride_of_the_fleet_sunk = country
 
 	## replace_scopes = { this = country root = country from = country }
-	on_assume_faction_leadership = country_event
+	on_assume_faction_leadership = country
 
 	## replace_scopes = { this = country root = country }
-	on_war = country_event
+	on_war = country
 
 	## replace_scopes = { this = country root = country }
-	on_peace = country_event
+	on_peace = country
 
 	## replace_scopes = { this = country root = country }
-	on_peace_proposal = country_event
+	on_peace_proposal = country
 
 	## replace_scopes = { this = unit_leader root = country from = country }
-	on_operative_on_mission_spotted = operative_leader_event
+	on_operative_on_mission_spotted = operative_leader
 
 	## replace_scopes = { this = unit_leader root = country from = country }
-	on_operative_captured = operative_leader_event
+	on_operative_captured = operative_leader
 
 	## replace_scopes = { this = unit_leader root = country from = country }
-	on_operative_death = operative_leader_event
+	on_operative_death = operative_leader
 
 	## replace_scopes = { this = unit_leader root = unit_leader from = unit_leader fromfrom = state }
-	on_operative_detected_during_operation = operative_leader_event
+	on_operative_detected_during_operation = operative_leader
 
 	## replace_scopes = { this = unit_leader root = unit_leader from = country }
-	on_operative_created = operative_leader_event
+	on_operative_created = operative_leader
 
 	## replace_scopes = { this = unit_leader root = unit_leader from = country }
-	on_operative_recruited = operative_leader_event
+	on_operative_recruited = operative_leader
 
 	## replace_scopes = { this = operation root = country from = country }
-	on_operation_completed = operative_leader_event
+	on_operation_completed = operative_leader
 
 	## replace_scopes = { this = country root = country from = country }
-	on_fully_decrypted_cipher = country_event
+	on_fully_decrypted_cipher = country
 
 	## replace_scopes = { this = country root = country from = country }
-	on_activated_active_decryption_bonuses = country_event
+	on_activated_active_decryption_bonuses = country
 }

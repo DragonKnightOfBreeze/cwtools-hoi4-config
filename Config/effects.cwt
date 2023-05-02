@@ -254,7 +254,7 @@ alias[effect:random_enemy_country] = {
 ## scope = country
 alias[effect:country_event] = {
 	### The event to fire.
-	id = <event.country_event>
+	id = <event.country>
 
 	### The number of hours to wait before firing the event. Note: hours, days, and months can all be used and will simply be added together.
 	## cardinality = 0..1
@@ -298,13 +298,13 @@ alias[effect:country_event] = {
 
 ### Fires a country event.
 ## scope = country
-alias[effect:country_event] = <event.country_event>
+alias[effect:country_event] = <event.country>
 
 ### Fires a state event.
 ## scope = state
 alias[effect:state_event] = {
 	### The event to fire.
-	id = <event.state_event>
+	id = <event.state>
 
 	### The number of hours to wait before firing the event. Note: hours, days, and months can all be used and will simply be added together.
 	## cardinality = 0..1
@@ -351,7 +351,7 @@ alias[effect:state_event] = {
 
 ### Fires a state event.
 ## scope = state
-alias[effect:state_event] = <event.state_event>
+alias[effect:state_event] = <event.state>
 
 
 ### Sets a variable to a value or another variable.
@@ -1070,7 +1070,7 @@ alias[effect:every_neighbor_state] = {
 ## scope = country
 alias[effect:news_event] = {
 	### The event to fire.
-	id = <event.news_event>
+	id = <event.news>
 
 	### The number of hours to wait before firing the event. Note: hours, days, and months can all be used and will simply be added together.
 	## cardinality = 0..1
@@ -1114,7 +1114,7 @@ alias[effect:news_event] = {
 
 ### Fires a news event.
 ## scope = country
-alias[effect:news_event] = <event.news_event>
+alias[effect:news_event] = <event.news>
 
 ### Declares war on specified country.
 ## scope = country
@@ -2736,7 +2736,7 @@ alias[effect:round_variable] = variable_field_32
 ## scope = { character unit_leader }
 alias[effect:unit_leader_event] = {
 	### The event to fire.
-	id = <event.unit_leader_event>
+	id = <event.unit_leader>
 
 	### The number of hours to wait before firing the event. Note: hours, days, and months can all be used and will simply be added together.
 	## cardinality = 0..1
@@ -2780,7 +2780,7 @@ alias[effect:unit_leader_event] = {
 
 ### Fires a unit leader event for owner country.
 ## scope = { character unit_leader }
-alias[effect:unit_leader_event] = <event.unit_leader_event>
+alias[effect:unit_leader_event] = <event.unit_leader>
 
 ### Finalizes border war between two states, wins or cancels it.
 ## scope = { state country }

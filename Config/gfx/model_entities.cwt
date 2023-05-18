@@ -95,6 +95,8 @@ entity = {
 	## cardinality = 0..1
 	default_state = enum[model_states]
 	## cardinality = 0..1
+	default_state = scalar
+	## cardinality = 0..1
 	default_state = no_state
 
 	## cardinality = 0..1
@@ -112,6 +114,8 @@ entity = {
 
 		## cardinality = 0..1
 		next_state = enum[model_states]
+		## cardinality = 0..1
+		next_state = scalar
 
 		## cardinality = 0..1
 		animation = enum[model_animations]
@@ -137,6 +141,7 @@ entity = {
 		## cardinality = 0..inf
 		propagate_state = {
 			enum[model_attachments] = enum[model_states]
+			enum[model_attachments] = scalar
 		}
 
 		## cardinality = 0..1

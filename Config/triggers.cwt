@@ -12,6 +12,8 @@ alias[trigger:state] = <state>
 ### A conditional trigger.
 ## scope = any
 alias[trigger:if] = {
+	## cardinality = ~1..1
+	## severity = info
 	limit = { alias_name[trigger] = alias_match_left[trigger] }
 	alias_name[trigger] = alias_match_left[trigger]
 }
@@ -19,6 +21,8 @@ alias[trigger:if] = {
 ### A conditional trigger.
 ## scope = any
 alias[trigger:else_if] = {
+	## cardinality = ~1..1
+	## severity = info
 	limit = { alias_name[trigger] = alias_match_left[trigger] }
 	alias_name[trigger] = alias_match_left[trigger]
 }

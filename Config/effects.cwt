@@ -444,17 +444,15 @@ alias[effect:white_peace] = {
 ### A conditional effect.
 ## scope = any
 alias[effect:if] = {
-	limit = {
-		alias_name[trigger] = alias_match_left[trigger]
-	}
+	## cardinality = ~1..1
+	limit = { alias_name[trigger] = alias_match_left[trigger] }
 	alias_name[effect] = alias_match_left[effect]
 }
 
 ### Use after (else_)if to check other triggers only if first if fails.
 alias[effect:else_if] = {
-	limit = {
-		alias_name[trigger] = alias_match_left[trigger]
-	}
+	## cardinality = ~1..1
+	limit = { alias_name[trigger] = alias_match_left[trigger] }
 	alias_name[effect] = alias_match_left[effect]
 }
 

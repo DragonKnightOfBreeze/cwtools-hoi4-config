@@ -18,10 +18,31 @@ types = {
 		subtype[text_sprite] = { }
 		## type_key_filter = progressbartype
 		subtype[progressbar] = { }
-		## type_key_filter = pieChartType
-		subtype[piechart] = { }
 		## type_key_filter = circularProgressBarType
 		subtype[circular_progressbar] = { }
+		## type_key_filter = pieChartType
+		subtype[piechart] = { }
+
+		images = {
+			subtype[!masked_shield&!progressbar&!circular_progressbar&!piechart] = {
+				## primary
+				texture = textureFile # filepath
+				## primary
+				texture = sprite_sheet_sprite_type|default_frame # <sprite>
+			}
+			subtype[masked_shield] = {
+				textureFile1 = textureFile1 # filepath
+				textureFile2 = textureFile2 # filepath
+			}
+			subtype[progressbar] = {
+				textureFile1 = textureFile1 # filepath
+				textureFile2 = textureFile2 # filepath
+			}
+			subtype[circular_progressbar] = {
+				textureFile1 = textureFile1 # filepath
+				textureFile2 = textureFile2 # filepath
+			}
+		}
 	}
 }
 
@@ -42,7 +63,7 @@ spriteType = {
 		## cardinality = 0..1
 		animationmaskfile = scalar
 		## cardinality = 0..1
-		animationtexturefile = scalar
+		animationtextureFile = scalar
 		## cardinality = 0..1
 		animationrotation = float
 		## cardinality = 0..1
@@ -122,14 +143,14 @@ spriteType = {
 		}
 		steps = int
 	}
-	subtype[piechart] = {
-		size = int
-	}
 	subtype[circular_progressbar] = {
 		textureFile1 = scalar
 		textureFile2 = scalar
 		size = int
 		rotation = int
 		amount = int
+	}
+	subtype[piechart] = {
+		size = int
 	}
 }

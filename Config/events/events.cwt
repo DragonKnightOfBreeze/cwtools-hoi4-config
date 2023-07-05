@@ -35,7 +35,16 @@ types = {
 		subtype[operative_leader] = {}
 
 		localisation = {
-			title = title
+			subtype[!hidden] = {
+				title = title
+				desc = desc
+			}
+		}
+		images = {
+			subtype[!hidden] = {
+				## primary
+				picture = picture # <sprite>, can be triggered or/and multiple
+			}
 		}
 	}
 }

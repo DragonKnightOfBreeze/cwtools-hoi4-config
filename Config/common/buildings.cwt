@@ -2,12 +2,6 @@ types = {
 	type[building] = {
 		path = "game/common/building"
 		skip_root_key = buildings
-		localisation = {
-			## required
-			name = "$"
-			## required
-			desc = "$_desc"
-		}
 		subtype[provincial] = {
 			provincial = yes
 		}
@@ -15,6 +9,10 @@ types = {
 			provincial = no
 		}
 		subtype[state] = {
+		}
+		localisation = {
+			name = "$"
+			desc = "$_desc"
 		}
 	}
 }

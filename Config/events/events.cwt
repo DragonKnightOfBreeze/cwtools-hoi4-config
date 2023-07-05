@@ -35,7 +35,6 @@ types = {
 		subtype[operative_leader] = {}
 
 		localisation = {
-			## primary
 			title = title
 		}
 	}

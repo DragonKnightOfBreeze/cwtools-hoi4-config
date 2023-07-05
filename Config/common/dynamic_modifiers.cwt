@@ -2,6 +2,10 @@ types = {
 	type[dynamic_modifier] = {
 		path = "game/common/dynamic_modifiers"
 		path_strict = yes
+		images = {
+			## optional
+			icon = icon # <sprite>
+		}
 	}
 }
 

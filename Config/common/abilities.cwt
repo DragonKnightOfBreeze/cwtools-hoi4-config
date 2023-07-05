@@ -1,7 +1,16 @@
 types = {
 	type[ability] = {
 		path = "game/common/abilities"
+		name_field = name
 		skip_root_key = ability
+		localisation = {
+			name = name
+			desc = desc
+		}
+		images = {
+			## optional
+			icon = icon # <sprite>
+		}
 	}
 }
 

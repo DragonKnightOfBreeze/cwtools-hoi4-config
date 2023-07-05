@@ -73,6 +73,10 @@ types = {
 	type[critical_part] = {
 		skip_root_key = critical_parts
 		path = "game/common/units/critical_parts"
+		images = {
+			## optional
+			icon = icon|frame # <sprite>
+		}
 	}
 	type[duplicate_archetypes] = {
 		skip_root_key = duplicate_archetypes

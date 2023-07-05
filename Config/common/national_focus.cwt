@@ -19,6 +19,10 @@ types = {
 	type[shared_focus] = {
 		path = "game/common/national_focus"
 		name_field = "id"
+		images = {
+			## optional
+			icon = icon # <sprite>
+		}
 	}
 }
 

@@ -2,17 +2,24 @@ types = {
 	type[operation] = {
 		path = "game/common/operations"
 		path_strict = yes
+		localisation = {
+			name = name
+			desc = desc
+		}
+		images = {
+			icon = icon # <sprite>
+			map_icon = map_icon # <sprite>
+		}
 	}
 }
 
 
 operation = {
+	name = localisation
+	desc = localisation
+	
 	icon = <sprite>
 	map_icon = <sprite>
-
-	name = localisation
-
-	desc = localisation
 
 	#outcome = <operation_phase>
 

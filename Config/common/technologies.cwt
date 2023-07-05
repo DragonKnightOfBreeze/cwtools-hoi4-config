@@ -17,10 +17,23 @@ types = {
 				position = { x = float y = float }
 			}
 		}
+		localisation = {
+			name = "$"
+			desc = desc
+		}
 	}
 	type[tech_sharing_group] = {
 		path = "game/common/technology_sharing"
 		name_field = "id"
+		localisation = {
+			name = name
+			desc = desc
+		}
+		images = {
+			## primary
+			## optional
+			picture = picture # <sprite>
+		}
 	}
 }
 

@@ -6,6 +6,11 @@ types = {
     type[intelligence_agency_upgrade] = {
         path = "game/common/intelligence_agency_upgrades"
         skip_root_key = any
+        images = {
+            picture = picture # <sprite>
+            ## optional
+            frame = frame # <sprite>
+        }
 	}
 }
 

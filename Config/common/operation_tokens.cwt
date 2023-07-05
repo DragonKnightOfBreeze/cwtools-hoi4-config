@@ -1,6 +1,14 @@
 types = {
     type[operation_token] = {
 		path = "game/common/operation_tokens"
+		localisation = {
+			name = name
+			desc = desc
+		}
+		images = {
+			icon = icon # <sprite>
+			text_icon = text_icon # <sprite>
+		}
 	}
 }
 

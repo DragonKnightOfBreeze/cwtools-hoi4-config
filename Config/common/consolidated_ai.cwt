@@ -277,7 +277,7 @@ ai_template = {
 
 ai_equipment_design_group = {
 	### naval category is supported from version 1.6.0, and land category from version 1.11.0
-	category = enum[equipment_categories]
+	category = enum[equipment_category]
 
 	### Exclusionary list of countries that will not use this design group.
 	## cardinality = 0..1
@@ -348,7 +348,7 @@ ai_equipment_design_group = {
 			modules = {
 				### A slot can be assigned a module category. Any other module category fails the match. When designing an equipment variant, the latest available will be favored.
 				## cardinality = 0..inf
-				enum[module_slots] = enum[module_categories]
+				enum[module_slots] = enum[module_category]
 
 				### A slot can be assigned a specific module. Any other module fails the match. Less than and greater than comparisons can be used to force lesser or greater modules within a chain of module upgrades. When designing an equipment variant, the earliest module will be favored for the lesser restriction, and the latest will be favored for the greater restriction.
 				## cardinality = 0..inf
@@ -363,7 +363,7 @@ ai_equipment_design_group = {
 				enum[module_slots] = {
 					### You can specify a module category, or an equal, lesser, or greater module, or empty/non-empty.
 					## cardinality = 0..inf
-					module = enum[module_categories]
+					module = enum[module_category]
 					## cardinality = 0..inf
 					module = <module>
 					## cardinality = 0..inf
@@ -375,7 +375,7 @@ ai_equipment_design_group = {
 						## cardinality = 0..inf
 						<module>
 						## cardinality = 0..inf
-						enum[module_categories]
+						enum[module_category]
 					}
 
 					### Optionally, for upgrading existing equipment to a this design, you can require that this slot must have a better module in order to use this design. Example upgrade > current. Alternatively, you can require that it must use exactly the same module that is already on the existing equipment. Example upgrade = current.
@@ -404,7 +404,7 @@ ai_equipment_design_group = {
 		## cardinality = 0..1
 		requirements = {
 			## cardinality = 0..inf
-			module = enum[module_categories]
+			module = enum[module_category]
 			## cardinality = 0..inf
 			module = <module>
 		}
@@ -415,7 +415,7 @@ ai_equipment_design_group = {
 			## cardinality = 0..inf
 			<module>
 			## cardinality = 0..inf
-			enum[module_categories]
+			enum[module_category]
 		}
 	}
 }

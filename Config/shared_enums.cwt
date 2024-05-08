@@ -58,7 +58,7 @@ enums = {
 		"MISSION_MINES_SWEEPING"
 	}
 
-	enum[equipment_categories] = {
+	enum[equipment_category] = {
 		naval
 		land
 		air
@@ -69,7 +69,7 @@ enums = {
 		navy
 		air
 	}
-	
+
 	enum[command_cap] = {
 		@tier1
 		@tier2

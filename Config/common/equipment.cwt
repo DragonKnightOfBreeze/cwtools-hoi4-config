@@ -261,7 +261,7 @@ equipment = {
 				required = bool
 				allowed_module_categories = {
 					## cardinality = 0..inf
-					enum[module_categories]
+					enum[module_category]
 				}
 				## cardinality = 0..1
 				gfx = scalar
@@ -280,7 +280,7 @@ equipment = {
 		### Any number of module count limits can be specified. They are automatically inherited by child equipment types. An inherited limit is overridden if the child has a limit with exactly the same match conditions.
 		module_count_limit = {
 			## cardinality = 0..1
-			category = enum[module_categories]
+			category = enum[module_category]
 			## cardinality = 0..1
 			module = <module>
 			count = int
@@ -388,9 +388,9 @@ module = {
 	## cardinality = 0..1
 	abbreviation = localisation_inline
 	### The category of the module
-	category = enum[module_categories]
+	category = enum[module_category]
 	## cardinality = 0..1
-	gui_category = enum[module_categories]
+	gui_category = enum[module_category]
 	## cardinality = 0..1
 	parent = <module>
 	## cardinality = 0..1
@@ -435,7 +435,7 @@ module = {
 	## cardinality = 0..10
 	can_convert_from = {
 		## cardinality = 0..1
-		module_category = enum[module_categories]
+		module_category = enum[module_category]
 		## cardinality = 0..1
 		module = <module>
 		convert_cost_ic = float
@@ -462,7 +462,7 @@ module = {
 		## cardinality = 0..inf
 		enum[module_slots] = {
 			## cardinality = 0..inf
-			enum[module_categories]
+			enum[module_category]
 		}
 	}
 
@@ -542,7 +542,7 @@ enums = {
 			}
 		}
 	}
-	complex_enum[module_categories] = {
+	complex_enum[module_category] = {
 		path = "game/common/units/equipment/modules"
 		name = {
 			scalar = {

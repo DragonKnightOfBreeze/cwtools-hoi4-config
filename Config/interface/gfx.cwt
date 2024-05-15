@@ -1,6 +1,7 @@
 types = {
 	type[sprite] = {
-		path = "game/interface"
+		path = "interface"
+		# path = "dlc/*/interface" # unsupported by PLS yet
 		path_extension = .gfx
 		skip_root_key = spriteTypes
 		name_field = name # these are links that start with the GFX_ prefix in vanilla

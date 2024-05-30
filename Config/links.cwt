@@ -75,21 +75,21 @@ links = {
         data_source = value[variable]
     }
 
-    event_target = {
-        desc =  eventtarget_link_desc_var
-        from_data = yes
-        type = both
-        prefix = event_target:
-        data_source = value[event_target]
-    }
+	event_target = {
+		desc = "Event target"
+		from_data = yes
+		type = both
+		prefix = event_target:
+		data_source = value[event_target]
+	}
 
-    global_event_target = {
-        desc =  eventtarget_link_desc_var
-        from_data = yes
-        type = both
-        prefix = event_target:
-        data_source = value[global_event_target]
-    }
+	global_event_target = {
+		desc = "Global event target"
+		from_data = yes
+		type = both
+		prefix = event_target:
+		data_source = value[global_event_target]
+	}
 
     token = {
         desc =  token_link_desc_var

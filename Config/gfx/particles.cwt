@@ -71,6 +71,21 @@ particle = {
 			y = float
 			## cardinality = 0..1
 			z = float
+			## cardinality = 0..1
+			x = {
+				## cardinality = ~1..inf
+				float
+			}
+			## cardinality = 0..1
+			y = {
+				## cardinality = ~1..inf
+				float
+			}
+			## cardinality = 0..1
+			z = {
+				## cardinality = ~1..inf
+				float
+			}
 		}
 		duration = float
 		life = {
@@ -115,7 +130,7 @@ particle = {
 		## cardinality = 0..1
 		rotation_speed_yaw = {
 			## cardinality = 2..2
-			scalar
+			float
 		}
 		## cardinality = 0..1
 		rotation_speed_pitch = float
@@ -180,7 +195,7 @@ particle = {
 		velocity = scalar
 		## cardinality = 0..1
 		velocity = {
-			## cardinality = 1..2
+			## cardinality = ~1..inf
 			scalar
 		}
 		## cardinality = 0..1
@@ -198,18 +213,18 @@ particle = {
 		## cardinality = 0..1
 		velocity_yaw = float
 		## cardinality = 0..1
-		emitter_pitch = float
+		emitter_pitch = scalar
 		## cardinality = 0..1
 		emitter_pitch = {
-			## cardinality = 2..2
-			float
+			## cardinality = ~1..inf
+			scalar
 		}
 		## cardinality = 0..1
-		emitter_yaw = float
+		emitter_yaw = scalar
 		## cardinality = 0..1
 		emitter_yaw = {
-			## cardinality = 2..2
-			float
+			## cardinality = ~1..inf
+			scalar
 		}
 		## cardinality = 0..1
 		emission_pulse_duration = float
@@ -253,6 +268,13 @@ particle = {
 		}
 		## cardinality = 0..1
 		force = scalar #this keeps bugging out, so scalar for now.
+		## cardinality = 0..1
+		mass = float
+		## cardinality = 0..1
+		mass = {
+			## cardinality = 0..inf
+			float
+		}
 		## cardinality = 0..1
 		childsystem = {
 			## cardinality = 0..1
@@ -328,6 +350,13 @@ particle = {
 				float
 			}
 			## cardinality = 0..1
+			rotation_speed_yaw = float
+			## cardinality = 0..1
+			rotation_speed_yaw = {
+				## cardinality = 2..2
+				float
+			}
+			## cardinality = 0..1
 			rotation_speed_pitch = float
 			## cardinality = 0..1
 			rotation_speed_pitch = {
@@ -384,11 +413,11 @@ particle = {
 			## cardinality = 0..1
 			box_emitter_z = scalar
 			## cardinality = 0..1
-			velocity = float
+			velocity = scalar
 			## cardinality = 0..1
 			velocity = {
-				## cardinality = 0..2
-				float
+				## cardinality = ~1..inf
+				scalar
 			}
 			## cardinality = 0..1
 			velocity_pitch = {
@@ -405,18 +434,18 @@ particle = {
 			## cardinality = 0..1
 			velocity_yaw = float
 			## cardinality = 0..1
-			emitter_pitch = float
+			emitter_pitch = scalar
 			## cardinality = 0..1
 			emitter_pitch = {
-				## cardinality = 2..2
-				float
+				## cardinality = ~1..inf
+				scalar
 			}
 			## cardinality = 0..1
-			emitter_yaw = float
+			emitter_yaw = scalar
 			## cardinality = 0..1
 			emitter_yaw = {
-				## cardinality = 2..2
-				float
+				## cardinality = ~1..inf
+				scalar
 			}
 			## cardinality = 0..1
 			emission_pulse_duration = float
@@ -514,11 +543,26 @@ alias[subsystem_color:color] = {
 	#x = float[0.0..255.0]
 	x = scalar
 	## cardinality = 0..1
+	x = {
+		## cardinality = 0..inf
+		scalar
+	}
+	## cardinality = 0..1
 	#y = float[0.0..255.0]
 	y = scalar
 	## cardinality = 0..1
+	y = {
+		## cardinality = 0..inf
+		scalar
+	}
+	## cardinality = 0..1
 	#z = float[0.0..255.0]
 	z = scalar
+	## cardinality = 0..1
+	z = {
+		## cardinality = 0..inf
+		scalar
+	}
 	## cardinality = 0..1
 	alpha = scalar
 	#alpha = float[0.0..255.0] #float,<particle_animation>
@@ -557,6 +601,7 @@ enums = {
 	enum[sort_type] = {
 		depth
 		age
+		distance
 	}
 	complex_enum[particle_force] = {
 		path = "game/gfx/particles"

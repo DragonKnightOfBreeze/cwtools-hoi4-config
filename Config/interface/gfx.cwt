@@ -1,11 +1,14 @@
 types = {
 	type[sprite] = {
+		# TODO PLS 1.3.8+ unsupported yet
+		# path = "interface"
+		# path = "dlc/*/interface"
+		# path = "integrated_dlc/*/interface"
+
 		path = "interface"
-		# path = "dlc/*/interface" # unsupported by PLS yet
 		path_extension = .gfx
 		skip_root_key = spriteTypes
-		name_field = name # these are links that start with the GFX_ prefix in vanilla
-		severity = warning
+		name_field = "name"
 
 		## type_key_filter = spriteType
 		subtype[normal] = {}

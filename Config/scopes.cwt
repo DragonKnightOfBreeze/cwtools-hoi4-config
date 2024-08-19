@@ -134,6 +134,9 @@ scopes = {
 	Politics = {
 		aliases = { politics }
 	}
+	"Purchase Contract" = {
+		aliases = { purchase_contract }
+	}
 	"War Production" = {
 		aliases = { war_production }
 	}

@@ -1023,6 +1023,10 @@ alias[trigger:is_in_home_area] = bool
 ## scope = state
 alias[trigger:state_population] = float
 
+### Check the population in the state.
+## scope = state
+alias[trigger:state_population] = value[variable]
+
 ### Check the ai irrationality value.
 ## scope = country
 alias[trigger:ai_irrationality] = int
@@ -1192,7 +1196,7 @@ alias[trigger:has_non_aggression_pact_with] = enum[country_tags]
 
 ### Compares the number of members in the faction for the current country.
 ## scope = country
-alias[trigger:num_faction_members] = int
+alias[trigger:num_faction_members] = variable_field
 
 ### Compares the estimated army strength between the scope country and all its enemies.
 ## scope = country
@@ -1434,11 +1438,11 @@ alias[trigger:is_licensing_any_to] = enum[country_tags]
 
 ### Check if the ai controlled country has any template for a specific role.
 ## scope = country
-alias[trigger:ai_has_role_template] = value[ai_roles]
+alias[trigger:ai_has_role_template] = value[ai_template_roles]
 
 ### Check if the ai controlled country has any fielded divisions for a specific role.
 ## scope = country
-alias[trigger:ai_has_role_division] = value[ai_roles]
+alias[trigger:ai_has_role_division] = value[ai_template_roles]
 
 ### Country has specified relation modifier when dealing with _target_ county.
 ## scope = country
@@ -1936,18 +1940,6 @@ alias[trigger:stockpile_ratio] = {
 	ratio = float
 }
 
-###  	Checks the deal completion with the target value
-alias[trigger:contract_contains_equipment] = <equipment.archetype_equip>
-
-### Checks if the buyer is <tag>
-alias[trigger:buyer] = scope[country]
-
-### Checks if the seller is <tag>
-alias[trigger:seller] = scope[country]
-
-###  	Checks the deal completion with the target value
-alias[trigger:deal_completion] = float[0..1]
-
 ### Checks for state strategic value.
 ## scope = state
 alias[trigger:state_strategic_value] = int
@@ -2168,6 +2160,10 @@ alias[trigger:has_rule] = enum[game_rules]
 ## scope = { state }
 alias[trigger:state_population_k] = int
 
+### Check the population in the state in thousands (use to avoid variable overflows).
+## scope = { state }
+alias[trigger:state_population_k] = value[variable]
+
 ### Check the amount of casualties in thousands a country has suffered in all of it's wars.
 ## scope = country
 alias[trigger:casualties_k] = int
@@ -2175,10 +2171,7 @@ alias[trigger:casualties_k] = int
 ### Meta triggers can be used for building triggers from strings and running them. following example will test if Germany has 42 pp.
 ## scope = any
 alias[trigger:meta_trigger] = {
-	text = {
-		## cardinality = 1..inf
-		alias_name[trigger] = alias_match_left[trigger]
-	}
+	text = ignore_field
 	## cardinality = 1..inf
 	scalar = localisation
 }
@@ -2309,6 +2302,10 @@ alias[trigger:<building>] = int_variable_field
 ## scope = country
 alias[trigger:<ideology>] = variable_field
 
+### Checks ideology popularity.
+## scope = country
+alias[trigger:<ideology>] = <ideology>
+
 ### Changes scope to opposing army/navy.
 ## scope = { unit_leader combat }
 alias[trigger:opponent] = { alias_name[trigger] = alias_match_left[trigger] }
@@ -2367,9 +2364,15 @@ alias[trigger:has_bombing_war_support] = float
 ## scope = country
 alias[trigger:has_bombing_war_support] = variable_field_32
 
-### Has a certain amount of resources
+### Checks for amount of resources in country
 ## scope = country
 alias[trigger:has_resources_in_country] = {
 	resource = <resource>
 	amount = int_variable_field
+	### Checks extracted amount instead of country balance. Default - no
+	## cardinality = 0..1
+	extracted = bool
+	### Checks only amount from local buildings instead of country balance. Default - no
+	## cardinality = 0..1
+	buildings = bool
 }

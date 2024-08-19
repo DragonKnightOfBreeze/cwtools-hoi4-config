@@ -19,11 +19,11 @@ types = {
 		path = "dlc/dlc014_wallpaper/gfx"
 		path = "dlc/dlc016_artbook/gfx"
 		path = "dlc/dlc017_original_soundtrack/gfx"
-		path = "dlc/dlc018_together_for_victory/gfx"
+		path = "integrated_dlc/dlc018_together_for_victory/gfx"
 		path = "dlc/dlc019_sabaton_vol2/gfx"
-		path = "dlc/dlc020_death_or_dishonor/gfx"
+		path = "integrated_dlc/dlc020_death_or_dishonor/gfx"
 		path = "dlc/dlc021_anniversary_pack/gfx"
-		path = "dlc/dlc022_waking_the_tiger/gfx"
+		path = "integrated_dlc/dlc022_waking_the_tiger/gfx"
 		path = "dlc/dlc023_man_the_guns/gfx"
 		path = "dlc/dlc024_man_the_guns_wallpaper/gfx"
 		path = "dlc/dlc025_axis_armor_pack/gfx"
@@ -64,11 +64,11 @@ types = {
 		path = "dlc/dlc014_wallpaper/gfx"
 		path = "dlc/dlc016_artbook/gfx"
 		path = "dlc/dlc017_original_soundtrack/gfx"
-		path = "dlc/dlc018_together_for_victory/gfx"
+		path = "integrated_dlc/dlc018_together_for_victory/gfx"
 		path = "dlc/dlc019_sabaton_vol2/gfx"
-		path = "dlc/dlc020_death_or_dishonor/gfx"
+		path = "integrated_dlc/dlc020_death_or_dishonor/gfx"
 		path = "dlc/dlc021_anniversary_pack/gfx"
-		path = "dlc/dlc022_waking_the_tiger/gfx"
+		path = "integrated_dlc/dlc022_waking_the_tiger/gfx"
 		path = "dlc/dlc023_man_the_guns/gfx"
 		path = "dlc/dlc024_man_the_guns_wallpaper/gfx"
 		path = "dlc/dlc025_axis_armor_pack/gfx"
@@ -109,11 +109,11 @@ types = {
 		path = "dlc/dlc014_wallpaper/gfx"
 		path = "dlc/dlc016_artbook/gfx"
 		path = "dlc/dlc017_original_soundtrack/gfx"
-		path = "dlc/dlc018_together_for_victory/gfx"
+		path = "integrated_dlc/dlc018_together_for_victory/gfx"
 		path = "dlc/dlc019_sabaton_vol2/gfx"
-		path = "dlc/dlc020_death_or_dishonor/gfx"
+		path = "integrated_dlc/dlc020_death_or_dishonor/gfx"
 		path = "dlc/dlc021_anniversary_pack/gfx"
-		path = "dlc/dlc022_waking_the_tiger/gfx"
+		path = "integrated_dlc/dlc022_waking_the_tiger/gfx"
 		path = "dlc/dlc023_man_the_guns/gfx"
 		path = "dlc/dlc024_man_the_guns_wallpaper/gfx"
 		path = "dlc/dlc025_axis_armor_pack/gfx"
@@ -337,48 +337,40 @@ enums = {
 		a_1_bomb
 		a_1_crash
 		a_1_fire
-		a_1_fire
-		a_1_idle
+		a_1_firebomb
 		a_1_idle
 		a_1_supply
 		a_2_bomb
 		a_2_crash
 		a_2_fire
-		a_2_fire
-		a_2_idle
+		a_2_firebomb
 		a_2_idle
 		a_2_supply
 		a_3_bomb
 		a_3_crash
 		a_3_fire
-		a_3_idle
+		a_3_firebomb
 		a_3_idle
 		a_3_supply
 		a_bomb
 		a_crash
 		a_explode
 		a_fire
-		a_fire
-		a_idle
+		a_firebomb
 		a_idle
 		a_supply
-		d_1_crash
 		d_1_crash
 		d_1_fire
 		d_1_idle
 		d_2_crash
 		d_2_fire
-		d_2_fire
-		d_2_idle
 		d_2_idle
 		d_3_crash
 		d_3_fire
 		d_3_idle
 		d_bomb
 		d_crash
-		d_crash
 		d_fire
-		d_idle
 		d_idle
 	}
 

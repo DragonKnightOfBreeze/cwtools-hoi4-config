@@ -671,9 +671,25 @@ alias[effect:set_country_leader_ideology] = enum[sub_ideology]
 ## scope = country
 alias[effect:add_country_leader_trait] = <country_leader_trait>
 
+### Add trait to active country leader.
+## scope = country
+alias[effect:add_country_leader_trait] = {
+	trait = <country_leader_trait>
+	## cardinality = 0..1
+	ideology = <ideology>
+}
+
 ### Remove trait from active country leader.
 ## scope = country
 alias[effect:remove_country_leader_trait] = <country_leader_trait>
+
+### Remove trait from active country leader.
+## scope = country
+alias[effect:remove_country_leader_trait] = {
+	trait = <country_leader_trait>
+	## cardinality = 0..1
+	ideology = <ideology>
+}
 
 ### Set properties of a political party.
 ## scope = country
@@ -827,11 +843,12 @@ alias[effect:puppet] = scope[country]
 ## scope = country
 alias[effect:puppet] = enum[country_tags]
 
-### Puppets specified country.
+### Puppets specified country. By default, cancels the puppets existing war relations
 ## scope = country
 alias[effect:puppet] = {
 	target = scope[country]
 	target = enum[country_tags]
+	## cardinality = 0..1
 	end_wars = bool
 	## cardinality = 0..1
 	end_civil_wars = bool
@@ -895,6 +912,21 @@ alias[effect:build_railway] = {
 	}
 	## cardinality = 0..1
 	build_only_on_allied = bool
+	### You can specify a weight function that will be used in pathing. The scope will be the controller of the province it is trying to path to.
+  	### A negative value will make it not to path to that controller.
+  	### Non-negative values will be used as a path cost for that province.
+	## cardinality = 0..1
+	controller_priority ={
+		## cardinality = 0..1
+		base = variable_field
+		## cardinality = 0..inf
+		modifier = {
+			## cardinality = ~1..inf
+			tag = enum[country_tags]
+			## cardinality = ~1..1
+			add = float
+		}
+	}
 	## cardinality = 0..1
 	level = int[1..5]
 	### Option 3: Specify start & end state IDs. It will pick provinces with the best node (capital > nodes > naval ) start_state = 50 target_state = 100
@@ -910,6 +942,21 @@ alias[effect:build_railway] = {
 alias[effect:build_railway] = {
 	## cardinality = 0..1
 	build_only_on_allied = bool
+	### You can specify a weight function that will be used in pathing. The scope will be the controller of the province it is trying to path to.
+  	### A negative value will make it not to path to that controller.
+  	### Non-negative values will be used as a path cost for that province.
+	## cardinality = 0..1
+	controller_priority ={
+		## cardinality = 0..1
+		base = variable_field
+		## cardinality = 0..inf
+		modifier = {
+			## cardinality = ~1..inf
+			tag = enum[country_tags]
+			## cardinality = ~1..1
+			add = float
+		}
+	}
 	## cardinality = 0..1
 	level = int[1..5]
 	start_province = enum[provinces]
@@ -932,6 +979,21 @@ alias[effect:build_railway] = {
 alias[effect:build_railway] = {
 	## cardinality = 0..1
 	build_only_on_allied = bool
+	### You can specify a weight function that will be used in pathing. The scope will be the controller of the province it is trying to path to.
+  	### A negative value will make it not to path to that controller.
+  	### Non-negative values will be used as a path cost for that province.
+	## cardinality = 0..1
+	controller_priority ={
+		## cardinality = 0..1
+		base = variable_field
+		## cardinality = 0..inf
+		modifier = {
+			## cardinality = ~1..inf
+			tag = enum[country_tags]
+			## cardinality = ~1..1
+			add = float
+		}
+	}
 	## cardinality = 0..1
 	level = int[1..5]
 	start_state = <state>
@@ -1219,6 +1281,10 @@ alias[effect:declare_war_on] = {
 		## cardinality = 0..inf
 		<state>
 	}
+	## cardinality = 0..1
+	generator = value[array]
+	## cardinality = 0..1
+	generator = scope[state]
 }
 
 # not used in vanilla or documented in wiki
@@ -1348,6 +1414,10 @@ alias[effect:create_wargoal] = {
 	generator = core_states
 	## cardinality = 0..1
 	generator = owned_states
+	## cardinality = 0..1
+	generator = value[array]
+	## cardinality = 0..1
+	generator = scope[state]
 	## cardinality = 0..1
 	expire = date_field
 	## cardinality = 0..1
@@ -1503,6 +1573,13 @@ alias[effect:set_rule] = {
 	desc = localisation
 }
 
+### Clears rule added by set_rule. In the example it will clear can_not_declare_war = yes set by set_rule: clear_rule = { can_not_declare_war = yes }
+## scope = country
+alias[effect:clear_rule] = {
+	## cardinality = 1..inf
+	enum[game_rules] = bool
+}
+
 ### Adds rule to country's party.
 ## scope = country
 alias[effect:set_party_rule] = {
@@ -1537,7 +1614,12 @@ alias[effect:diplomatic_relation] = {
 
 ### Shows just tooltip of effects.
 ## scope = any
-alias[effect:effect_tooltip] = { alias_name[effect] = alias_match_left[effect] }
+alias[effect:effect_tooltip] = {
+	### You can show unit leader event names in effect_tooltip via 'country_event'
+	## cardinality = 0..1
+	country_event = <event.unit_leader_event>
+	alias_name[effect] = alias_match_left[effect]
+}
 
 ### Adds resource production to state.
 ## scope = country
@@ -1806,6 +1888,8 @@ alias[effect:create_equipment_variant] = {
 	role_icon_index = int
 	## cardinality = 0..1
 	allow_without_tech = bool
+	## cardinality = 0..1
+	show_position = bool
 	## cardinality = 0..1
 	upgrades = {
 		## cardinality = 0..inf
@@ -2377,13 +2461,6 @@ alias[effect:modify_unit_leader_flag] = {
 ## scope = { unit_leader character }
 alias[effect:clr_unit_leader_flag] = value[leader_flag]
 
-### Sets the country that owns current scope general.
-## scope = { character unit_leader }
-alias[effect:set_nationality] = scope[country]
-### Sets the country that owns current scope general.
-## scope = { character unit_leader }
-alias[effect:set_nationality] = enum[country_tags]
-
 ### Demotes field marshal to general.
 ## scope = { character unit_leader }
 alias[effect:demote_leader] = yes
@@ -2767,19 +2844,51 @@ alias[effect:clamp_temp_variable] = {
 ### Start a border war between two states.
 ## scope = { state country }
 alias[effect:start_border_war] = {
+	### Overrides the transfer of state at the end of war
 	change_state_after_war = bool
+	### Combat width for border war
+	## cardinality = 0..1
+	combat_width = int
+	### Minimum duration for combat
+	## cardinality = 0..1
+	minimum_duration_in_days = int
 	attacker = {
+		### State to start border war
 		state = scope[state]
 		state = <state>
+		### Number of provinces we want border war to be
 		num_provinces = int[1..100]
 		on_win = <event>
 		on_lose = <event>
 		## cardinality = ~0..1
 		on_cancel = <event>
+		### Score for selecting a leader
+		## cardinality = 0..1
+		leader_score = {
+			## cardinality = 0..1
+			base = variable_field
+			## cardinality = 0..inf
+			enum[add_factor] = float
+			## cardinality = 0..inf
+			modifier = {
+				## cardinality = ~1..inf
+				alias_name[trigger] = alias_match_left[trigger]
+				## cardinality = ~1..1
+				enum[add_factor] = float
+			}
+		}
+		### Dig in modifier factor (default value: 1.0)
+		## cardinality = 0..1
+		dig_in_factor = float
+		### Terrain modifier factor (default value: 1.0)
+		## cardinality = 0..1
+		terrain_factor = float
 	}
 	defender = {
+		### State to start border war
 		state = scope[state]
 		state = <state>
+		### Number of provinces we want border war to be
 		num_provinces = int[1..100]
 		on_win = <event>
 		on_lose = <event>
@@ -2834,10 +2943,11 @@ alias[effect:clear_division_template_cap] = {
 	division_template = localisation_inline
 }
 
-### Set division template to allow force recruiting.
+### Set division template to allow force recruiting. force_allow_recruiting defaults to true if unset
 ## scope = country
 alias[effect:set_division_force_allow_recruiting] = {
 	division_template = localisation_inline
+	## cardinality = 0..1
 	force_allow_recruiting = bool
 }
 
@@ -3471,10 +3581,7 @@ alias[effect:while_loop_effect] = {
 ### Meta effects can be used for building effects from strings and running them. following example will give Germany 42 pp.
 ## scope = any
 alias[effect:meta_effect] = {
-	text = {
-		## cardinality = 1..inf
-		alias_name[effect] = alias_match_left[effect]
-	}
+	text = ignore_field
 	## cardinality = 1..inf
 	scalar = localisation
 }
@@ -3558,7 +3665,8 @@ alias[effect:set_convoys] = int
 ## scope = country
 alias[effect:add_ai_strategy] = {
 	type = enum[ai_role_strats]
-	id = value[ai_roles]
+	id = value[ai_template_roles]
+	id = value[ai_equipment_roles]
 	value = int
 }
 
@@ -3568,7 +3676,8 @@ alias[effect:add_ai_strategy] = {
 	type = enum[unit_strats]
 	id = <unit>
 	id = enum[unit_types]
-	id = value[ai_roles]
+	id = value[ai_template_roles]
+	id = value[ai_equipment_roles]
 	value = int
 }
 

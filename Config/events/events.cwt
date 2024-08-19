@@ -27,11 +27,11 @@ types = {
 		subtype[news] = {}
 		## group = event_type
 		## type_key_filter = unit_leader_event
-		## push_scope = any
+		## push_scope = unit_leader
 		subtype[unit_leader] = {}
 		## group = event_type
 		## type_key_filter = operative_leader_event
-		## push_scope = any
+		## push_scope = operative
 		subtype[operative_leader] = {}
 
 		localisation = {

@@ -150,4 +150,10 @@ scopes = {
 	Unit = {
 		aliases = { unit }
 	}
+	Raid = {
+		aliases = { raid_instance raid }
+	}
+	"Special Project" = {
+		aliases = { special_project project }
+	}
 }

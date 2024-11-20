@@ -551,4 +551,10 @@ on_actions = {
 	## replace_scope = { this = military_industrial_organization root = military_industrial_organization from = country  }
 	## event_type = scopeless
 	on_mio_industrial_manufacturer_unassigned
+
+	### Triggered when a project is completed
+	### ROOT is the Military Industrial Organization, FROM is the owner of the MIO country
+	## replace_scope = { root = country this = country from = special_project }
+	## event_type = country
+	on_project_completion
 }

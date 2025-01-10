@@ -1262,7 +1262,7 @@ alias[trigger:num_tech_sharing_groups] = int
 
 ### Check if country has a division template of specific name.
 ## scope = country
-alias[trigger:has_template] = scalar
+alias[trigger:has_template] = value[division_template_name]
 
 ### Check if state has a specific state category.
 ## scope = state
@@ -1567,7 +1567,7 @@ alias[trigger:has_war_support] = variable_field_32
 
 ### Check if all unit leaders meets the trigger.
 ## scope = country
-## push_scope = unit_leader
+## push_scope = { unit_leader character }
 alias[trigger:all_unit_leader] = {
 	## cardinality = 0..1
 	tooltip = localisation
@@ -1576,7 +1576,7 @@ alias[trigger:all_unit_leader] = {
 
 ### Check if any unit leader meets the trigger.
 ## scope = country
-## push_scope = unit_leader
+## push_scope = { unit_leader character }
 alias[trigger:any_unit_leader] = {
 	## cardinality = 0..1
 	tooltip = localisation
@@ -1826,23 +1826,23 @@ alias[trigger:has_border_war_with] = scope[country]
 alias[trigger:has_border_war_with] = enum[country_tags]
 
 ### Compares the average stats for a unit leader.
-## scope = { unit_leader combat }
+## scope = { unit_leader combat character }
 alias[trigger:average_stats] = int
 
 ### Compares attack skill level of a unit leader.
-## scope = { unit_leader combat }
+## scope = { unit_leader combat character }
 alias[trigger:attack_skill_level] = int
 
 ### Compares defense skill level of a unit leader.
-## scope = { unit_leader combat }
+## scope = { unit_leader combat character }
 alias[trigger:defense_skill_level] = int
 
 ### Compares logistics skill level of a unit leader.
-## scope = { unit_leader combat }
+## scope = { unit_leader combat character }
 alias[trigger:logistics_skill_level] = int
 
 ### Compares planning skill level of a unit leader.
-## scope = { unit_leader combat }
+## scope = { unit_leader combat character }
 alias[trigger:planning_skill_level] = int
 
 ### Is_leading_army_group = yes/no - Checks if the current unit leader is leading an army group (not single army).
@@ -2201,6 +2201,21 @@ alias[trigger:has_dynamic_modifier] = {
 	## cardinality = 0..1
 	### Optional, state or country tag or a variable contains that. if specified the dynamic variable will target that scope.
 	scope = scope[country]
+	
+	## cardinality = 0..1
+	### Optional, state or country tag or a variable contains that. if specified the dynamic variable will target that scope.
+	scope = <state>
+	## cardinality = 0..1
+	### Optional, state or country tag or a variable contains that. if specified the dynamic variable will target that scope.
+	scope = scope[state]
+
+	## cardinality = 0..1
+	### Optional, state or country tag or a variable contains that. if specified the dynamic variable will target that scope.
+	scope = <character>
+
+	## cardinality = 0..1
+	### Optional, state or country tag or a variable contains that. if specified the dynamic variable will target that scope.
+	scope = scope[special_project]
 }
 
 ### Runs a loop on for each element of an array, finds the lowest value and stores result in temp variables.

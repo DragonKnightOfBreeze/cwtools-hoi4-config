@@ -557,4 +557,9 @@ on_actions = {
 	## replace_scope = { root = country this = country from = special_project }
 	## event_type = country
 	on_project_completion
+
+	### ROOT is winner, FROM is loser (called for all winners against all losers)
+	## replace_scope = { root = country this = country from = country }
+	## event_type = country
+	on_before_peace_conference_start
 }

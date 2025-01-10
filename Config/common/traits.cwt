@@ -69,6 +69,14 @@ country_leader_trait = {
 			alias_name[naval_stat] = alias_match_left[naval_stat]
 			alias_name[air_stat] = alias_match_left[air_stat]
 		}
+		## cardinality = 0..inf
+		<equipment_group> = {
+			## cardinality = 0..1
+			instant = bool
+			alias_name[unit_stat] = alias_match_left[unit_stat]
+			alias_name[naval_stat] = alias_match_left[naval_stat]
+			alias_name[air_stat] = alias_match_left[air_stat]
+		}
 	}
 	## cardinality = 0..inf
 	# targeted_modifier = single_alias_right[targeted_modifier]
@@ -86,7 +94,7 @@ country_leader_trait = {
 	command_cap = enum[command_cap]
 }
 
-## push_scope = unit_leader
+## push_scope = { unit_leader character }
 unit_leader_trait = {
 	type = enum[unit_leader_types]
 	type = {

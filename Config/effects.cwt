@@ -177,8 +177,8 @@ alias[effect:remove_building] = {
 ### Removes specified building in specified state or province.
 ## scope = state
 alias[effect:remove_building] = {
-	tag = value[building_tag]
-	tag = {
+	tags = value[building_tag]
+	tags = {
 		##cardinality = 1..inf
 		value[building_tag]
 	}
@@ -636,9 +636,11 @@ alias[effect:randomize_weather] = int
 ### Adds a division template to country.
 ## scope = country
 alias[effect:division_template] = {
-	name = localisation_inline
+	name = value_set[division_template_name]
 	## cardinality = 0..1
 	division_names_group = <division_name>
+	## cardinality = 0..1
+	role = value[ai_template_roles]
 	## cardinality = 0..1
 	override_model = <entity>
 	## cardinality = 0..1
@@ -681,7 +683,7 @@ alias[effect:division_template] = {
 ### Adds units to a division template.
 ## scope = country
 alias[effect:add_units_to_division_template] = {
-	template_name = localisation_inline
+	template_name = value[division_template_name]
 	## cardinality = 0..1
 	regiments = {
 		## cardinality = 1..25
@@ -1489,13 +1491,25 @@ alias[effect:remove_core_of] = enum[country_tags]
 ## scope = country
 alias[effect:army_experience] = variable_field
 
+### Add army experience for country.
+## scope = country
+alias[effect:army_experience] = value[variable]
+
 ### Add naval experience for country.
 ## scope = country
 alias[effect:navy_experience] = variable_field
 
 ### Add air experience for country.
 ## scope = country
+alias[effect:navy_experience] = value[variable]
+
+### Add air experience for country.
+## scope = country
 alias[effect:air_experience] = variable_field
+
+### Add air experience for country.
+## scope = country
+alias[effect:air_experience] = value[variable]
 
 ### Save an event target.
 ## scope = any
@@ -2376,7 +2390,7 @@ alias[effect:set_war_support] = variable_field[0..1]
 
 ### Executes children effects on random unit leader that fulfills the "limit" trigger.
 ## scope = country
-## push_scope = unit_leader 
+## push_scope = { unit_leader character } 
 alias[effect:random_unit_leader] = {
 	## cardinality = 0..1
 	limit = {
@@ -2390,7 +2404,7 @@ alias[effect:random_unit_leader] = {
 
 ### Executes children effects on unit leaders that fulfills the "limit" trigger.
 ## scope = country
-## push_scope = unit_leader
+## push_scope = { unit_leader character }
 alias[effect:every_unit_leader] = {
 	### Apply the effect to this number of randomly selected entities
 	## cardinality = 0..1
@@ -2409,7 +2423,7 @@ alias[effect:every_unit_leader] = {
 
 ### Executes children effects on random army leader that fulfills the "limit" trigger.
 ## scope = country
-## push_scope = unit_leader
+## push_scope = { unit_leader character }
 alias[effect:random_army_leader] = {
 	## cardinality = 0..1
 	limit = {
@@ -2423,7 +2437,7 @@ alias[effect:random_army_leader] = {
 
 ### Executes children effects on army leaders that fulfills the "limit" trigger.
 ## scope = country
-## push_scope = unit_leader
+## push_scope = { unit_leader character }
 alias[effect:every_army_leader] = {
 	### Apply the effect to this number of randomly selected entities
 	## cardinality = 0..1
@@ -2442,7 +2456,7 @@ alias[effect:every_army_leader] = {
 
 ### Executes children effects on random navy leader that fulfills the "limit" trigger.
 ## scope = country
-## push_scope = unit_leader
+## push_scope = { unit_leader character }
 alias[effect:random_navy_leader] = {
 	## cardinality = 0..1
 	limit = {
@@ -2456,7 +2470,7 @@ alias[effect:random_navy_leader] = {
 
 ### Executes children effects on navy leaders that fulfills the "limit" trigger.
 ## scope = country
-## push_scope = unit_leader
+## push_scope = { unit_leader character }
 alias[effect:every_navy_leader] = {
 	### Apply the effect to this number of randomly selected entities
 	## cardinality = 0..1
@@ -2723,7 +2737,7 @@ alias[effect:add_offsite_building] = {
 
 #wiki doesn't know
 ### Add trait to unit leader.
-## scope = unit_leader
+## scope = { character unit_leader }
 alias[effect:replace_unit_leader_trait] = replace_me
 
 ### Adds a max assignable trait slot for a general.
@@ -2984,27 +2998,27 @@ alias[effect:cancel_border_war] = {
 ### Set lock status for a division template.
 ## scope = country
 alias[effect:set_division_template_lock] = {
-	division_template = localisation_inline
+	division_template = value[division_template_name]
 	is_locked = bool
 }
 
 ### Set cap for a division template.
 ## scope = country
 alias[effect:set_division_template_cap] = {
-	division_template = localisation_inline
+	division_template = value[division_template_name]
 	division_cap = int_variable_field
 }
 
 ### Remove cap for a division template.
 ## scope = country
 alias[effect:clear_division_template_cap] = {
-	division_template = localisation_inline
+	division_template = value[division_template_name]
 }
 
 ### Set division template to allow force recruiting. force_allow_recruiting defaults to true if unset
 ## scope = country
 alias[effect:set_division_force_allow_recruiting] = {
-	division_template = localisation_inline
+	division_template = value[division_template_name]
 	## cardinality = 0..1
 	force_allow_recruiting = bool
 }
@@ -3012,7 +3026,7 @@ alias[effect:set_division_force_allow_recruiting] = {
 ### Delete a template and its units.
 ## scope = country
 alias[effect:delete_unit_template_and_units] = {
-	division_template = localisation_inline
+	division_template = value[division_template_name]
 	## cardinality = 0..1
 	disband = bool
 }
@@ -3575,6 +3589,18 @@ alias[effect:remove_dynamic_modifier] = {
 	## cardinality = 0..1
 	### Optional, state or country tag or a variable contains that. if specified the dynamic variable will target that scope.
 	scope = scope[state]
+
+	## cardinality = 0..1
+	### Optional, state or country tag or a variable contains that. if specified the dynamic variable will target that scope.
+	scope = <character>
+
+	## cardinality = 0..1
+	### Optional, state or country tag or a variable contains that. if specified the dynamic variable will target that scope.
+	scope = scope[character]
+
+	## cardinality = 0..1
+	### Optional, state or country tag or a variable contains that. if specified the dynamic variable will target that scope.
+	scope = scope[special_project]
 }
 
 ### Adds a dynamic modifier to country/state/unit leader.
@@ -3597,6 +3623,18 @@ alias[effect:add_dynamic_modifier] = {
 	## cardinality = 0..1
 	### Optional, state or country tag or a variable contains that. if specified the dynamic variable will target that scope.
 	scope = scope[state]
+
+	## cardinality = 0..1
+	### Optional, state or country tag or a variable contains that. if specified the dynamic variable will target that scope.
+	scope = <character>
+
+	## cardinality = 0..1
+	### Optional, state or country tag or a variable contains that. if specified the dynamic variable will target that scope.
+	scope = scope[character]
+
+	## cardinality = 0..1
+	### Optional, state or country tag or a variable contains that. if specified the dynamic variable will target that scope.
+	scope = scope[special_project]
 
 	## cardinality = 0..1
 	### Optional, makes the dynamic modifier acted as a timed modifier

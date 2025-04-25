@@ -52,7 +52,7 @@ types = {
 	}
 }
 
-spriteType = {
+sprite = {
 	name = scalar
 	## cardinality = 0..1
 	effectFile = scalar

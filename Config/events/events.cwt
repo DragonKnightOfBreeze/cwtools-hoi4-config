@@ -5,6 +5,7 @@ types = {
 		file_extension = .txt
 		name_field = id
 
+		## group = event_attribute
 		subtype[hidden] = {
 			hidden = yes
 		}

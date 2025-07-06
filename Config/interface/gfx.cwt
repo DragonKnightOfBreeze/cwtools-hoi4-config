@@ -105,16 +105,16 @@ sprite = {
 	## cardinality = 0..1
 	generate_mip_maps = bool
 	subtype[normal] = {
-		## file_extensions = { .dds .png .tga }
+		## file_extensions = { .png .dds .tga }
 		textureFile = filepath
 		clicksound = scalar #<soundeffect> does not properly check for voices and other misc sounds and soundefects in mods since those are dlc files
 	}
 	subtype[frame_animated_sprite] = {
-		## file_extensions = { .dds .png .tga }
+		## file_extensions = { .png .dds .tga }
 		textureFile = filepath
 	}
 	subtype[cornered_tile_sprite] = {
-		## file_extensions = { .dds .png .tga }
+		## file_extensions = { .png .dds .tga }
 		textureFile = filepath
 		borderSize = { x = float y = float }
 		## cardinality = 0..1
@@ -130,7 +130,7 @@ sprite = {
 		textureFile2 = scalar
 	}
 	subtype[text_sprite] = {
-		## file_extensions = { .dds .png .tga }
+		## file_extensions = { .png .dds .tga }
 		textureFile = filepath
 		## cardinality = 0..1
 		clicksound = click

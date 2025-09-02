@@ -409,6 +409,8 @@ alias[effect:set_variable] = {
 	value_set[variable] = enum[country_tags]
 	## cardinality = 1..2
 	value_set[variable] = value_set[token]
+	## cardinality = 1..2
+	value_set[variable] = value[variable]
 	## cardinality = 0..1
 	tooltip = localisation
 }
@@ -420,6 +422,7 @@ alias[effect:set_variable] = {
 	value = scope_field
 	value = enum[country_tags]
 	value = value_set[token]
+	value = value[variable]
 	## cardinality = 0..1
 	tooltip = localisation
 }
@@ -641,6 +644,9 @@ alias[effect:division_template] = {
 	division_names_group = <division_name>
 	## cardinality = 0..1
 	role = value[ai_template_roles]
+	### Customize which type of front template gets assigned to
+	## cardinality = 0..1
+	front_role_override = enum[template_front_role]
 	## cardinality = 0..1
 	override_model = <entity>
 	## cardinality = 0..1
@@ -655,20 +661,10 @@ alias[effect:division_template] = {
 	force_allow_recruiting = bool
 	## cardinality = 0..1
 	division_cap = int
-	regiments = {
-		## cardinality = 0..25
-		<unit.infantry> = { x = int[0..4] y = int[0..4] }
-		## cardinality = 0..25
-		<unit.armor> = { x = int[0..4] y = int[0..4] }
-		## cardinality = 0..25
-		<unit.mobile> = { x = int[0..4] y = int[0..4] }
-		## cardinality = 0..25
-		<unit.combat_support> = { x = int[0..4] y = int[0..4] }
-		## cardinality = 0..25
-		<unit.armor_combat_support> = { x = int[0..4] y = int[0..4] }
-		## cardinality = 0..25
-		<unit.mobile_combat_support> = { x = int[0..4] y = int[0..4] }
-	}
+		regiments = {
+			## cardinality = 0..25
+			<unit.line_unit> = { x = int[0..4] y = int[0..4] }
+		}
 	## cardinality = 0..1
 	support = {
 		## cardinality = ~1..5
@@ -687,12 +683,12 @@ alias[effect:add_units_to_division_template] = {
 	## cardinality = 0..1
 	regiments = {
 		## cardinality = 1..25
-		<unit> = int[0..25]
+		<unit.line_unit> = int[0..25]
 	}
 	## cardinality = 0..1
 	support = {
 		## cardinality = ~1..5
-		<unit> = int[0..4]
+		<unit.support_unit> = int[0..4]
 	}
 }
 
@@ -1405,9 +1401,16 @@ alias[effect:start_civil_war] = {
 		## cardinality = ~1..inf
 		value[unit_leader_ids]
 	}
+	### Checks each unit leader, moves to the new tag if false - THIS is the character
 	## cardinality = 0..1
-	## push_scope = any
+	## push_scope = { unit_leader character }
 	keep_unit_leaders_trigger = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+	### Checks each scientist, moves to the new tag if false - THIS is the character
+	## cardinality = 0..1
+	## push_scope = character
+	keep_scientists_trigger = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
 	## cardinality = ~1..inf
@@ -1935,6 +1938,9 @@ alias[effect:create_equipment_variant] = {
 	parent_version = int
 	## cardinality = 0..1
 	role_icon_index = int
+	### Indicates which folder this design will appear in, inside the designer, if applicable
+	## cardinality = 0..1
+	history = bool
 	## cardinality = 0..1
 	allow_without_tech = bool
 	## cardinality = 0..1
@@ -2302,18 +2308,31 @@ alias[effect:reset_province_name] = enum[provinces]
 ## scope = state
 alias[effect:reset_state_name] = yes
 
-### Creates production license.
+### Creates production license. If the selection criteria fails to match a variant no license will be created. Example: create_production_license = { target = TAG cost_factor = 1 new_prioritised = no equipment = { type = small_plane_naval_bomber_airframe version = 1 version_name = \"Do 22\" }}"
 ## scope = country
 alias[effect:create_production_license] = {
+	### Receiver of the license
 	target = scope[country]
+	### Receiver of the license
 	target = enum[country_tags]
 	equipment = {
+		### The type of the variant to select. Must be specified
 		type = <equipment.regular_equip>
+		### The type of the variant to select. Must be specified
 		type = value[equipment_variant]
+		### Optional. Default 0. Select the variant with the given version
 		## cardinality = 0..1
 		version = int
+		### Optional. Select the variant with the given name
+		## cardinality = 0..1
+		version_name = value[variant_name]
 	}
+	### Optional. Cost factor for production of the equipment
+	## cardinality = 0..1
 	cost_factor = float
+	### Optional. Default yes. Ignore 'version' (but not 'version_name') and instead select the latest variant
+	## cardinality = 0..1
+	new_prioritised = bool
 
 }
 
@@ -2636,6 +2655,14 @@ alias[effect:add_to_variable] = {
 	## cardinality = 0..1
 	tooltip = localisation
 }
+### Adds a value or a variable to another one.
+## scope = any
+alias[effect:add_to_variable] = {
+	## cardinality = 1..2
+	value_set[variable] = value[variable]
+	## cardinality = 0..1
+	tooltip = localisation
+}
 
 ### Subtracts a value or a variable to another one.
 ## scope = any
@@ -2650,6 +2677,14 @@ alias[effect:subtract_from_variable] = {
 alias[effect:subtract_from_variable] = {
 	var = value_set[variable]
 	value = variable_field_32
+	## cardinality = 0..1
+	tooltip = localisation
+}
+### Subtracts a value or a variable to another one.
+## scope = any
+alias[effect:subtract_from_variable] = {
+	## cardinality = 1..2
+	value_set[variable] = value[variable]
 	## cardinality = 0..1
 	tooltip = localisation
 }
@@ -2670,6 +2705,14 @@ alias[effect:multiply_variable] = {
 	## cardinality = 0..1
 	tooltip = localisation
 }
+### Multiplies a variable to a value or another variable.
+## scope = any
+alias[effect:multiply_variable] = {
+	## cardinality = 1..2
+	value_set[variable] = value[variable]
+	## cardinality = 0..1
+	tooltip = localisation
+}
 
 ### Divides a variable to a value or another variable.
 ## scope = any
@@ -2684,6 +2727,14 @@ alias[effect:divide_variable] = {
 alias[effect:divide_variable] = {
 	var = value_set[variable]
 	value = variable_field_32
+	## cardinality = 0..1
+	tooltip = localisation
+}
+### Divides a variable to a value or another variable.
+## scope = any
+alias[effect:divide_variable] = {
+	## cardinality = 1..2
+	value_set[variable] = value[variable]
 	## cardinality = 0..1
 	tooltip = localisation
 }
@@ -2691,6 +2742,10 @@ alias[effect:divide_variable] = {
 ### Clears a variable.
 ## scope = any
 alias[effect:clear_variable] = variable_field_32
+
+### Clears a variable.
+## scope = any
+alias[effect:clear_variable] = value[variable]
 
 ### Adds attack skill to a unit leader.
 ## scope = { character unit_leader }
@@ -2719,7 +2774,23 @@ alias[effect:load_focus_tree] = <focus_tree>
 ### Sets what focus tree a country uses, retains finished shared focuses.
 ## scope = country
 alias[effect:load_focus_tree] = {
-	tree = <focus_tree>
+    ### Focus tree ID. Example - german_focus
+    tree = <focus_tree>
+    ### Load focus tree progress from a tag. Supports TAG/ROOT/FROM/PREV/variable/event_target
+    ## cardinality = 0..1
+    copy_completed_from = enum[country_tags]
+    ### Load focus tree progress from a tag. Supports TAG/ROOT/FROM/PREV/variable/event_target
+    ## cardinality = 0..1
+    copy_completed_from = scope[country]
+    ### Load focus tree progress from a tag. Supports TAG/ROOT/FROM/PREV/variable/event_target
+    ## cardinality = 0..1
+    copy_completed_from = value[variable]
+    ### Load focus tree progress from a tag. Supports TAG/ROOT/FROM/PREV/variable/event_target
+    ## cardinality = 0..1
+    copy_completed_from = value[event_target]
+    ### Load focus tree progress from a tag. Supports TAG/ROOT/FROM/PREV/variable/event_target
+    ## cardinality = 0..1
+    copy_completed_from = value[global_event_target]
 	## cardinality = 0..1
 	keep_completed = bool
 }
@@ -2777,6 +2848,17 @@ alias[effect:add_to_temp_variable] = {
 	tooltip = localisation
 }
 
+### Adds a value or a variable to a temp variable.
+## scope = any
+alias[effect:add_to_temp_variable] = {
+	## cardinality = 1..2
+	var = value_set[variable]
+	## cardinality = 1..2
+	value = value[variable]
+	## cardinality = 0..1
+	tooltip = localisation
+}
+
 ### Subtracts a value or a variable to a temp variable.
 ## scope = any
 alias[effect:subtract_from_temp_variable] = {
@@ -2790,9 +2872,29 @@ alias[effect:subtract_from_temp_variable] = {
 ## scope = any
 alias[effect:subtract_from_temp_variable] = {
 	## cardinality = 1..2
+	value_set[variable] = value[variable]
+	## cardinality = 0..1
+	tooltip = localisation
+}
+
+### Subtracts a value or a variable to a temp variable.
+## scope = any
+alias[effect:subtract_from_temp_variable] = {
+	## cardinality = 1..2
 	var = value_set[variable]
 	## cardinality = 1..2
 	value = variable_field_32
+	## cardinality = 0..1
+	tooltip = localisation
+}
+
+### Subtracts a value or a variable to a temp variable.
+## scope = any
+alias[effect:subtract_from_temp_variable] = {
+	## cardinality = 1..2
+	var = value_set[variable]
+	## cardinality = 1..2
+	value = value[variable]
 	## cardinality = 0..1
 	tooltip = localisation
 }
@@ -2805,6 +2907,16 @@ alias[effect:multiply_temp_variable] = {
 	## cardinality = 0..1
 	tooltip = localisation
 }
+
+### Multiplies a temp variable to a value or another variable.
+## scope = any
+alias[effect:multiply_temp_variable] = {
+	## cardinality = 1..2
+	value_set[variable] = value[variable]
+	## cardinality = 0..1
+	tooltip = localisation
+}
+
 ### Multiplies a temp variable to a value or another variable.
 ## scope = any
 alias[effect:multiply_temp_variable] = {
@@ -2812,6 +2924,17 @@ alias[effect:multiply_temp_variable] = {
 	var = value_set[variable]
 	## cardinality = 1..2
 	value = variable_field_32
+	## cardinality = 0..1
+	tooltip = localisation
+}
+
+### Multiplies a temp variable to a value or another variable.
+## scope = any
+alias[effect:multiply_temp_variable] = {
+	## cardinality = 1..2
+	var = value_set[variable]
+	## cardinality = 1..2
+	value = value[variable]
 	## cardinality = 0..1
 	tooltip = localisation
 }
@@ -2824,6 +2947,16 @@ alias[effect:divide_temp_variable] = {
 	## cardinality = 0..1
 	tooltip = localisation
 }
+
+### Divides a temp variable to a value or another variable.
+## scope = any
+alias[effect:divide_temp_variable] = {
+	## cardinality = 1..2
+	value_set[variable] = value[variable]
+	## cardinality = 0..1
+	tooltip = localisation
+}
+
 ### Divides a temp variable to a value or another variable.
 ## scope = any
 alias[effect:divide_temp_variable] = {
@@ -2831,6 +2964,17 @@ alias[effect:divide_temp_variable] = {
 	var = value_set[variable]
 	## cardinality = 1..2
 	value = variable_field_32
+	## cardinality = 0..1
+	tooltip = localisation
+}
+
+### Divides a temp variable to a value or another variable.
+## scope = any
+alias[effect:divide_temp_variable] = {
+	## cardinality = 1..2
+	var = value_set[variable]
+	## cardinality = 1..2
+	value = value[variable]
 	## cardinality = 0..1
 	tooltip = localisation
 }
@@ -2846,6 +2990,8 @@ alias[effect:set_temp_variable] = {
 	value_set[variable] = enum[country_tags]
 	## cardinality = 1..2
 	value_set[variable] = value_set[token]
+	## cardinality = 1..2
+	value_set[variable] = value[variable]
 	## cardinality = 0..1
 	tooltip = localisation
 }
@@ -2858,6 +3004,7 @@ alias[effect:set_temp_variable] = {
 	value = scope_field
 	value = enum[country_tags]
 	value = value_set[token]
+	value = value[variable]
 	## cardinality = 0..1
 	tooltip = localisation
 }
@@ -2877,12 +3024,28 @@ alias[effect:clamp_variable] = {
 	max = variable_field_32
 }
 
-### Clamps a temp variable between two a values or another variables.
+### Clamps a variable between two a values or another variables.
 ## scope = any
-alias[effect:clamp_temp_variable] = {
+alias[effect:clamp_variable] = {
+	var = value_set[variable]
+	min = value[variable]
+	max = variable_field_32
+}
+
+### Clamps a variable between two a values or another variables.
+## scope = any
+alias[effect:clamp_variable] = {
 	var = value_set[variable]
 	min = variable_field_32
-	max = variable_field_32
+	max = value[variable]
+}
+
+### Clamps a variable between two a values or another variables.
+## scope = any
+alias[effect:clamp_variable] = {
+	var = value_set[variable]
+	min = value[variable]
+	max = value[variable]
 }
 
 ### Clamps a variable between two a values or another variables.
@@ -2892,6 +3055,66 @@ alias[effect:clamp_variable] = {
 	max = variable_field_32
 }
 
+### Clamps a variable between two a values or another variables.
+## scope = any
+alias[effect:clamp_variable] = {
+	var = value_set[variable]
+	max = value[variable]
+}
+
+### Clamps a variable between two a values or another variables.
+## scope = any
+alias[effect:clamp_variable] = {
+	var = value_set[variable]
+	min = value[variable]
+}
+
+### Clamps a variable between two a values or another variables.
+## scope = any
+alias[effect:clamp_variable] = {
+	var = value_set[variable]
+	min = variable_field_32
+}
+
+### Clamps a temp variable between two a values or another variables.
+## scope = any
+alias[effect:clamp_temp_variable] = {
+	var = value_set[variable]
+	min = variable_field_32
+	max = variable_field_32
+}
+
+### Clamps a temp variable between two a values or another variables.
+## scope = any
+alias[effect:clamp_temp_variable] = {
+	var = value_set[variable]
+	min = value[variable]
+	max = variable_field_32
+}
+
+### Clamps a temp variable between two a values or another variables.
+## scope = any
+alias[effect:clamp_temp_variable] = {
+	var = value_set[variable]
+	min = variable_field_32
+	max = value[variable]
+}
+
+### Clamps a temp variable between two a values or another variables.
+## scope = any
+alias[effect:clamp_temp_variable] = {
+	var = value_set[variable]
+	min = value[variable]
+	max = value[variable]
+}
+
+### Clamps a variable between two a values or another variables.
+## scope = any
+alias[effect:clamp_temp_variable] = {
+	var = value_set[variable]
+	max = value[variable]
+}
+
 ### Clamps a temp variable between two a values or another variables.
 ## scope = any
 alias[effect:clamp_temp_variable] = {
@@ -2901,9 +3124,9 @@ alias[effect:clamp_temp_variable] = {
 
 ### Clamps a variable between two a values or another variables.
 ## scope = any
-alias[effect:clamp_variable] = {
+alias[effect:clamp_temp_variable] = {
 	var = value_set[variable]
-	min = variable_field_32
+	min = value[variable]
 }
 
 ### Clamps a temp variable between two a values or another variables.
@@ -3129,6 +3352,10 @@ alias[effect:set_truce] = {
 ## scope = any
 alias[effect:round_variable] = variable_field_32
 
+### Rounds a variable.
+## scope = any
+alias[effect:round_variable] = value[variable]
+
 ### Fires a unit leader event for owner country.
 ## scope = { character unit_leader }
 alias[effect:unit_leader_event] = {
@@ -3272,6 +3499,10 @@ alias[effect:inherit_technology] = scope[country]
 ### Rounds a temporary variable.
 ## scope = { any }
 alias[effect:round_temp_variable] = variable_field_32
+
+### Rounds a temporary variable.
+## scope = { any }
+alias[effect:round_temp_variable] = value[variable]
 
 ### Set current country as leader of its faction.
 ## scope = country

@@ -51,6 +51,9 @@ alias[effect:create_colonial_division_template] = {
 		division_names_group = <division_name>
 		## cardinality = 0..1
 		role = value[ai_template_roles]
+		### Customize which type of front template gets assigned to
+		## cardinality = 0..1
+		front_role_override = enum[template_front_role]
 		## cardinality = 0..1
 		override_model = <entity>
 		## cardinality = 0..1
@@ -65,17 +68,7 @@ alias[effect:create_colonial_division_template] = {
 		division_cap = int
 		regiments = {
 			## cardinality = 0..25
-			<unit.infantry> = { x = int[0..4] y = int[0..4] }
-			## cardinality = 0..25
-			<unit.armor> = { x = int[0..4] y = int[0..4] }
-			## cardinality = 0..25
-			<unit.mobile> = { x = int[0..4] y = int[0..4] }
-			## cardinality = 0..25
-			<unit.combat_support> = { x = int[0..4] y = int[0..4] }
-			## cardinality = 0..25
-			<unit.armor_combat_support> = { x = int[0..4] y = int[0..4] }
-			## cardinality = 0..25
-			<unit.mobile_combat_support> = { x = int[0..4] y = int[0..4] }
+			<unit.line_unit> = { x = int[0..4] y = int[0..4] }
 		}
 		## cardinality = 0..1
 		support = {
@@ -434,19 +427,36 @@ alias[effect:add_project_progress_ratio] = value[variable]
 ### Executes the provided effects but with a custom tooltip surpressing all tooltips from all other effects inside this block. The custom tooltip is a [bindable localization]
 ## scope = any
 alias[effect:custom_override_tooltip] = {
+	## cardinality = 0..1
     tooltip = localisation
+	## cardinality = 0..1
     tooltip = single_alias_right[bindable_loc]
+	## cardinality = 0..1
     tooltip = character_name|<character>
+	## cardinality = 0..1
     tooltip = tech_effect|<technology>
+	## cardinality = 0..1
+    not_tooltip = localisation
+	## cardinality = 0..1
+    not_tooltip = single_alias_right[bindable_loc]
+	## cardinality = 0..1
+    not_tooltip = character_name|<character>
+	## cardinality = 0..1
+    not_tooltip = tech_effect|<technology>
     ## cardinality = 1..inf
     alias_name[effect] = alias_match_left[effect]
 }
 single_alias[bindable_loc] = {
     localization_key = localisation
 	## cardinality = 0..inf
-    scalar = single_alias_right[bindable_loc] 
+    alias_name[bindable_loc] = alias_match_left[bindable_loc]
+}
+
+alias[bindable_loc:scalar] = scalar
+alias[bindable_loc:scalar] = {
+	localization_key = localisation
 	## cardinality = 0..inf
-    scalar = scalar
+	alias_name[bindable_loc] = alias_match_left[bindable_loc]
 }
 
 ### Complete a prototype reward option for the project in scope \nThe effect will respect the fire only once and allowed property of prototype rewards.

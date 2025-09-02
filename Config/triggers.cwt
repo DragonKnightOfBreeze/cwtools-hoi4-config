@@ -51,6 +51,8 @@ alias[trigger:difficulty] = int
 ## scope = country
 ## push_scope = country
 alias[trigger:any_neighbor_country] = {
+    ## cardinality = 0..1
+    count = int_variable_field
 	## cardinality = 0..1
 	tooltip = localisation
 	alias_name[trigger] = alias_match_left[trigger]
@@ -92,6 +94,8 @@ alias[trigger:tag] = enum[country_tags]
 ## scope = any
 ## push_scope = country
 alias[trigger:any_country] = {
+    ## cardinality = 0..1
+    count = int_variable_field
 	## cardinality = 0..1
 	tooltip = localisation
 	alias_name[trigger] = alias_match_left[trigger]
@@ -240,6 +244,8 @@ alias[trigger:has_idea] = enum[idea_name]
 ## scope = country
 ## push_scope = country
 alias[trigger:any_enemy_country] = {
+    ## cardinality = 0..1
+    count = int_variable_field
 	## cardinality = 0..1
 	tooltip = localisation
 	alias_name[trigger] = alias_match_left[trigger]
@@ -369,6 +375,10 @@ alias[trigger:has_government] = <ideology>
 ### Does country government (ruling party) belong to ideology group.
 ## scope = country
 alias[trigger:has_government] = enum[sub_ideology]
+
+### Does country government (ruling party) belong to ideology group.
+## scope = country
+alias[trigger:has_government] = value[variable]
 
 ### Does country government (ruling party) belong to ideology group.
 ## scope = country
@@ -574,6 +584,8 @@ alias[trigger:gives_military_access_to] = enum[country_tags]
 ## scope = any
 ## push_scope = state
 alias[trigger:any_state] = {
+    ## cardinality = 0..1
+    count = int_variable_field
 	## cardinality = 0..1
 	tooltip = localisation
 	alias_name[trigger] = alias_match_left[trigger]
@@ -583,6 +595,8 @@ alias[trigger:any_state] = {
 ## scope = country
 ## push_scope = state
 alias[trigger:any_owned_state] = {
+    ## cardinality = 0..1
+    count = int_variable_field
 	## cardinality = 0..1
 	tooltip = localisation
 	alias_name[trigger] = alias_match_left[trigger]
@@ -592,6 +606,8 @@ alias[trigger:any_owned_state] = {
 ## scope = state
 ## push_scope = state
 alias[trigger:any_neighbor_state] = {
+    ## cardinality = 0..1
+    count = int_variable_field
 	## cardinality = 0..1
 	tooltip = localisation
 	alias_name[trigger] = alias_match_left[trigger]
@@ -601,6 +617,8 @@ alias[trigger:any_neighbor_state] = {
 ## scope = country
 ## push_scope = country
 alias[trigger:any_allied_country] = {
+    ## cardinality = 0..1
+    count = int_variable_field
 	## cardinality = 0..1
 	tooltip = localisation
 	alias_name[trigger] = alias_match_left[trigger]
@@ -860,8 +878,16 @@ alias[trigger:casualties] = int
 ## severity = info
 ## scope = any
 alias[trigger:custom_trigger_tooltip] = {
-	tooltip = localisation
-	alias_name[trigger] = alias_match_left[trigger]
+	## cardinality = 0..1
+    tooltip = localisation
+	## cardinality = 0..1
+    tooltip = single_alias_right[bindable_loc]
+	## cardinality = 0..1
+    tooltip = character_name|<character>
+	## cardinality = 0..1
+    tooltip = tech_effect|<technology>
+    ## cardinality = 1..inf
+    alias_name[trigger] = alias_match_left[trigger]
 }
 
 ### Checks for amount of equipment stored.
@@ -1174,6 +1200,8 @@ alias[trigger:has_unit_leader] = value[unit_leader_ids]
 ## scope = country
 ## push_scope = country
 alias[trigger:any_home_area_neighbor_country] = {
+    ## cardinality = 0..1
+    count = int_variable_field
 	## cardinality = 0..1
 	tooltip = localisation
 	alias_name[trigger] = alias_match_left[trigger]
@@ -1183,6 +1211,8 @@ alias[trigger:any_home_area_neighbor_country] = {
 ## scope = any
 ## push_scope = country
 alias[trigger:any_other_country] = {
+    ## cardinality = 0..1
+    count = int_variable_field
 	## cardinality = 0..1
 	tooltip = localisation
 	alias_name[trigger] = alias_match_left[trigger]
@@ -1578,6 +1608,8 @@ alias[trigger:all_unit_leader] = {
 ## scope = country
 ## push_scope = { unit_leader character }
 alias[trigger:any_unit_leader] = {
+    ## cardinality = 0..1
+    count = int_variable_field
 	## cardinality = 0..1
 	tooltip = localisation
 	alias_name[trigger] = alias_match_left[trigger]
@@ -1596,6 +1628,8 @@ alias[trigger:all_army_leader] = {
 ## scope = country
 ## push_scope = any
 alias[trigger:any_army_leader] = {
+    ## cardinality = 0..1
+    count = int_variable_field
 	## cardinality = 0..1
 	tooltip = localisation
 	alias_name[trigger] = alias_match_left[trigger]
@@ -1614,6 +1648,8 @@ alias[trigger:all_navy_leader] = {
 ## scope = country
 ## push_scope = any
 alias[trigger:any_navy_leader] = {
+    ## cardinality = 0..1
+    count = int_variable_field
 	## cardinality = 0..1
 	tooltip = localisation
 	alias_name[trigger] = alias_match_left[trigger]
@@ -1696,8 +1732,21 @@ alias[trigger:add_to_temp_variable] = {
 ### Adds a value or a variable to a temporary variable.
 ## scope = any
 alias[trigger:add_to_temp_variable] = {
+	value_set[variable] = value[variable]
+}
+
+### Adds a value or a variable to a temporary variable.
+## scope = any
+alias[trigger:add_to_temp_variable] = {
 	var = value_set[variable]
 	value = variable_field_32
+}
+
+### Adds a value or a variable to a temporary variable.
+## scope = any
+alias[trigger:add_to_temp_variable] = {
+	var = value_set[variable]
+	value = value[variable]
 }
 
 ### Subtracts a value or a variable to a temporary variable.
@@ -1709,8 +1758,21 @@ alias[trigger:subtract_from_temp_variable] = {
 ### Subtracts a value or a variable to a temporary variable.
 ## scope = any
 alias[trigger:subtract_from_temp_variable] = {
+	value_set[variable] = value[variable]
+}
+
+### Subtracts a value or a variable to a temporary variable.
+## scope = any
+alias[trigger:subtract_from_temp_variable] = {
 	var = value_set[variable]
 	value = variable_field_32
+}
+
+### Subtracts a value or a variable to a temporary variable.
+## scope = any
+alias[trigger:subtract_from_temp_variable] = {
+	var = value_set[variable]
+	value = value[variable]
 }
 
 ### Multiplies a temporary variable by a value or another variable.
@@ -1722,8 +1784,21 @@ alias[trigger:multiply_temp_variable] = {
 ### Multiplies a temporary variable by a value or another variable.
 ## scope = any
 alias[trigger:multiply_temp_variable] = {
+	value_set[variable] = value[variable]
+}
+
+### Multiplies a temporary variable by a value or another variable.
+## scope = any
+alias[trigger:multiply_temp_variable] = {
 	var = value_set[variable]
 	value = variable_field_32
+}
+
+### Multiplies a temporary variable by a value or another variable.
+## scope = any
+alias[trigger:multiply_temp_variable] = {
+	var = value_set[variable]
+	value = value[variable]
 }
 
 ### Divies a temporary variable by a value or another variable.
@@ -1737,8 +1812,25 @@ alias[trigger:divide_temp_variable] = {
 ### Divies a temporary variable by a value or another variable.
 ## scope = any
 alias[trigger:divide_temp_variable] = {
+	value_set[variable] = value[variable]
+	## cardinality = 0..1
+	tooltip = localisation
+}
+
+### Divies a temporary variable by a value or another variable.
+## scope = any
+alias[trigger:divide_temp_variable] = {
 	var = value_set[variable]
 	value = variable_field_32
+	## cardinality = 0..1
+	tooltip = localisation
+}
+
+### Divies a temporary variable by a value or another variable.
+## scope = any
+alias[trigger:divide_temp_variable] = {
+	var = value_set[variable]
+	value = value[variable]
 	## cardinality = 0..1
 	tooltip = localisation
 }
@@ -1750,6 +1842,7 @@ alias[trigger:set_temp_variable] = {
 	value_set[variable] = scope_field
 	value_set[variable] = enum[country_tags]
 	value_set[variable] = value_set[token]
+	value_set[variable] = value[variable]
 }
 
 ### Sets a temporary variable to a value or another variable.
@@ -1760,6 +1853,67 @@ alias[trigger:set_temp_variable] = {
 	value = scope_field
 	value = enum[country_tags]
 	value = value_set[token]
+	value = value[variable]
+}
+
+### Clamps a variable between two a values or another variables.
+## scope = any
+alias[trigger:clamp_variable] = {
+	var = value_set[variable]
+	min = variable_field_32
+	max = variable_field_32
+}
+
+### Clamps a variable between two a values or another variables.
+## scope = any
+alias[trigger:clamp_variable] = {
+	var = value_set[variable]
+	min = value[variable]
+	max = variable_field_32
+}
+
+### Clamps a variable between two a values or another variables.
+## scope = any
+alias[trigger:clamp_variable] = {
+	var = value_set[variable]
+	min = variable_field_32
+	max = value[variable]
+}
+
+### Clamps a variable between two a values or another variables.
+## scope = any
+alias[trigger:clamp_variable] = {
+	var = value_set[variable]
+	min = value[variable]
+	max = value[variable]
+}
+
+### Clamps a variable between two a values or another variables.
+## scope = any
+alias[trigger:clamp_variable] = {
+	var = value_set[variable]
+	max = variable_field_32
+}
+
+### Clamps a variable between two a values or another variables.
+## scope = any
+alias[trigger:clamp_variable] = {
+	var = value_set[variable]
+	max = value[variable]
+}
+
+### Clamps a variable between two a values or another variables.
+## scope = any
+alias[trigger:clamp_variable] = {
+	var = value_set[variable]
+	min = value[variable]
+}
+
+### Clamps a variable between two a values or another variables.
+## scope = any
+alias[trigger:clamp_variable] = {
+	var = value_set[variable]
+	min = variable_field_32
 }
 
 ### Clamps a temp variable between two a values or another variables.
@@ -1774,7 +1928,45 @@ alias[trigger:clamp_temp_variable] = {
 ## scope = any
 alias[trigger:clamp_temp_variable] = {
 	var = value_set[variable]
+	min = value[variable]
 	max = variable_field_32
+}
+
+### Clamps a temp variable between two a values or another variables.
+## scope = any
+alias[trigger:clamp_temp_variable] = {
+	var = value_set[variable]
+	min = variable_field_32
+	max = value[variable]
+}
+
+### Clamps a temp variable between two a values or another variables.
+## scope = any
+alias[trigger:clamp_temp_variable] = {
+	var = value_set[variable]
+	min = value[variable]
+	max = value[variable]
+}
+
+### Clamps a variable between two a values or another variables.
+## scope = any
+alias[trigger:clamp_temp_variable] = {
+	var = value_set[variable]
+	max = value[variable]
+}
+
+### Clamps a temp variable between two a values or another variables.
+## scope = any
+alias[trigger:clamp_temp_variable] = {
+	var = value_set[variable]
+	max = variable_field_32
+}
+
+### Clamps a variable between two a values or another variables.
+## scope = any
+alias[trigger:clamp_temp_variable] = {
+	var = value_set[variable]
+	min = value[variable]
 }
 
 ### Clamps a temp variable between two a values or another variables.

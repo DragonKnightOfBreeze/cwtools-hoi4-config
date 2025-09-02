@@ -23,6 +23,9 @@ oob = {
 		division_names_group = <division_name>
 		## cardinality = 0..1
 		role = value[ai_template_roles]
+		### Customize which type of front template gets assigned to
+		## cardinality = 0..1
+		front_role_override = enum[template_front_role]
 		## cardinality = 0..1
 		override_model = <entity>
 		## cardinality = 0..1
@@ -37,17 +40,7 @@ oob = {
 		division_cap = int
 		regiments = {
 			## cardinality = 0..25
-			<unit.infantry> = { x = int[0..4] y = int[0..4] }
-			## cardinality = 0..25
-			<unit.armor> = { x = int[0..4] y = int[0..4] }
-			## cardinality = 0..25
-			<unit.mobile> = { x = int[0..4] y = int[0..4] }
-			## cardinality = 0..25
-			<unit.combat_support> = { x = int[0..4] y = int[0..4] }
-			## cardinality = 0..25
-			<unit.armor_combat_support> = { x = int[0..4] y = int[0..4] }
-			## cardinality = 0..25
-			<unit.mobile_combat_support> = { x = int[0..4] y = int[0..4] }
+			<unit.line_unit> = { x = int[0..4] y = int[0..4] }
 		}
 		## cardinality = 0..1
 		support = {

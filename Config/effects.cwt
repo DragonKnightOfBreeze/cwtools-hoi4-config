@@ -626,7 +626,7 @@ alias[effect:create_unit] = {
 
 ### Plays sound effect.
 ## scope = any
-alias[effect:sound_effect] = scalar # <soundeffect> does not properly check for voices and other misc sounds and soundefects in mods since those are dlc files
+alias[effect:sound_effect] = <soundeffect>
 
 ### Promotes general to field marshal.
 ## scope = { character unit_leader }
@@ -720,6 +720,8 @@ alias[effect:remove_country_leader_trait] = {
 	trait = <country_leader_trait>
 	## cardinality = 0..1
 	ideology = <ideology>
+	## cardinality = 0..1
+	ideology = enum[sub_ideology]
 }
 
 ### Set properties of a political party.
@@ -3942,7 +3944,7 @@ alias[effect:launch_nuke] = {
 
 ### Plays sound effect only on in current scope's player.
 ## scope = country
-alias[effect:scoped_sound_effect] = scalar #<soundeffect> does not properly check for voices and other misc sounds and soundefects in mods since those are dlc files
+alias[effect:scoped_sound_effect] = <soundeffect>
 
 ### Runs a loop on for each element of an array, finds the lowest value and stores result in temp variables.
 ## scope = any

@@ -287,6 +287,8 @@ alias[trigger:all_neighbor_country] = {
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
+    ## cardinality = 0..1
+    tooltip = localisation
 	alias_name[trigger] = alias_match_left[trigger]
 }
 
@@ -298,6 +300,8 @@ alias[trigger:all_country] = {
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
+    ## cardinality = 0..1
+    tooltip = localisation
 	alias_name[trigger] = alias_match_left[trigger]
 }
 
@@ -309,6 +313,8 @@ alias[trigger:all_enemy_country] = {
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
+    ## cardinality = 0..1
+    tooltip = localisation
 	alias_name[trigger] = alias_match_left[trigger]
 }
 
@@ -1226,6 +1232,8 @@ alias[trigger:all_other_country] = {
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
+    ## cardinality = 0..1
+    tooltip = localisation
 	alias_name[trigger] = alias_match_left[trigger]
 }
 
@@ -2147,11 +2155,11 @@ alias[trigger:stockpile_ratio] = {
 
 ### Checks for state strategic value.
 ## scope = state
-alias[trigger:state_strategic_value] = int
+alias[trigger:state_strategic_value] = variable_field_32
 
 ### Checks for state strategic value.
 ## scope = state
-alias[trigger:state_and_terrain_strategic_value] = int
+alias[trigger:state_and_terrain_strategic_value] = variable_field_32
 
 ### Rounds a temporary variable.
 ## scope = any

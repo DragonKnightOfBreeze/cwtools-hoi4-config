@@ -3,6 +3,7 @@ types = {
 		path_pattern = "interface/**/*.gfx"
 		path_pattern = "dlc/*/interface/**/*.gfx"
 		path_pattern = "integrated_dlc/*/interface/**/*.gfx"
+
 		skip_root_key = spriteTypes
 		name_field = "name"
 
@@ -47,7 +48,7 @@ types = {
 		}
 	}
 	type[bitmapfonts] = {
-		path = "interface"
+		path = "game/interface"
 		skip_root_key = bitmapfonts
 		path_extension = .gfx
 		name_field = "name"
@@ -115,7 +116,7 @@ sprite = {
 	subtype[normal] = {
 		## file_extensions = { .png .dds .tga }
 		textureFile = filepath
-		clicksound = scalar #<soundeffect> does not properly check for voices and other misc sounds and soundefects in mods since those are dlc files
+		clicksound = <soundeffect>
 	}
 	subtype[frame_animated_sprite] = {
 		## file_extensions = { .png .dds .tga }

@@ -28,25 +28,10 @@ types = {
 	type[ai_equipment_design_group] = {
 		path = "game/common/ai_equipment"
 	}
-	type[ai_equipment_design] = {
-		path = "game/common/ai_equipment"
-		skip_root_key = any
-		subtype[design] = {
-			target_variant = {
-
-			}
-		}
+	type[ai_faction_theater] = {
+		path = "game/common/ai_faction_theaters"
 	}
 }
-	# complex_enum[ai_equipment_design] = {
-	# 	path = "game/common/ai_equipment"
-	# 	name = {
-	# 		enum_name = {
-	# 			target_variant = {
-	# 			}
-	# 		}
-	# 	}
-	# }
 
 ai_area = {
 	## cardinality = 0..1
@@ -262,14 +247,14 @@ ai_equipment_design_group = {
 	### Exclusionary list of countries that will not use this design group.
 	## cardinality = 0..1
 	blocked_for = {
-		## cardinality = ~1..inf
+		## cardinality = 0..inf
 		enum[country_tags]
 	}
 
 	### Inclusionary list of countries that will use this design group. If this list is empty, all countries not in the block list will be allowed. If this list is not empty, only countries that are in this list and not in the blocked list will be allowed.
 	## cardinality = 0..1
 	available_for = {
-		## cardinality = ~1..inf
+		## cardinality = 0..inf
 		enum[country_tags]
 	}
 
@@ -287,7 +272,7 @@ ai_equipment_design_group = {
 
 	### One or more specifications of designs belonging to this design group.
 	## cardinality = 1..inf
-	<ai_equipment_design.design> = {
+	value_set[ai_equipment_design_option] = {
 		### Further priority for creating this design specifically or for creating or upgrading equipment to use this design.
 		priority = {
 			## cardinality = 0..1
@@ -300,6 +285,9 @@ ai_equipment_design_group = {
 
 		## cardinality = 0..1
 		role_icon_index = int
+
+		## cardinality = 0..1
+		design_team = <military_industrial_organization>
 
 		### List of triggers that must all be true for the design to be usable; true by default if empty or missing.
 		## cardinality = 0..1
@@ -378,10 +366,7 @@ ai_equipment_design_group = {
 				<upgrade> = {
 					enum[base_factor] = int
 					## cardinality = 0..inf
-					modifier = {
-						alias_name[trigger] = alias_match_left[trigger]
-						enum[add_factor] = int
-					}
+					modifier = single_alias_right[ai_modifier_trigger_clause]
 				}
 			}
 		}
@@ -404,6 +389,54 @@ ai_equipment_design_group = {
 			enum[module_category]
 		}
 	}
+}
+
+ai_faction_theater = {
+	### Name of the theater (Loc Environment = faction leader: COUNTRY)
+	name = localisation
+	
+	### How likely AI is to create this theater
+	### SCOPE = actor : COUNTRY
+	## scope = country
+	ai_will_do = {
+		enum[base_factor] = variable_field
+		alias_name[modifier_rule] = alias_match_left[modifier_rule]
+	}
+
+	### Makes AI to abandon owned theater
+	### SCOPE = actor : COUNTRY
+	## scope = country
+	## cardinality = 0..1
+	cancel = {
+		## cardinality = ~1..inf
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+	
+	### NOTE - the areas of the theater must be connected	
+	###
+	### List of strategic region IDs in this theater
+	regions = {
+		## cardinality = ~1..inf
+		<strategic_region>
+	}
+
+	### 
+	### - if the number of countries needed for the theater is less than are in this list, the remaining countries will be left not assigned to the theater.
+	### - Note, that AI will *not* try to assign every country from this list
+	### - The AI will try to assign countries going from top to bottom until theater's needs are fulfilled
+	### Priority list for countries to be assigned to the theater, if those countries are present in the faction.
+	## cardinality = 0..1
+	preferred_countries = {
+		#TODO check if this is actually how it works
+		## cardinality = ~1..inf
+		enum[country_tags]
+	}
+	
+	### - Defaults to "no"
+	### - This flag allows to override that behavior and create the theater anyway, as long as at least one region is available
+	### By default, the first region in the list of regions must be available in order for the theater to be created
+	## cardinality = 0..1
+	can_skip_first_region = bool
 }
 
 values = {
@@ -472,18 +505,10 @@ enums = {
 	}
 	complex_enum[ai_templates] = {
 		path = "game/common/ai_templates"
+		path_extension = .txt
 		name = {
 			enum_name = {
 				target_template = {
-				}
-			}
-		}
-	}
-	complex_enum[ai_equipment_design] = {
-		path = "game/common/ai_equipment"
-		name = {
-			enum_name = {
-				target_variant = {
 				}
 			}
 		}

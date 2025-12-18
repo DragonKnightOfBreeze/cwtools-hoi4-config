@@ -28,6 +28,9 @@ raid_category = {
     # default is no
     ## cardinality = 0..1
     free_targeting = bool
+    ### Example - *faction_influence_score_on_success = 200*
+    ## cardinality = 0..1
+    faction_influence_score_on_success = int_variable_field
 }
 
 raid = {
@@ -53,11 +56,14 @@ raid = {
         type = enum[arrow_type] # arrow type: line, ballistic, air or naval
     }
 
+    ## cardinality = 0..1
     unit_model = {
-        # equipment, transport or convoy
-        type = enum[raid_unit_model] # (will use the majority equipment type of the airwing)
         ## cardinality = 0..1
-        scale = 0.5 # scale of the entity, is also multiplied by the global RAID_UNIT_ENTITY_BASE_SCALE define
+        equipment = enum[equipment_category]
+        ## cardinality = 0..1
+        entity = <entity>
+        ## cardinality = 0..1
+        scale = float # scale of the entity, is also multiplied by the global RAID_UNIT_ENTITY_BASE_SCALE define
     }
 
     ## replace_scope = { this = country root = country FROM = country }
@@ -69,11 +75,7 @@ raid = {
 
         base = float
         ## cardinality = 0..inf
-        modifier = {
-            factor = float
-            ## cardinality = ~1..inf
-            alias_name[trigger] = alias_match_left[trigger]
-        }
+        modifier = single_alias_right[ai_modifier_trigger_clause]
     }
 
 	## cardinality = 0..1
@@ -86,6 +88,11 @@ raid = {
     days_to_prepare = int
     ## cardinality = 0..1
     speed_multiplier = float # optional unit speed multiplier, default = 1 (see also: RAID_UNIT_SPEED_MULTIPLIER in defines.lua)
+
+    ## cardinality = 0..1
+	range_factor = int
+    ## cardinality = 0..1
+	unlimited_ai_range = bool
 
     ## replace_scope = { this = country root = country FROM = country }
     allowed = {
@@ -134,11 +141,11 @@ raid = {
 
     target_type = {
         #	target type tokens:
-        ## cardinality = 0..1
+        ## cardinality = 0..inf
         province = enum[provinces]
-        ## cardinality = 0..1
+        ## cardinality = 0..inf
         province = value[variable]
-        ## cardinality = 0..1
+        ## cardinality = 0..inf
         building = {
             ## cardinality = 0..1
             type = <building>
@@ -154,7 +161,7 @@ raid = {
             ## cardinality = 0..1
             is_coastal = bool # Optional
         }
-        ## cardinality = 0..1
+        ## cardinality = 0..inf
         ## replace_scope = { this = state root = state }
         state = {
             ## cardinality = ~1..inf
@@ -165,10 +172,18 @@ raid = {
 
     # Conditions on the starting point:
     starting_point = {
+        ## cardinality = 0..1
         types = {
             ## cardinality = ~1..inf
             enum[raid_starting_point]
         }
+        ## cardinality = 0..1
+        building_types = {
+            ## cardinality = ~1..inf
+            <building>
+        }
+        ## cardinality = 0..1
+        allow_faction_buildings = bool
     }
 
     ## replace_scope = { this = country root = country }
@@ -256,7 +271,7 @@ raid = {
         # This equipment is collected after a raid is created (not needed for creating the raid)
         # Note: essential_equipment and additional_equipment are not additive, instead the max of both is used
         # Note: ships (ship hulls) can also be used, and will be primarily be collected from existing fleets
-        ## cardinality = 0..1
+        ## cardinality = 0..inf
         <equipment> = int
 
         ## cardinality = 0..1
@@ -301,7 +316,8 @@ single_alias[raid_outcome] = {
     ## cardinality = 0..inf
     visual_effect = {
         entity = <entity>
-        animation = <animation_id>
+        ### Can't be reliably validated by CWT, check error.log
+        animation = scalar
     }
 
     # Effects that should be listed as affecting the raiding country
@@ -389,11 +405,6 @@ enums = {
         army
         civilian
     }
-    enum[raid_unit_model] = {
-        equipment
-        transport
-        convoy
-    }
     enum[raid_starting_point] = {
         air_base
         naval_base
@@ -406,6 +417,7 @@ enums = {
         ballistic
         air
         naval
+        land
     }
     enum[nuke_type] = {
         nuclear_bomb

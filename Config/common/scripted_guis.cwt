@@ -354,9 +354,7 @@ scripted_gui = {
 		## cardinality = 0..1
 		mapicon_targets = {
 			## cardinality = 0..1
-			target_array = value[array]
-			## cardinality = 0..1
-			target_array = variable_field
+			target_array = single_alias_right[array]
 			## cardinality = 0..1
 			target_trigger = {
 				## cardinality = ~1..inf
@@ -406,9 +404,7 @@ scripted_gui = {
 		## cardinality = 0..1
 		mapicon_targets = {
 			## cardinality = 0..1
-			target_array = value[array]
-			## cardinality = 0..1
-			target_array = variable_field
+			target_array = single_alias_right[array]
 			## cardinality = 0..1
 			target_trigger = {
 				## cardinality = ~1..inf
@@ -627,73 +623,5 @@ enums = {
 		test_our_neighbouring_states_against_enemies #(AIs edge states to enemies)
 		test_contesded_states #(states that shares provinces between enemy countries)
 		test_if_only_coastal
-	}
-
-	enum[click_modifiers] = {
-		_click
-		_right_click
-		_alt_click
-		_control_click
-		_shift_click
-		_right_alt_click
-		_right_control_click
-		_right_shift_click
-		_alt_right_click
-		_alt_control_click
-		_alt_shift_click
-		_control_right_click
-		_control_alt_click
-		_control_shift_click
-		_shift_right_click
-		_shift_alt_click
-		_shift_control_click
-		_right_alt_control_click
-		_right_alt_shift_click
-		_right_control_alt_click
-		_right_control_shift_click
-		_right_shift_alt_click
-		_right_shift_control_click
-		_alt_right_shift_click
-		_alt_right_control_click
-		_alt_control_shift_click
-		_alt_control_right_click
-		_alt_shift_control_click
-		_alt_shift_right_click
-		_control_right_alt_click
-		_control_right_shift_click
-		_control_alt_right_click
-		_control_alt_shift_click
-		_control_shift_right_click
-		_control_shift_alt_click
-		_shift_right_control_click
-		_shift_right_alt_click
-		_shift_alt_control_click
-		_shift_alt_right_click
-		_shift_control_alt_click
-		_shift_control_right_click
-		_right_alt_control_shift_click
-		_right_alt_shift_control_click
-		_right_control_alt_shift_click
-		_right_control_shift_alt_click
-		_right_shift_alt_control_click
-		_right_shift_control_alt_click
-		_alt_right_control_shift_click
-		_alt_right_shift_control_click
-		_alt_control_right_shift_click
-		_alt_control_shift_right_click
-		_alt_shift_right_control_click
-		_alt_shift_control_right_click
-		_control_right_shift_alt_click
-		_control_right_alt_shift_click
-		_control_alt_shift_right_click
-		_control_alt_right_shift_click
-		_control_shift_alt_right_click
-		_control_shift_right_alt_click
-		_shift_right_alt_control_click
-		_shift_right_control_alt_click
-		_shift_alt_right_control_click
-		_shift_alt_control_right_click
-		_shift_control_right_alt_click
-		_shift_control_alt_right_click		
 	}
 }

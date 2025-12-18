@@ -4,7 +4,7 @@ types = {
 	}
 }
 
-## replace_scope = { this = military_industrial_organization from = country }
+## replace_scope = { this = military_industrial_organization from = country root = country }
 military_industrial_organization = {
 	### If name provided, use TAG_loc_key if it exists. if not use loc_key (where TAG is the tag of the MIO owner).
 	### If localization key TAG_my_MIO_token exists - use it else use loc key my_MIO_token.
@@ -136,6 +136,8 @@ military_industrial_organization = {
 		equipment_bonus = {
 			## cardinality = ~1..inf
 			enum[equipment_stat] = variable_field
+			## cardinality = 0..1
+			instant = bool
 		}
 		## cardinality = 0..1
 		production_bonus = {
@@ -168,7 +170,7 @@ military_industrial_organization = {
 		## cardinality = 0..1
 		parent = {
 			traits = {
-				## cardinality = 1..inf
+				## cardinality = ~1..inf
 				value[mio_trait_token]
 			}
 			### The number of parents that needs to be unlocked, default 1
@@ -178,13 +180,13 @@ military_industrial_organization = {
 		### Short hand for "parent = { traits = { parent traits } num_parents_needed = 1 }"
 		## cardinality = 0..inf
 		any_parent = {
-			## cardinality = 1..inf
+			## cardinality = ~1..inf
 			value[mio_trait_token]
 		}
 		### Short hand for "parent = { traits = { parent traits } num_parents_needed = N }" where N is the number of parent traits
 		## cardinality = 0..inf
 		all_parents = {
-			## cardinality = 1..inf
+			## cardinality = ~1..inf
 			value[mio_trait_token]
 		}
 
@@ -192,7 +194,7 @@ military_industrial_organization = {
 		### Note that the other trait should also have the mutually_exclusive parameter set
 		## cardinality = 0..1
 		mutually_exclusive = {
-			## cardinality = 1..inf
+			## cardinality = ~1..inf
 			value[mio_trait_token]
 		}
 
@@ -224,6 +226,8 @@ military_industrial_organization = {
 		equipment_bonus = {
 			## cardinality = ~1..inf
 			enum[equipment_stat] = variable_field
+			## cardinality = 0..1
+			instant = bool
 		}
 		## cardinality = 0..1
 		production_bonus = {
@@ -318,7 +322,7 @@ military_industrial_organization = {
 		## cardinality = 0..1
 		parent = {
 			traits = {
-				## cardinality = 1..inf
+				## cardinality = ~1..inf
 				value[mio_trait_token]
 			}
 			### The number of parents that needs to be unlocked, default 1
@@ -328,13 +332,13 @@ military_industrial_organization = {
 		### Short hand for "parent = { traits = { parent traits } num_parents_needed = 1 }"
 		## cardinality = 0..inf
 		any_parent = {
-			## cardinality = 1..inf
+			## cardinality = ~1..inf
 			value[mio_trait_token]
 		}
 		### Short hand for "parent = { traits = { parent traits } num_parents_needed = N }" where N is the number of parent traits
 		## cardinality = 0..inf
 		all_parents = {
-			## cardinality = 1..inf
+			## cardinality = ~1..inf
 			value[mio_trait_token]
 		}
 
@@ -342,7 +346,7 @@ military_industrial_organization = {
 		### Note that the other trait should also have the mutually_exclusive parameter set
 		## cardinality = 0..1
 		mutually_exclusive = {
-			## cardinality = 1..inf
+			## cardinality = ~1..inf
 			value[mio_trait_token]
 		}
 
@@ -374,6 +378,8 @@ military_industrial_organization = {
 		equipment_bonus = {
 			## cardinality = ~1..inf
 			enum[equipment_stat] = variable_field
+			## cardinality = 0..1
+			instant = bool
 		}
 		## cardinality = 0..1
 		production_bonus = {
@@ -433,7 +439,7 @@ military_industrial_organization = {
 		## cardinality = 0..1
 		parent = {
 			traits = {
-				## cardinality = 1..inf
+				## cardinality = ~1..inf
 				value[mio_trait_token]
 			}
 			### The number of parents that needs to be unlocked, default 1
@@ -443,13 +449,13 @@ military_industrial_organization = {
 		### Short hand for "parent = { traits = { parent traits } num_parents_needed = 1 }"
 		## cardinality = 0..inf
 		any_parent = {
-			## cardinality = 1..inf
+			## cardinality = ~1..inf
 			value[mio_trait_token]
 		}
 		### Short hand for "parent = { traits = { parent traits } num_parents_needed = N }" where N is the number of parent traits
 		## cardinality = 0..inf
 		all_parents = {
-			## cardinality = 1..inf
+			## cardinality = ~1..inf
 			value[mio_trait_token]
 		}
 
@@ -457,7 +463,7 @@ military_industrial_organization = {
 		### Note that the other trait should also have the mutually_exclusive parameter set
 		## cardinality = 0..1
 		mutually_exclusive = {
-			## cardinality = 1..inf
+			## cardinality = ~1..inf
 			value[mio_trait_token]
 		}
 
@@ -489,6 +495,8 @@ military_industrial_organization = {
 		equipment_bonus = {
 			## cardinality = ~1..inf
 			enum[equipment_stat] = variable_field
+			## cardinality = 0..1
+			instant = bool
 		}
 		## cardinality = 0..1
 		production_bonus = {

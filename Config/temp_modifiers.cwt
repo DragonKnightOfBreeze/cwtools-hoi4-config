@@ -46,9 +46,6 @@ alias[modifier:<special_project>_speed_factor] = float
 #placed in modifiers file
 ## scope = { country state }
 alias[modifier:<specialization>_speed_factor] = float
-#placed in modifiers file
-## scope = { country state }
-alias[modifier:enum[project_tag]_speed_factor] = float
 
 #unit stats
 alias[unit_stat:acclimatization_cold_climate_gain_factor] = float
@@ -100,6 +97,7 @@ alias[unit_stat:training_time] = float
 alias[unit_stat:weight] = float
 alias[unit_stat:additional_collateral_damage] = float
 alias[unit_stat:recovery] = float
+alias[unit_stat:strength] = float
 
 #naval stats
 alias[naval_stat:anti_air_attack] = float
@@ -129,7 +127,7 @@ alias[naval_stat:naval_torpedo_enemy_critical_chance_factor] = float
 alias[naval_stat:naval_torpedo_damage_reduction_factor] = float
 alias[naval_stat:naval_speed_factor] = float
 alias[naval_stat:naval_speed] = float
-alias[naval_stat:naval_supremacy_factor] = float
+alias[naval_stat:naval_dominance_factor] = float
 alias[naval_stat:naval_torpedo_hit_chance_factor] = float
 alias[naval_stat:naval_weather_penalty_factor] = float
 alias[naval_stat:navy_casualty_on_sink] = float

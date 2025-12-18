@@ -61,6 +61,13 @@ links = {
         data_source = <character>
     }
 
+    character_token = {
+        output_scope = character
+        input_scopes = country
+        from_data = yes
+        data_source = value[character_token]
+    }
+
     var = {
         from_data = yes
         type = both
@@ -101,6 +108,9 @@ links = {
         data_source = <operation>
         data_source = <technology>
         data_source = <idea>
+        data_source = <country_leader_trait>
+        data_source = <unit_leader_trait>
+        data_source = <module>
     }
 
     mio = {
@@ -119,4 +129,18 @@ links = {
         data_source = <special_project>
     }
 
+    ### Currently only for scope:faction!
+    scope_faction = {
+        prefix = scope:
+        output_scope = country
+        input_scopes = country
+        from_data = yes
+        data_source = enum[scope_faction]
+    }
+}
+
+enums = {
+	enum[scope_faction] = {
+		faction
+	}
 }

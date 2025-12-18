@@ -132,34 +132,13 @@ alias[effect:capture_operative] = {
 ###Executes children effects on a random operatives that fulfils the "limit" trigger.
 ## scope = { COUNTRY OPERATION }
 ## push_scope = operative
-alias[effect:random_operative] = {
-    ## cardinality = 0..1
-	limit = {
-		alias_name[trigger] = alias_match_left[trigger]
-	}
-    ## cardinality = 0..1
-    tooltip = localisation
-	alias_name[effect] = alias_match_left[effect]
-}
+alias[effect:random_operative] = single_alias_right[random_effect_clause]
 
 
 ###Executes children effects on operatives that fulfils the "limit" trigger. tooltip=key can be added to override tooltip title
 ## scope = { COUNTRY OPERATION }
 ## push_scope = operative
-alias[effect:every_operative] = {
-	### Apply the effect to this number of randomly selected entities
-	## cardinality = 0..1
-	random_select_amount = int[1..inf]
-	## cardinality = 0..1
-	display_individual_scopes = bool
-    ## cardinality = 0..1
-	limit = {
-		alias_name[trigger] = alias_match_left[trigger]
-	}
-    ## cardinality = 0..1
-    tooltip = localisation
-	alias_name[effect] = alias_match_left[effect]
-}
+alias[effect:every_operative] = single_alias_right[every_effect_clause]
 
 
 ###Sends to target scope specified fraction of equipment.
@@ -304,61 +283,20 @@ alias[effect:teleport_armies] = {
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
+	## cardinality = 0..1
 	to_state = <state>
+	## cardinality = 0..1
 	to_state = scope[state]
-}
-
-###Teleport armies in state to another state or province.
-## scope = { STATE }
-alias[effect:teleport_armies] = {
 	## cardinality = 0..1
-	## replace_scope = { this = country }
-	limit = {
-		alias_name[trigger] = alias_match_left[trigger]
-	}
-	## cardinality = ~1..1
 	to_state_array = value_set[array]
-}
-
-###Teleport armies in state to another state or province.
-## scope = { STATE }
-alias[effect:teleport_armies] = {
 	## cardinality = 0..1
-	## replace_scope = { this = country }
-	limit = {
-		alias_name[trigger] = alias_match_left[trigger]
-	}
-	## cardinality = ~1..1
 	to_province = enum[provinces]
-}
-
-###Teleport armies in state to another state or province.
-## scope = { STATE }
-alias[effect:teleport_armies] = {
-	## cardinality = 0..1
-	## replace_scope = { this = country }
-	limit = {
-		alias_name[trigger] = alias_match_left[trigger]
-	}
 }
 
 ###Executes children effects on every controlled state that fulfils the "limit" trigger. tooltip=key can be added to override tooltip title.
 ## scope = { COUNTRY }
 ## push_scope = state
-alias[effect:every_controlled_state] = {
-	### Apply the effect to this number of randomly selected entities
-	## cardinality = 0..1
-	random_select_amount = int[1..inf]
-	## cardinality = 0..1
-	display_individual_scopes = bool
-    ## cardinality = 0..1
-	limit = {
-		alias_name[trigger] = alias_match_left[trigger]
-	}
-	## cardinality = 0..1
-	tooltip = localisation
-	alias_name[effect] = alias_match_left[effect]
-}
+alias[effect:every_controlled_state] = single_alias_right[every_effect_clause]
 
 
 ###Sets the controller of provinces belong to a state and fulfils a condition. No tooltip is built.
@@ -411,34 +349,13 @@ alias[effect:get_sorted_scored_countries_temp] = {
 ###Executes children effects on random occupied country that fulfils the "limit" trigger.
 ## scope = { COUNTRY }
 ## push_scope = country
-alias[effect:random_occupied_country] = {
-    ## cardinality = 0..1
-	limit = {
-		alias_name[trigger] = alias_match_left[trigger]
-	}
-    ## cardinality = 0..1
-    tooltip = localisation
-	alias_name[effect] = alias_match_left[effect]
-}
+alias[effect:random_occupied_country] = single_alias_right[random_effect_clause]
 
 
 ###Executes children effects on every occupied country that fulfils the "limit" trigger. tooltip=key can be defined to override tooltip title.
 ## scope = { COUNTRY }
 ## push_scope = country
-alias[effect:every_occupied_country] = {
-	### Apply the effect to this number of randomly selected entities
-	## cardinality = 0..1
-	random_select_amount = int[1..inf]
-	## cardinality = 0..1
-	display_individual_scopes = bool
-    ## cardinality = 0..1
-	limit = {
-		alias_name[trigger] = alias_match_left[trigger]
-	}
-	## cardinality = 0..1
-	tooltip = localisation
-	alias_name[effect] = alias_match_left[effect]
-}
+alias[effect:every_occupied_country] = single_alias_right[every_effect_clause]
 
 
 ###Adds resistance target to the scoped state.
@@ -448,7 +365,8 @@ alias[effect:add_resistance_target] = variable_field
 ## scope = { STATE }
 alias[effect:add_resistance_target] = {
 	amount = variable_field
-	## cardinality = ~0..1
+	### Add *$VALUE|=-%0$* to the loc key, otherwise, when checking the affected state, the tooltip will not contain a value
+	## cardinality = ~1..1
 	tooltip = localisation
 	## cardinality = 0..1
 	id = value_set[resistance_target]
@@ -459,9 +377,21 @@ alias[effect:add_resistance_target] = {
 	## cardinality = 0..1
 	occupier = enum[country_tags]
 	## cardinality = 0..1
+	occupier = variable_field
+	## cardinality = 0..1
+	occupier = value[event_target]
+	## cardinality = 0..1
+	occupier = value[global_event_target]
+	## cardinality = 0..1
 	occupied = scope[country]
 	## cardinality = 0..1
 	occupied = enum[country_tags]
+	## cardinality = 0..1
+	occupied = variable_field
+	## cardinality = 0..1
+	occupied = value[event_target]
+	## cardinality = 0..1
+	occupied = value[global_event_target]
 }
 
 ###Removes a previously added resistance target using its id. No tooltips are generated.
@@ -496,6 +426,8 @@ alias[effect:random_country_with_original_tag] = {
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
+	## cardinality = 0..1
+	visible_when_empty = bool
     ## cardinality = 0..1
     tooltip = localisation
 	alias_name[effect] = alias_match_left[effect]
@@ -506,15 +438,7 @@ alias[effect:random_country_with_original_tag] = {
 ### Executes children effects on a random division that full the "limit" trigger. tooltip=key can be added to override to override tooltip title
 ## scope = { COUNTRY }
 ## push_scope = unit
-alias[effect:random_country_division] = {
-	## cardinality = 0..1
-	limit = {
-		alias_name[trigger] = alias_match_left[trigger]
-	}
-    ## cardinality = 0..1
-    tooltip = localisation
-	alias_name[effect] = alias_match_left[effect]
-}
+alias[effect:random_country_division] = single_alias_right[random_effect_clause]
 
 
 ###Executes children effects on a all countries with original tag. tooltip=key can be defined to override tooltip title.
@@ -528,6 +452,8 @@ alias[effect:every_country_with_original_tag] = {
 	display_individual_scopes = bool
 	original_tag_to_check = enum[country_tags]
 	original_tag_to_check = scope[country]
+	## cardinality = 0..1
+	visible_when_empty = bool
     ## cardinality = 0..1
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
@@ -580,10 +506,19 @@ alias[effect:force_enable_resistance] = {
 	clear = bool
 	occupier = scope[country]
 	occupier = enum[country_tags]
+	occupier = variable_field
+	occupier = value[event_target]
+	occupier = value[global_event_target]
 	## cardinality = 0..1
 	occupied = scope[country]
 	## cardinality = 0..1
 	occupied = enum[country_tags]
+	## cardinality = 0..1
+	occupied = variable_field
+	## cardinality = 0..1
+	occupied = value[event_target]
+	## cardinality = 0..1
+	occupied = value[global_event_target]
 }
 
 ###Force enables resistance for scoped state. The resistance will be active even if other conditions doesn't satisfy (even if it is core or resistance check trigger is false).
@@ -595,8 +530,17 @@ alias[effect:force_enable_resistance] = {
 	occupier = scope[country]
 	## cardinality = 0..1
 	occupier = enum[country_tags]
+	## cardinality = 0..1
+	occupier = variable_field
+	## cardinality = 0..1
+	occupier = value[event_target]
+	## cardinality = 0..1
+	occupier = value[global_event_target]
 	occupied = scope[country]
 	occupied = enum[country_tags]
+	occupied = variable_field
+	occupied = value[event_target]
+	occupied = value[global_event_target]
 }
 
 ###Force disables resistance for scoped state
@@ -618,10 +562,19 @@ alias[effect:force_disable_resistance] = {
 	clear = bool
 	occupier = scope[country]
 	occupier = enum[country_tags]
+	occupier = variable_field
+	occupier = value[event_target]
+	occupier = value[global_event_target]
 	## cardinality = 0..1
 	occupied = scope[country]
 	## cardinality = 0..1
 	occupied = enum[country_tags]
+	## cardinality = 0..1
+	occupied = variable_field
+	## cardinality = 0..1
+	occupied = value[event_target]
+	## cardinality = 0..1
+	occupied = value[global_event_target]
 }
 
 ###Force disables resistance for scoped state. The resistance will be active even if other conditions doesn't satisfy (even if it is core or resistance check trigger is false).
@@ -633,8 +586,17 @@ alias[effect:force_disable_resistance] = {
 	occupier = scope[country]
 	## cardinality = 0..1
 	occupier = enum[country_tags]
+	## cardinality = 0..1
+	occupier = variable_field
+	## cardinality = 0..1
+	occupier = value[event_target]
+	## cardinality = 0..1
+	occupier = value[global_event_target]
 	occupied = scope[country]
 	occupied = enum[country_tags]
+	occupied = variable_field
+	occupied = value[event_target]
+	occupied = value[global_event_target]
 }
 
 ###Force disables resistance for scoped state. The resistance will be active even if other conditions doesn't satisfy (even if it is core or resistance check trigger is false).
@@ -650,9 +612,21 @@ alias[effect:force_disable_resistance] = {
 	## cardinality = 0..1
 	occupier = enum[country_tags]
 	## cardinality = 0..1
+	occupier = variable_field
+	## cardinality = 0..1
+	occupier = value[event_target]
+	## cardinality = 0..1
+	occupier = value[global_event_target]
+	## cardinality = 0..1
 	occupied = scope[country]
 	## cardinality = 0..1
 	occupied = enum[country_tags]
+	## cardinality = 0..1
+	occupied = variable_field
+	## cardinality = 0..1
+	occupied = value[event_target]
+	## cardinality = 0..1
+	occupied = value[global_event_target]
 }
 
 ###Create an Intelligence Agency for the country, if it is not already done.
@@ -700,98 +674,6 @@ alias[effect:country_lock_all_division_template] = bool
 alias[effect:country_lock_all_division_template] = {
 	is_locked = bool
 	desc = localisation
-}
-
-###Randomize a temporary variable.
-## scope = { any }
-alias[effect:randomize_temp_variable] = value_set[variable]
-
-###Randomize a temporary variable.
-## scope = { any }
-alias[effect:randomize_temp_variable] = {
-	var = value_set[variable]
-	distribution = uniform
-}
-
-###Randomize a temporary variable.
-## scope = { any }
-alias[effect:randomize_temp_variable] = {
-	var = value_set[variable]
-	distribution = binomial
-}
-
-###Randomize a temporary variable.
-## scope = { any }
-alias[effect:randomize_temp_variable] = {
-	var = value_set[variable]
-	distribution = uniform
-	min = variable_field_32
-	max = variable_field_32
-}
-
-###Randomize a temporary variable.
-## scope = { any }
-alias[effect:randomize_temp_variable] = {
-	var = value_set[variable]
-	distribution = binomial
-	min = variable_field_32
-	max = variable_field_32
-}
-
-###Randomize a temporary variable.
-## scope = { any }
-alias[effect:randomize_temp_variable] = {
-	var = value_set[variable]
-	distribution = binomial
-	## cardinality = 0..1
-	min = variable_field_32
-	lambda = variable_field_32
-}
-
-###Randomize a variable.
-## scope = { any }
-alias[effect:randomize_variable] = variable_field_32
-
-###Randomize a variable.
-## scope = { any }
-alias[effect:randomize_variable] = {
-	var = variable_field_32
-	distribution = uniform
-}
-
-###Randomize a variable.
-## scope = { any }
-alias[effect:randomize_variable] = {
-	var = variable_field_32
-	distribution = binomial
-}
-
-###Randomize a variable.
-## scope = { any }
-alias[effect:randomize_variable] = {
-	var = variable_field_32
-	distribution = uniform
-	min = variable_field_32
-	max = variable_field_32
-}
-
-###Randomize a variable.
-## scope = { any }
-alias[effect:randomize_variable] = {
-	var = variable_field_32
-	distribution = binomial
-	min = variable_field_32
-	max = variable_field_32
-}
-
-###Randomize a variable.
-## scope = { any }
-alias[effect:randomize_variable] = {
-	var = variable_field_32
-	distribution = binomial
-	## cardinality = 0..1
-	min = variable_field_32
-	lambda = variable_field_32
 }
 
 ###Harm an operative. The specified value is subject to modifiers.
@@ -922,7 +804,7 @@ alias[effect:kill_operative] = {
 alias[effect:random_controlled_state] = {
 	## cardinality = 0..1
 	prioritize = {
-		## cardinality = 1..inf
+		## cardinality = ~1..inf
 		<state>
 	}
     ## cardinality = 0..1
@@ -946,58 +828,6 @@ alias[effect:add_civil_war_target] = scope[country]
 ###Adds a civil war target to a specific country.
 ## scope = { COUNTRY }
 alias[effect:add_civil_war_target] = enum[country_tags]
-
-###Modulos a temp variable with another.
-## scope = { any }
-alias[effect:modulo_temp_variable] = {
-	value_set[variable] = variable_field_32
-}
-
-###Modulos a temp variable with another.
-## scope = { any }
-alias[effect:modulo_temp_variable] = {
-	value_set[variable] = value[variable]
-}
-
-###Mdulos a temp variable with another.
-## scope = { any }
-alias[effect:modulo_temp_variable] = {
-	var = value_set[variable]
-	value = variable_field_32
-}
-
-###Mdulos a temp variable with another.
-## scope = { any }
-alias[effect:modulo_temp_variable] = {
-	var = value_set[variable]
-	value = value[variable]
-}
-
-###Modulos a variable with another.
-## scope = { any }
-alias[effect:modulo_variable] = {
-	value_set[variable] = variable_field_32
-}
-
-###Modulos a variable with another.
-## scope = { any }
-alias[effect:modulo_variable] = {
-	value_set[variable] = value[variable]
-}
-
-###Modulos a variable with another.
-## scope = { any }
-alias[effect:modulo_variable] = {
-	var = value_set[variable]
-	value = variable_field_32
-}
-
-###Modulos a variable with another.
-## scope = { any }
-alias[effect:modulo_variable] = {
-	var = value_set[variable]
-	value = value[variable]
-}
 
 ###Adds the collaboration in a target country with our currently scoped country.
 ## scope = { COUNTRY }
@@ -1124,38 +954,6 @@ alias[effect:set_leader_portrait] = <sprite>
 ## scope = { character unit_leader }
 alias[effect:set_leader_description] = localisation
 
-###Sets a variable to a random value.
-## scope = { any }
-alias[effect:set_variable_to_random] = value_set[variable]
-
-###Sets a variable to a random value.
-## scope = { any }
-alias[effect:set_variable_to_random] = {
-	var = value_set[variable]
-	## cardinality = 0..1
-	min = variable_field_32
-	## cardinality = 0..1
-	max = variable_field_32
-	## cardinality = 0..1
-	integer = bool
-}
-
-###Sets a temp variable to a random value.
-## scope = { any }
-alias[effect:set_temp_variable_to_random] = value_set[variable]
-
-###Sets a temp variable to a random value.
-## scope = { any }
-alias[effect:set_temp_variable_to_random] = {
-	var = value_set[variable]
-	## cardinality = 0..1
-	min = variable_field_32
-	## cardinality = 0..1
-	max = variable_field_32
-	## cardinality = 0..1
-	integer = bool
-}
-
 ###Adds victory point to province.
 ## scope = { any }
 alias[effect:add_victory_points] = {
@@ -1217,55 +1015,9 @@ alias[effect:set_occupation_law_where_available] = <occupation_law>
 ## scope = { state }
 alias[effect:set_occupation_law] = <occupation_law>
 
-###Randomize a temporary variable.
-## scope = { any }
-alias[effect:randomize_temp_variable] = variable_field
-
-###Randomize a temporary variable.
-## scope = { any }
-alias[effect:randomize_temp_variable] = {
-	var = variable_field_32
-	distribution = uniform
-}
-
-###Randomize a temporary variable.
-## scope = { any }
-alias[effect:randomize_temp_variable] = {
-	var = variable_field_32
-	distribution = binomial
-}
-
-###Randomize a temporary variable.
-## scope = { any }
-alias[effect:randomize_temp_variable] = {
-	var = variable_field_32
-	distribution = uniform
-	min = variable_field_32
-	max = variable_field_32
-}
-
-###Randomize a temporary variable.
-## scope = { any }
-alias[effect:randomize_temp_variable] = {
-	var = variable_field_32
-	distribution = binomial
-	min = variable_field_32
-	max = variable_field_32
-}
-
-###Randomize a temporary variable.
-## scope = { any }
-alias[effect:randomize_temp_variable] = {
-	var = variable_field_32
-	distribution = binomial
-	## cardinality = 0..1
-	min = variable_field_32
-	lambda = variable_field_32
-}
-
 ###Add divisional commander xp to unit
 ## scope = { any }
-alias[effect:add_divisional_commander_xp] = int
+alias[effect:add_divisional_commander_xp] = int_variable_field
 
 enums = {
     enum[start_pc_scope_enum] = {

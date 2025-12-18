@@ -1,34 +1,12 @@
 ### Checks if at least one scientist of the Country in scope matches the triggers.
 ## scope = country
 ## push_scope = character
-alias[trigger:any_scientist] = {
-    ## cardinality = 0..1
-    count = int_variable_field
-    ## cardinality = 0..1
-    tooltip = localisation
-	## error_if_only_match = This is the default value and can be omitted
-	## severity = info
-	## cardinality = 0..1
-    include_invisible = no
-	## cardinality = 0..1
-    include_invisible = yes
-    alias_name[trigger] = alias_match_left[trigger]
-}
+alias[trigger:any_scientist] = single_alias_right[any_all_trigger_clause]
 
 ### Checks if all scientists of the Country in scope matches the triggers.
 ## scope = country
 ## push_scope = character
-alias[trigger:all_scientists] = {
-    ## cardinality = 0..1
-    tooltip = localisation
-	## error_if_only_match = This is the default value and can be omitted
-	## severity = info
-	## cardinality = 0..1
-    include_invisible = no
-	## cardinality = 0..1
-    include_invisible = yes
-    alias_name[trigger] = alias_match_left[trigger]
-}
+alias[trigger:all_scientists] = single_alias_right[any_all_trigger_clause]
 
 ### Checks if the scientist of the character in scope matches the skill level condition for a specialization. Supports < > = operators.
 ## scope = character
@@ -63,34 +41,12 @@ alias[trigger:has_project_flag] = {
 ### Checks if at least one active scientist of the Country in scope matches the triggers.
 ## scope = country
 ## push_scope = character
-alias[trigger:any_active_scientist] = {
-    ## cardinality = 0..1
-    count = int_variable_field
-    ## cardinality = 0..1
-    tooltip = localisation
-	## error_if_only_match = This is the default value and can be omitted
-	## severity = info
-	## cardinality = 0..1
-    include_invisible = no
-	## cardinality = 0..1
-    include_invisible = yes
-    alias_name[trigger] = alias_match_left[trigger]
-}
+alias[trigger:any_active_scientist] = single_alias_right[any_all_trigger_clause]
 
 ### Checks if all active scientists of the Country in scope matches the triggers.
 ## scope = country
 ## push_scope = character
-alias[trigger:all_active_scientist] = {
-    ## cardinality = 0..1
-    tooltip = localisation
-	## error_if_only_match = This is the default value and can be omitted
-	## severity = info
-	## cardinality = 0..1
-    include_invisible = no
-	## cardinality = 0..1
-    include_invisible = yes
-    alias_name[trigger] = alias_match_left[trigger]
-}
+alias[trigger:all_active_scientist] = single_alias_right[any_all_trigger_clause]
 
 ### Checks if the scientist of the character in scope is injured
 ## scope = character
@@ -130,42 +86,13 @@ alias[trigger:any_state_in] = {
     count = int_variable_field
 	## cardinality = 0..1
     tooltip = localisation
-    array = value[variable]
-
-    alias_name[trigger] = alias_match_left[trigger]
-}
-### check if any state in the given category meets the trigger.
-## scope = any
-## push_scope = state
-alias[trigger:any_state_in] = {
     ## cardinality = 0..1
-    count = int_variable_field
-	## cardinality = 0..1
-    tooltip = localisation
+	array = single_alias_right[array]
+    ## cardinality = 0..1
     continent = enum[continents]
-
-    alias_name[trigger] = alias_match_left[trigger]
-}
-### check if any state in the given category meets the trigger.
-## scope = any
-## push_scope = state
-alias[trigger:any_state_in] = {
     ## cardinality = 0..1
-    count = int_variable_field
-	## cardinality = 0..1
-    tooltip = localisation
     ai_area = <ai_area>
-
-    alias_name[trigger] = alias_match_left[trigger]
-}
-### check if any state in the given category meets the trigger.
-## scope = any
-## push_scope = state
-alias[trigger:any_state_in] = {
     ## cardinality = 0..1
-    count = int_variable_field
-	## cardinality = 0..1
-    tooltip = localisation
     strategic_region = <strategic_region>
 
     alias_name[trigger] = alias_match_left[trigger]
@@ -180,6 +107,7 @@ alias[trigger:scope_exists] = bool
 alias[trigger:equipment_cost] = {
 }
 
+### WARNING - requires sp: prefix to link to the project!
 ### Checks if the country in scope has completed the special project in input.
 ## scope = country
 alias[trigger:is_special_project_completed] = scope[special_project]
@@ -253,14 +181,7 @@ alias[trigger:has_contested_owner] = scope[country]
 ## scope = country
 alias[trigger:fighting_army_strength_ratio] = {
     tag = scope[country]
-	## cardinality = 0..1
-	civilian_intel = variable_field
-	## cardinality = 0..1
-	army_intel = variable_field
-	## cardinality = 0..1
-	navy_intel = variable_field
-	## cardinality = 0..1
-    airforce_intel = variable_field
+	ratio = variable_field
 }
 
 ### Checks if the country in scope has a scientist with a skill level of at least 1 in specialization.

@@ -14,72 +14,18 @@ alias[effect:raid_reduce_project_progress_ratio] = float[0.0..1.0]
 ### Executes children effects on random scientists that fulfills the "limit" trigger.
 ## scope = country
 ## push_scope = character
-alias[effect:random_scientist] = {
-	## cardinality = 0..1
-	limit = {
-		alias_name[trigger] = alias_match_left[trigger]
-	}
-	## cardinality = 0..1
-	tooltip = localisation
-	alias_name[effect] = alias_match_left[effect]
-}
+alias[effect:random_scientist] = single_alias_right[random_effect_clause]
+
 ### Executes children effects on every scientist (or "random_select_amount" of random character if specified) of the country in scope, that fulfills the \\\"limit\\\" trigger.
 ## scope = country
 ## push_scope = character
-alias[effect:every_scientist] = {
-	### Apply the effect to this number of randomly selected entities
-	## cardinality = 0..1
-	random_select_amount = int[1..inf]
-	## cardinality = 0..1
-	display_individual_scopes = bool
-	## cardinality = 0..1
-	limit = {
-		alias_name[trigger] = alias_match_left[trigger]
-	}
-	## cardinality = 0..1
-	tooltip = localisation
-	alias_name[effect] = alias_match_left[effect]
-}
+alias[effect:every_scientist] = single_alias_right[every_effect_clause]
 
 ### Create a colonial division template for overlord/owner. Available parameters are subject and division_template, where the subject parameter is the country tag for an overlords subject. And the division_template is the regular effect to create a division template.
 ## scope = country
 alias[effect:create_colonial_division_template] = {
     subject = scope[country] # Country tag
-	division_template = {
-		name = value_set[division_template_name]
-		## cardinality = 0..1
-		division_names_group = <division_name>
-		## cardinality = 0..1
-		role = value[ai_template_roles]
-		### Customize which type of front template gets assigned to
-		## cardinality = 0..1
-		front_role_override = enum[template_front_role]
-		## cardinality = 0..1
-		override_model = <entity>
-		## cardinality = 0..1
-		template_counter = int
-		## cardinality = 0..1
-		is_locked = bool
-		## cardinality = 0..1
-		force_allow_recruiting = bool
-		## cardinality = 0..1
-		obsolete = bool
-		## cardinality = 0..1
-		division_cap = int
-		regiments = {
-			## cardinality = 0..25
-			<unit.line_unit> = { x = int[0..4] y = int[0..4] }
-		}
-		## cardinality = 0..1
-		support = {
-			## cardinality = ~1..5
-			<unit.support_unit> = { x = 0 y = int[0..4] }
-		}
-		## cardinality = 0..1
-		template_counter = int
-		## cardinality = 0..1
-		priority = int
-	}
+	division_template = single_alias_right[division_template_clause]
 }
 
 ### Add levels to a special project specialization for a scientist character in scope.
@@ -129,33 +75,12 @@ alias[effect:clr_project_flag] = value[project_flag]
 ### Executes children effects on every active scientist (or "random_select_amount" of random character if specified) of the country in scope, that fulfills the "limit" trigger.
 ## scope = country
 ## push_scope = character
-alias[effect:every_active_scientist] = {
-	### Apply the effect to this number of randomly selected entities
-	## cardinality = 0..1
-	random_select_amount = int[1..inf]
-	## cardinality = 0..1
-	display_individual_scopes = bool
-	## cardinality = 0..1
-	limit = {
-		alias_name[trigger] = alias_match_left[trigger]
-	}
-	## cardinality = 0..1
-	tooltip = localisation
-	alias_name[effect] = alias_match_left[effect]
-}
+alias[effect:every_active_scientist] = single_alias_right[every_effect_clause]
 
 ### Executes children effects on random scientists that fulfills the "limit" trigger.
 ## scope = country
 ## push_scope = character
-alias[effect:random_active_scientist] = {
-	## cardinality = 0..1
-	limit = {
-		alias_name[trigger] = alias_match_left[trigger]
-	}
-	## cardinality = 0..1
-	tooltip = localisation
-	alias_name[effect] = alias_match_left[effect]
-}
+alias[effect:random_active_scientist] = single_alias_right[random_effect_clause]
 
 ### Injure a scientist for x amount of days to a scientist character in scope.
 ## scope = character
@@ -341,34 +266,12 @@ alias[effect:remove_scientist_role] = {
 ### Executes children effects on a random Allied Country different from the one in scope that fulfills the `limit` trigger.
 ## scope = country
 ## push_scope = country
-alias[effect:random_allied_country] = {
-	## cardinality = 0..1
-	limit = {
-		alias_name[trigger] = alias_match_left[trigger]
-	}
-	## cardinality = 0..1
-	tooltip = localisation
-	alias_name[effect] = alias_match_left[effect]
-}
+alias[effect:random_allied_country] = single_alias_right[random_effect_clause]
 
 ### Executes children effects on every Allied Country different from the one in scope (or `random_select_amount` of random country if specified) that fulfills the `limit` trigger.
 ## scope = country
 ## push_scope = country
-alias[effect:every_allied_country] = {
-	### Apply the effect to this number of randomly selected entities
-	## cardinality = 0..1
-	random_select_amount = int[1..inf]
-	## cardinality = 0..1
-	display_individual_scopes = bool
-	## cardinality = 0..1
-	limit = {
-		alias_name[trigger] = alias_match_left[trigger]
-	}
-	## cardinality = 0..1
-	tooltip = localisation
-	alias_name[effect] = alias_match_left[effect]
-
-}
+alias[effect:every_allied_country] = single_alias_right[every_effect_clause]
 
 ### Damage the units performing the raid in scope (the attackers inflict losses).  Damage is applied to ground units while damage to plane is defined as the amount of planes lost.\nIf 'ratio = yes', then all damage / losses are applied as a fraction of the current amount. For units, damage can be defined through one value 'damage' or separately through 'org_damage' and 'str_damage'
 ## scope = raid
@@ -446,14 +349,21 @@ alias[effect:custom_override_tooltip] = {
     ## cardinality = 1..inf
     alias_name[effect] = alias_match_left[effect]
 }
+
+### Bindable loc single alias
 single_alias[bindable_loc] = {
+	### Localisation single alias
     localization_key = localisation
 	## cardinality = 0..inf
     alias_name[bindable_loc] = alias_match_left[bindable_loc]
 }
 
+### Bindable loc singleline any = any
 alias[bindable_loc:scalar] = scalar
+
+### Bindable loc multiline
 alias[bindable_loc:scalar] = {
+	### Localisation multiline
 	localization_key = localisation
 	## cardinality = 0..inf
 	alias_name[bindable_loc] = alias_match_left[bindable_loc]
@@ -478,6 +388,8 @@ alias[effect:add_unit_bonus] = {
 		alias_name[unit_stat] = alias_match_left[unit_stat]
 		alias_name[naval_stat] = alias_match_left[naval_stat]
 		alias_name[air_stat] = alias_match_left[air_stat]
+		## cardinality = 0..inf
+		battalion_mult = single_alias_right[battalion_mult]
     }
 	## cardinality = 0..inf
 	enum[unit_category] = {
@@ -485,6 +397,8 @@ alias[effect:add_unit_bonus] = {
 		alias_name[unit_stat] = alias_match_left[unit_stat]
 		alias_name[naval_stat] = alias_match_left[naval_stat]
 		alias_name[air_stat] = alias_match_left[air_stat]
+		## cardinality = 0..inf
+		battalion_mult = single_alias_right[battalion_mult]
 	}
 }
 

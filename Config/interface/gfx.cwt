@@ -8,7 +8,7 @@ types = {
 		name_field = "name"
 
 		## type_key_filter = spriteType
-		subtype[normal] = {}
+		subtype[normal] = { }
 		## type_key_filter = frameAnimatedSpriteType
 		subtype[frame_animated_sprite] = { }
 		## type_key_filter = corneredTileSpriteType
@@ -117,6 +117,7 @@ sprite = {
 		## file_extensions = { .png .dds .tga }
 		textureFile = filepath
 		clicksound = <soundeffect>
+		clicksound = click
 	}
 	subtype[frame_animated_sprite] = {
 		## file_extensions = { .png .dds .tga }
@@ -125,10 +126,10 @@ sprite = {
 	subtype[cornered_tile_sprite] = {
 		## file_extensions = { .png .dds .tga }
 		textureFile = filepath
-		borderSize = { x = float y = float }
+		borderSize = single_alias_right[gui_size_coordinates]
 		## cardinality = 0..1
 		tilingCenter = bool
-		size = { x = float y = float }
+		size = single_alias_right[gui_size_coordinates]
 		## cardinality = 0..1
 		animation_rate_spf = int
 		## cardinality = 0..1
@@ -141,6 +142,8 @@ sprite = {
 	subtype[text_sprite] = {
 		## file_extensions = { .png .dds .tga }
 		textureFile = filepath
+		## cardinality = 0..1
+		clicksound = <soundeffect>
 		## cardinality = 0..1
 		clicksound = click
 	}

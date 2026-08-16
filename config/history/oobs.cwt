@@ -47,7 +47,7 @@ single_alias[division_template_clause] = {
 	## cardinality = 0..1
 	is_fake_intel_division = bool
 	## cardinality = 0..1
-	foreign_template_tag = enum[country_tags] # Country tag
+	foreign_template_tag = union[country_tags_and_scope] # Country tag
 	## cardinality = 0..1
 	origin_type = subject
 }
@@ -68,7 +68,7 @@ oob = {
 
 	## cardinality = 0..inf
 	create_colonial_division_template = {
-		subject = enum[country_tags] # Country tag
+		subject = union[country_tags_and_scope] # Country tag
 		division_template = single_alias_right[division_template_clause]
 	}
 
@@ -107,9 +107,9 @@ oob = {
 			force_equipment_variants = {
 				## cardinality = ~1..inf
 				<equipment.regular_equip> = {
-					owner = enum[country_tags]
+					owner = union[country_tags_and_scope]
 					## cardinality = 0..1
-					creator = enum[country_tags]
+					creator = union[country_tags_and_scope]
 					## cardinality = 0..1
 					version_name = scalar
 					## cardinality = 0..1
@@ -143,7 +143,7 @@ oob = {
 				army_manpower_value = {
 					## cardinality = ~1..inf
 					value = {
-						tag = enum[country_tags]
+						tag = union[country_tags_and_scope]
 						value = int_variable_field
 					}
 				}
@@ -151,7 +151,7 @@ oob = {
 				army_manpower_need = {
 					## cardinality = ~1..inf
 					value = {
-						tag = enum[country_tags]
+						tag = union[country_tags_and_scope]
 						value = int_variable_field
 					}
 				}
@@ -185,11 +185,11 @@ oob = {
 					equipment = {
 						<equipment.naval_equip> = {
 							amount = int
-							owner = enum[country_tags]
+							owner = union[country_tags_and_scope]
 							## cardinality = 0..1
 							version_name = scalar
 							## cardinality = 0..1
-							creator = enum[country_tags]
+							creator = union[country_tags_and_scope]
 							### Defaults to 'no'
 							## cardinality = 0..1
 							create_if_missing = bool
@@ -201,18 +201,18 @@ oob = {
 
 						## cardinality = 0..inf
 						<equipment.air_equip> = {
-							owner = enum[country_tags]
+							owner = union[country_tags_and_scope]
 							## cardinality = 0..1
-							creator = enum[country_tags]
+							creator = union[country_tags_and_scope]
 							## cardinality = 0..1
 							create_if_missing = bool
 							amount = int
 						}
 						## cardinality = 0..inf
 						value[bba_air_variants] = {
-							owner = enum[country_tags]
+							owner = union[country_tags_and_scope]
 							## cardinality = 0..1
-							creator = enum[country_tags]
+							creator = union[country_tags_and_scope]
 							## cardinality = 0..1
 							create_if_missing = bool
 							amount = int
@@ -249,9 +249,9 @@ oob = {
 
 			## cardinality = 0..inf
 			<equipment.air_equip> = {
-				owner = enum[country_tags]
+				owner = union[country_tags_and_scope]
 				## cardinality = 0..1
-				creator = enum[country_tags]
+				creator = union[country_tags_and_scope]
 				## cardinality = 0..1
 				create_if_missing = bool
 				amount = int
@@ -260,9 +260,9 @@ oob = {
 			}
 			## cardinality = 0..inf
 			value[bba_air_variants] = {
-				owner = enum[country_tags]
+				owner = union[country_tags_and_scope]
 				## cardinality = 0..1
-				creator = enum[country_tags]
+				creator = union[country_tags_and_scope]
 				## cardinality = 0..1
 				create_if_missing = bool
 				amount = int
@@ -294,9 +294,9 @@ oob = {
 
 			## cardinality = 0..inf
 			<equipment.air_equip> = {
-				owner = enum[country_tags]
+				owner = union[country_tags_and_scope]
 				## cardinality = 0..1
-				creator = enum[country_tags]
+				creator = union[country_tags_and_scope]
 				## cardinality = 0..1
 				create_if_missing = bool
 				amount = int
@@ -305,9 +305,9 @@ oob = {
 			}
 			## cardinality = 0..inf
 			value[bba_air_variants] = {
-				owner = enum[country_tags]
+				owner = union[country_tags_and_scope]
 				## cardinality = 0..1
-				creator = enum[country_tags]
+				creator = union[country_tags_and_scope]
 				## cardinality = 0..1
 				create_if_missing = bool
 				amount = int

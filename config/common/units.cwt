@@ -293,7 +293,7 @@ ship_name = {
 	## cardinality = 0..1
 	for_countries = {
 		## cardinality = ~1..inf
-		enum[country_tags]
+		union[country_tags_and_scope]
 	}
 	## cardinality = 0..1
 	can_use = {
@@ -344,7 +344,7 @@ division_name = {
 	name = localisation_inline
 	for_countries = {
 		## cardinality = ~1..inf
-		enum[country_tags]
+		union[country_tags_and_scope]
 	}
 	## cardinality = 0..1
 	## replace_scope = { root = country this = country }

@@ -18,7 +18,7 @@ bookmark = {
 	desc = localisation
 	date = date_field[y.m.d.h]
 	picture = <sprite>
-	default_country = enum[country_tags]
+	default_country = union[country_tags_and_scope]
 
     ## cardinality = 0..1
     scrollable_country_list = bool
@@ -48,7 +48,7 @@ bookmark = {
     }
 
 	## cardinality = 1..inf
-	enum[country_tags] = {
+	union[country_tags_and_scope] = {
 		history = localisation
 		ideology = <ideology>
 

@@ -170,7 +170,7 @@ alias[effect:add_equipment_subsidy] = {
     ## cardinality = 0..1
     seller_tags = {
         ## cardinality = 0..inf
-        enum[country_tags]
+        union[country_tags_and_scope]
     }
 }
 
@@ -240,13 +240,13 @@ alias[effect:every_military_industrial_organization] = single_alias_right[every_
 
 ### Give market access to x
 ## scope = country
-alias[effect:give_market_access] = enum[country_tags]
+alias[effect:give_market_access] = union[country_tags_and_scope]
 
 ### Creates a purchase contract between the countries
 ## scope = any
 alias[effect:create_purchase_contract] = {
-    seller = enum[country_tags]
-    buyer = enum[country_tags]
+    seller = union[country_tags_and_scope]
+    buyer = union[country_tags_and_scope]
     civilian_factories = int
     ## cardinality = 1..inf
     equipment = {

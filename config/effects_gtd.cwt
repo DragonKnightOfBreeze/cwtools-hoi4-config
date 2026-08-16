@@ -24,7 +24,7 @@ alias[effect:every_scientist] = single_alias_right[every_effect_clause]
 ### Create a colonial division template for overlord/owner. Available parameters are subject and division_template, where the subject parameter is the country tag for an overlords subject. And the division_template is the regular effect to create a division template.
 ## scope = country
 alias[effect:create_colonial_division_template] = {
-    subject = enum[country_tags] # Country tag
+    subject = union[country_tags_and_scope] # Country tag
 	division_template = single_alias_right[division_template_clause]
 }
 
@@ -137,7 +137,7 @@ alias[effect:add_equipment_bonus] = {
 
 ### Adds a contested owner to a state. The effect can be used either from a country or a state scope and accepts the other as parameter.
 ## scope = state
-alias[effect:add_contested_owner] = enum[country_tags]
+alias[effect:add_contested_owner] = union[country_tags_and_scope]
 ### Adds a contested owner to a state. The effect can be used either from a country or a state scope and accepts the other as parameter.
 ## scope = country
 alias[effect:add_contested_owner] = scope[state]
@@ -187,7 +187,7 @@ alias[effect:generate_scientist_character] = {
 	## cardinality = 0..1
     portrait = GFX_portrait # optional - random portrait by default
 	## cardinality = 0..1
-    portrait_tag_override = enum[country_tags] # optional - accepts variable and keyword - only relevant if using random portrait - by default use country in scope
+    portrait_tag_override = union[country_tags_and_scope] # optional - accepts variable and keyword - only relevant if using random portrait - by default use country in scope
 	## cardinality = 0..1
     gender = enum[gender] # optional - by default random gender
 	## cardinality = 0..1
@@ -311,7 +311,7 @@ alias[effect:store_ref] = scalar
 
 ### Removes a contested owner to a state. The effect can be used either from a country or a state scope and accepts the other as parameter.
 ## scope = state
-alias[effect:remove_contested_owner] = enum[country_tags]
+alias[effect:remove_contested_owner] = union[country_tags_and_scope]
 ### Removes a contested owner to a state. The effect can be used either from a country or a state scope and accepts the other as parameter.
 ## scope = country
 alias[effect:remove_contested_owner] = scope[state]

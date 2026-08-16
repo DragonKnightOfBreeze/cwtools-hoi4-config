@@ -7,7 +7,7 @@
 alias[effect:add_relation_rule_override] = {
     enum[game_rules] = bool
     ## cardinality = 0..1
-    target = enum[country_tags]
+    target = union[country_tags_and_scope]
     ## cardinality = 0..1
     trigger = scalar
     ## cardinality = 0..1
@@ -19,7 +19,7 @@ alias[effect:add_relation_rule_override] = {
 alias[effect:remove_relation_rule_override] = {
     enum[game_rules] = bool
     ## cardinality = 0..1
-    target = enum[country_tags]
+    target = union[country_tags_and_scope]
     ## cardinality = 0..1
     trigger = scalar
     ## cardinality = 0..1

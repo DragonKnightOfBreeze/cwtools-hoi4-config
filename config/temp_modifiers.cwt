@@ -1,7 +1,7 @@
 ### Applies modifiers only in relation to a specified other country.
 ## scope = country
 alias[targeted_modifier_rule:targeted_modifier] = {
-	tag = enum[country_tags]
+	tag = union[country_tags_and_scope]
 	## cardinality = ~1..inf
 	alias_name[modifier] = alias_match_left[modifier]
 }

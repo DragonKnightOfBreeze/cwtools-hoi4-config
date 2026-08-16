@@ -141,12 +141,12 @@ ai_template = {
 	## cardinality = 0..1
 	blocked_for = {
 		## cardinality = ~1..inf
-		enum[country_tags]
+		union[country_tags_and_scope]
 	}
 	## cardinality = 0..1
 	available_for = {
 		## cardinality = ~1..inf
-		enum[country_tags]
+		union[country_tags_and_scope]
 	}
 
 	# The role token that this role-level template entry targets. These tokens are defined by script and are targeted by the 'role_ratio' AI strategy.
@@ -248,14 +248,14 @@ ai_equipment_design_group = {
 	## cardinality = 0..1
 	blocked_for = {
 		## cardinality = 0..inf
-		enum[country_tags]
+		union[country_tags_and_scope]
 	}
 
 	### Inclusionary list of countries that will use this design group. If this list is empty, all countries not in the block list will be allowed. If this list is not empty, only countries that are in this list and not in the blocked list will be allowed.
 	## cardinality = 0..1
 	available_for = {
 		## cardinality = 0..inf
-		enum[country_tags]
+		union[country_tags_and_scope]
 	}
 
 	### List of roles that this design group can be used for. AI will attempt to design and produce equipment to satisfy all roles that it can. So it will try to actively use one design per role for new production and upgrading/refitting. Roles here are dynamically generated and should work with role_ratio.
@@ -429,7 +429,7 @@ ai_faction_theater = {
 	preferred_countries = {
 		#TODO check if this is actually how it works
 		## cardinality = ~1..inf
-		enum[country_tags]
+		union[country_tags_and_scope]
 	}
 	
 	### - Defaults to "no"

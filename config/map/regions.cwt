@@ -24,7 +24,7 @@ strategic_region = {
 	name = localisation
 	provinces = {
 		## cardinality = ~1..inf
-		enum[provinces]
+		int
 	}
 	## cardinality = 0..1
 	naval_terrain = <terrain.naval_terrain>

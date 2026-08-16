@@ -135,7 +135,7 @@ alias[effect:strategic_state_location] = {
 
 ### BUGGED AS OF NCNS BETA - changes icons only in tech tree view, not in tech details. Add technology tree icons from a target tag. Can be used multiple times for the same tag
 ## scope = country
-alias[effect:select_tech_tree_icon_origin] = enum[country_tags]
+alias[effect:select_tech_tree_icon_origin] = union[country_tags_and_scope]
 
 ### Example: add_faction_power_projection = 100
 ###

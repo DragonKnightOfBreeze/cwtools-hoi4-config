@@ -95,7 +95,7 @@ enums = {
 
 unions = {
     union[country_tags_and_scope] = {
-        scope[country]
         enum[country_tags]
+        scope_field
     }
 }

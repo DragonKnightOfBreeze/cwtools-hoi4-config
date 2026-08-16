@@ -191,7 +191,7 @@ focus = {
     bypass_if_unavailable = no
 
     ## cardinality = 0..inf
-    will_lead_to_war_with = enum[country_tags]
+    will_lead_to_war_with = union[country_tags_and_scope]
 
     ## cardinality = 0..inf
     prerequisite = {
@@ -485,7 +485,7 @@ shared_focus = {
 	bypass_if_unavailable = no
 
 	## cardinality = 0..inf
-	will_lead_to_war_with = enum[country_tags]
+	will_lead_to_war_with = union[country_tags_and_scope]
 
 	## cardinality = 0..inf
 	prerequisite = {

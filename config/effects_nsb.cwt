@@ -8,23 +8,23 @@ alias[effect:random_core_state] = single_alias_right[random_prio_state_effect_cl
 
 ### transfers state (owns and controls) to target
 ## scope = { state }
-alias[effect:transfer_state_to] = enum[country_tags]
+alias[effect:transfer_state_to] = union[country_tags_and_scope]
 
 ### transfers state (owns) to target, control changes only if at peace with controller and controller doesn't have rule can_occupy_non_war
 ## scope = { state }
-alias[effect:set_state_owner_to] = enum[country_tags]
+alias[effect:set_state_owner_to] = union[country_tags_and_scope]
 
 ### transfers state (controls only) to target
 ## scope = { state }
-alias[effect:set_state_controller_to] = enum[country_tags]
+alias[effect:set_state_controller_to] = union[country_tags_and_scope]
 
 ### releases target country from owned and controlled states of scoped country
 ## scope = { country }
-alias[effect:release_on_controlled] = enum[country_tags]
+alias[effect:release_on_controlled] = union[country_tags_and_scope]
 
 ### releases target country from owned and controlled states as a puppet of scoped country
 ## scope = { country }
-alias[effect:release_puppet_on_controlled] = enum[country_tags]
+alias[effect:release_puppet_on_controlled] = union[country_tags_and_scope]
 
 ## scope = country
 alias[effect:uncomplete_national_focus] = {
@@ -542,7 +542,7 @@ alias[effect:remove_trait] = {
 ### Transfer from one country to another for the character in scope. Note that this is not related to operative nationalities added via add_nationality. Note that for operative, this will temporarily lock their slot on the country of origin
 ## scope = { country character unit_leader operative }
 alias[effect:set_nationality] = {
-	target_country = enum[country_tags]
+	target_country = union[country_tags_and_scope]
 	character = <character>
 	character = value[character_token]
 	character = value[variable]
@@ -554,12 +554,12 @@ alias[effect:set_nationality] = {
 ### Transfer from one country to another for the character in scope. Note that this is not related to operative nationalities added via add_nationality. Note that for operative, this will temporarily lock their slot on the country of origin
 ## scope = { character unit_leader operative }
 alias[effect:set_nationality] = {
-	target_country = enum[country_tags]
+	target_country = union[country_tags_and_scope]
 }
 
 ### Transfer from one country to another for the character in scope. Note that this is not related to operative nationalities added via add_nationality. Note that for operative, this will temporarily lock their slot on the country of origin
 ## scope = { character unit_leader operative }
-alias[effect:set_nationality] = enum[country_tags]
+alias[effect:set_nationality] = union[country_tags_and_scope]
 
 ### Executes children effects on every subject country that fulfills the "limit" trigger. tooltip=key can be defined to override tooltip title
 ## scope = { COUNTRY }
@@ -929,4 +929,4 @@ alias[effect:party_leader] = {
 
 ### Teleport the target country's railway guns to the province to which railway guns are deployed
 ## scope = country
-alias[effect:teleport_railway_guns_to_deploy_province] = enum[country_tags]
+alias[effect:teleport_railway_guns_to_deploy_province] = union[country_tags_and_scope]

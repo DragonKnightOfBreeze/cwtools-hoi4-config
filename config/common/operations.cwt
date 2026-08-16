@@ -148,7 +148,7 @@ operation = {
 	operation_target = {
 		targets = {
 			## cardinality = 1..inf
-			enum[country_tags]
+			union[country_tags_and_scope]
 		}
 	}
 
@@ -158,7 +158,7 @@ operation = {
 	selection_target = {
 		targets = {
 			## cardinality = 1..inf
-			enum[country_tags]
+			union[country_tags_and_scope]
 		}
 	}
 

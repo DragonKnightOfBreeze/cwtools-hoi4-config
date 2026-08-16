@@ -51,7 +51,7 @@ links = {
     country = {
         output_scope = country
         from_data = yes
-        data_source = enum[country_tags]
+        data_source = union[country_tags_and_scope]
     }
 
     character = {

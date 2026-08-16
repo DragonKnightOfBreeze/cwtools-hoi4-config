@@ -130,7 +130,7 @@ alias[effect:change_division_template] = {
 alias[effect:set_unit_organization] = float
 
 ## scope = country
-alias[effect:remove_civil_war_target] = enum[country_tags]
+alias[effect:remove_civil_war_target] = union[country_tags_and_scope]
 
 ### Destroys the currently-scoped division.
 ## scope = unit

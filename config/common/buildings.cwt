@@ -172,7 +172,7 @@ building = {
 		## cardinality = 0..1
 		enable_for_controllers = {
 			## cardinality = ~1..inf
-			enum[country_tags]
+			union[country_tags_and_scope]
 		}
 		modifiers = {
 			## cardinality = ~1..inf

@@ -145,7 +145,7 @@ alias[trigger:c_is_untouched_loser] = bool
 
 ### Checks if the current scope is on the same side of the peace conference as the specified country.
 ## scope = country
-alias[trigger:pc_is_on_same_side_as] = enum[country_tags]
+alias[trigger:pc_is_on_same_side_as] = union[country_tags_and_scope]
 
 ### Checks if the current scope has been liberated within the peace conference.
 ## scope = country
@@ -153,7 +153,7 @@ alias[trigger:pc_is_liberated] = bool
 
 ### Checks if the current scope has been liberated within the peace conference by the specified country.
 ## scope = country
-alias[trigger:pc_is_liberated_by] = enum[country_tags]
+alias[trigger:pc_is_liberated_by] = union[country_tags_and_scope]
 
 ### Checks if the current scope has been puppeted within the peace conference.
 ## scope = country
@@ -161,7 +161,7 @@ alias[trigger:pc_is_puppeted] = bool
 
 ### Checks if the current scope has been puppeted within the peace conference by the specified country.
 ## scope = country
-alias[trigger:pc_is_puppeted_by] = enum[country_tags]
+alias[trigger:pc_is_puppeted_by] = union[country_tags_and_scope]
 
 ### Checks if the current scope has had an enforced government change within the peace conference.
 ## scope = country
@@ -169,7 +169,7 @@ alias[trigger:pc_is_forced_government] = bool
 
 ### Checks if the current scope has had an enforced government change within the peace conference demanded by the specified country.
 ## scope = country
-alias[trigger:pc_is_forced_government_by] = enum[country_tags]
+alias[trigger:pc_is_forced_government_by] = union[country_tags_and_scope]
 
 ### Checks if the current scope has had an enforced government change to the specified ideology group.
 ## scope = country
@@ -185,4 +185,4 @@ alias[trigger:pc_current_score] = int_variable_field
 
 ### Check if state is claimed with a take_states action in conference for TAG. Example: pc_is_state_claimed_and_taken_by = SOV/ROOT/ROOT.FROM"
 ## scope = state
-alias[trigger:pc_is_state_claimed_and_taken_by] = enum[country_tags]
+alias[trigger:pc_is_state_claimed_and_taken_by] = union[country_tags_and_scope]

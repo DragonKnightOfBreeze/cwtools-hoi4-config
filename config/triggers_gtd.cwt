@@ -122,7 +122,7 @@ alias[trigger:is_special_project_being_researched] = value[variable]
 
 ### Check if the country has market access with another country.
 ## scope = country
-alias[trigger:has_market_access_with] = enum[country_tags]
+alias[trigger:has_market_access_with] = union[country_tags_and_scope]
 
 ### checks if division has an officer with the provided name key.
 ## scope = unit
@@ -173,12 +173,12 @@ alias[trigger:custom_override_tooltip] = {
 alias[trigger:has_contested_owner] = scope[state]
 ### Checks if a state has the specified country as a contested owner. The trigger can be used either from a country or a state scope and accepts the other as parameter.
 ## scope = state
-alias[trigger:has_contested_owner] = enum[country_tags]
+alias[trigger:has_contested_owner] = union[country_tags_and_scope]
 
 ### Compares the total army fighting strength between the scope country and the one set with 'tag'
 ## scope = country
 alias[trigger:fighting_army_strength_ratio] = {
-    tag = enum[country_tags]
+    tag = union[country_tags_and_scope]
 	ratio = variable_field
 }
 
@@ -208,7 +208,7 @@ alias[trigger:has_truce_with] = bool
 
 ### Checks if the country has truce with the specified country
 ## scope = country
-alias[trigger:has_truce_with] = enum[country_tags]
+alias[trigger:has_truce_with] = union[country_tags_and_scope]
 
 ### Checks if the country has truce with the specified country
 ## scope = country

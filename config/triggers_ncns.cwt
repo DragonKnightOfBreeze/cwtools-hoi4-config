@@ -84,13 +84,7 @@ alias[trigger:can_assign_supportive_scientist_to_faction] = <specialization>
 ### - Can use country scope. Example *GER = { is_on_same_continent_as = ITA }*
 ### Checks if the scope state is on the same continent as the given state. 
 ## scope = { country state }
-alias[trigger:is_on_same_continent_as] = scope[country]
-
-### - Another option is to use the capital state of the tag. *FROM = { is_on_same_continent_as = 111 }*
-### - Can use country scope. Example *GER = { is_on_same_continent_as = ITA }*
-### Checks if the scope state is on the same continent as the given state. 
-## scope = { country state }
-alias[trigger:is_on_same_continent_as] = enum[country_tags]
+alias[trigger:is_on_same_continent_as] = union[country_tags_and_scope]
 
 ### - Another option is to use the capital state of the tag. *FROM = { is_on_same_continent_as = 111 }*
 ### - Can use country scope. Example *GER = { is_on_same_continent_as = ITA }*
@@ -172,9 +166,8 @@ alias[trigger:collection_contains] = {
 	### Anonymous collection
 	collection = single_alias_right[anonymous_collection]
 	### Input country tag
-	country = scope[country]
 	### Input country tag
-	country = enum[country_tags]
+	country = union[country_tags_and_scope]
 }
 
 ### - *collection_contains = { collection = game:all_countries country = FRA }*
@@ -193,9 +186,7 @@ alias[trigger:collection_contains] = {
 	### Input country tags
 	countries = {
 		## cardinality = 0..inf
-		scope[country]
-		## cardinality = 0..inf
-		enum[country_tags]
+		union[country_tags_and_scope]
 	}
 }
 
@@ -459,10 +450,7 @@ alias[trigger:faction_goal_fulfillment] = {
 
 ### is country at offensive war without specific ally present
 ## scope = { country }
-alias[trigger:has_offensive_war_without_friend] = scope[country]
-### is country at offensive war without specific ally present
-## scope = { country }
-alias[trigger:has_offensive_war_without_friend] = enum[country_tags]
+alias[trigger:has_offensive_war_without_friend] = union[country_tags_and_scope]
 
 ### Checks if the current country exceeds the current faction leader and its subjects in deployed manpower
 ## scope = { country }
@@ -517,7 +505,7 @@ alias[trigger:all_country_of] = {
 	tooltip = single_alias_right[bindable_loc]
 	target = {
 		## cardinality = 1..inf
-		enum[country_tags]
+		union[country_tags_and_scope]
 	}
 	target = value[constant]
 	## cardinality = 1..inf
@@ -543,7 +531,7 @@ alias[trigger:any_country_of] = {
 	tooltip = single_alias_right[bindable_loc]
 	target = {
 		## cardinality = 1..inf
-		enum[country_tags]
+		union[country_tags_and_scope]
 	}
 	target = value[constant]
 	## cardinality = 1..inf
@@ -562,7 +550,7 @@ alias[trigger:any_country_with_original_tag_of] = {
 	tooltip = single_alias_right[bindable_loc]
 	target = {
 		## cardinality = 1..inf
-		enum[country_tags]
+		union[country_tags_and_scope]
 	}
 	target = value[constant]
 	## cardinality = 1..inf
@@ -581,7 +569,7 @@ alias[trigger:any_other_country_of] = {
 	tooltip = single_alias_right[bindable_loc]
 	target = {
 		## cardinality = 1..inf
-		enum[country_tags]
+		union[country_tags_and_scope]
 	}
 	target = value[constant]
 	## cardinality = 1..inf
@@ -600,7 +588,7 @@ alias[trigger:any_other_country_with_original_tag_of] = {
 	tooltip = single_alias_right[bindable_loc]
 	target = {
 		## cardinality = 1..inf
-		enum[country_tags]
+		union[country_tags_and_scope]
 	}
 	target = value[constant]
 	## cardinality = 1..inf
@@ -639,16 +627,13 @@ alias[trigger:has_enough_influence_for_leadership] = bool
 ## scope = { country }
 alias[trigger:compare_ideology_with_faction] = {
 	value = float #TODO check variables and ranges
-	leader = scope[country] #todo check if vars work
-	leader = enum[country_tags]
+	leader = union[country_tags_and_scope]
 }
 
 ## hidden_trigger
 
 # * Supported Scopes: STATE, COUNTRY, CHARACTER, COMBATANT, ACE, STRATEGIC_REGION, OPERATION, INDUSTRIAL_ORG, PURCHASE_CONTRACT, RAID_INSTANCE, SPECIAL_PROJECT, FACTION
 # * Supported Targets: THIS, ROOT, PREV, FROM, OWNER, CONTROLLER, OCCUPIED, CAPITAL
-
-
 
 # * The trigger has a side effect (e.g. temporary variables).
 # * The trigger uses random numbers (e.g. acts on a random state)
@@ -661,7 +646,6 @@ alias[trigger:compare_ideology_with_faction] = {
 # * `no_eval` - If you have no random parts or side effects, then this will give you a slightly faster computation of the tooltip.
 # * `legacy` - Previous behaviour that is similar to `eval` but a lot less predictable.
 # Using this explicitly is very likely a bug.
-
 
 #### Examples
 

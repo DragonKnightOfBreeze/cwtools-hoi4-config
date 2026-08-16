@@ -32,7 +32,7 @@ types = {
 		images = {
 			## primary
 			## optional
-			picture = picture # <sprite>
+			picture = picture # union[sprite]
 		}
 	}
 }
@@ -275,7 +275,7 @@ tech_sharing_group = {
 	name = localisation
 	desc = localisation
 	## severity = warning
-	picture = <sprite>
+	picture = union[sprite]
 
 	research_sharing_per_country_bonus = float
 	## cardinality = 0..1

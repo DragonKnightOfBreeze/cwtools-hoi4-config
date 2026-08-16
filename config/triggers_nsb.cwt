@@ -51,7 +51,7 @@ alias[trigger:has_resources_rights] = {
 
 ## scope = state
 alias[trigger:has_resources_rights] = {
-	receiver = enum[country_tags]
+	receiver = union[country_tags_and_scope]
 	## cardinality = 0..1
 	resources = {
 		## cardinality = 1..inf

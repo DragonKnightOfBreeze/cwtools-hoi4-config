@@ -172,7 +172,7 @@ building = {
 		## cardinality = 0..1
 		enable_for_controllers = {
 			## cardinality = ~1..inf
-			enum[country_tags]
+			union[country_tags_and_scope]
 		}
 		modifiers = {
 			## cardinality = ~1..inf
@@ -206,7 +206,7 @@ building = {
 	spawn_point = <spawn_point>
 	
 	## cardinality = 0..1
-	special_icon = <sprite>
+	special_icon = union[sprite]
 
 	## cardinality = 0..1
 	tags = {

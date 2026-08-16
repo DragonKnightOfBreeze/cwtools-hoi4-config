@@ -8,19 +8,18 @@ types = {
 			desc = desc
 		}
 		images = {
-			icon = icon # <sprite>
-			map_icon = map_icon # <sprite>
+			icon = icon # union[sprite]
+			map_icon = map_icon # union[sprite]
 		}
 	}
 }
-
 
 operation = {
 	name = localisation
 	desc = localisation
 
-	icon = <sprite>
-	map_icon = <sprite>
+	icon = union[sprite]
+	map_icon = union[sprite]
 
 	#outcome = <operation_phase>
 
@@ -149,10 +148,9 @@ operation = {
 	operation_target = {
 		targets = {
 			## cardinality = 1..inf
-			scope[country]
+			union[country_tags_and_scope]
 		}
 	}
-
 
 	### Determines the valid countries for province selection. If set this will enable the UI to select a target province
 	## replace_scope = { THIS = country ROOT = country FROM = country FROM.FROM = state }
@@ -160,10 +158,9 @@ operation = {
 	selection_target = {
 		targets = {
 			## cardinality = 1..inf
-			scope[country]
+			union[country_tags_and_scope]
 		}
 	}
-
 
 	### Determines the valid states for province selection
 	## replace_scope = { THIS = state ROOT = state }
@@ -207,7 +204,6 @@ operation = {
 		enum[base_factor] = float
 		alias_name[modifier_rule] = alias_match_left[modifier_rule]
 	}
-
 
 	### Determines requirements other than equipment to launch the operation
 	## replace_scope = { THIS = country ROOT = country FROM = country }

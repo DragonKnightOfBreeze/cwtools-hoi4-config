@@ -25,9 +25,9 @@ state = {
 		<resource> = float
 	}
 	history = {
-		owner = enum[country_tags]
+		owner = union[country_tags_and_scope]
 		## cardinality = 0..1
-		controller = enum[country_tags]
+		controller = union[country_tags_and_scope]
 		## cardinality = 0..inf
 		victory_points = {
 			# provinces overlap the ints, have to use 2 provinces here, floats will return error
@@ -56,9 +56,9 @@ state = {
 		## cardinality = 0..inf
 		date_field = {
 			## cardinality = 0..1
-			owner = enum[country_tags]
+			owner = union[country_tags_and_scope]
 			## cardinality = 0..1
-			controller = enum[country_tags]
+			controller = union[country_tags_and_scope]
 			## cardinality = 0..inf
 			victory_points = {
 				# provinces overlap the ints, have to use 2 provinces here, floats will return error

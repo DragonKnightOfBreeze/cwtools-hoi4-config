@@ -1,4 +1,3 @@
-
 types = {
 	## unique = yes
 	type[scripted_trigger] = {
@@ -12,7 +11,7 @@ types = {
 	## unique = yes
 	type[scripted_loc] = {
 		name_field = "name"
-		path = "game/common/scripted_loc"
+		path = "game/common/scripted_localisation"
 	}
 }
 
@@ -33,7 +32,7 @@ scripted_loc = {
 		## cardinality = 0..1
 		localization_key = localisation_inline
 		## cardinality = 0..1
-		localization_key = <sprite>
+		localization_key = union[sprite]
 		## cardinality = 0..1
 		localization_key = character_name|<character>
 		## cardinality = 0..1
@@ -57,7 +56,7 @@ scripted_loc = {
 			int = {
 				alias_name[modifier_rule] = alias_match_left[modifier_rule]
 				localization_key = localisation_inline
-				localization_key = <sprite>
+				localization_key = union[sprite]
 				localization_key = character_name|<character>
 				localization_key = tech_effect|<technology>
 				## error_if_only_match = This key is not found by CWTools, check that it is actually defined

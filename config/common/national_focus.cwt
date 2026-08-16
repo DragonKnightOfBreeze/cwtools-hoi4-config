@@ -95,27 +95,27 @@ focus = {
     id = localisation
 
     ## cardinality = ~1..inf
-    icon = <sprite>
+    icon = union[sprite]
 
     ## cardinality = 0..1
     text_icon = <focus_style>
 
     ## cardinality = 0..1
-    overlay = <sprite>
+    overlay = union[sprite]
 
     ## cardinality = 0..1
-    alternate_icon = <sprite>
+    alternate_icon = union[sprite]
 
     ## cardinality = ~1..inf
     icon = {
         ## cardinality = 0..1
         ## replace_scope = { root = country this = country }
-        <sprite> = {
+        union[sprite] = {
             ## cardinality = ~1..inf
             alias_name[trigger] = alias_match_left[trigger]
         }
         ## cardinality = ~1..inf
-        <sprite> = bool
+        union[sprite] = bool
     }
 
     ### A cost of 1 represents a week by default. Decimals within cost are supported, and it will get rounded down to a whole day in the game.
@@ -191,10 +191,7 @@ focus = {
     bypass_if_unavailable = no
 
     ## cardinality = 0..inf
-    will_lead_to_war_with = scope[country]
-
-    ## cardinality = 0..inf
-    will_lead_to_war_with = enum[country_tags]
+    will_lead_to_war_with = union[country_tags_and_scope]
 
     ## cardinality = 0..inf
     prerequisite = {
@@ -402,20 +399,20 @@ shared_focus = {
 	text = localisation
 
 	## cardinality = 0..inf
-	icon = <sprite>
+	icon = union[sprite]
 	## cardinality = 0..inf
 	icon = {
 		## cardinality = 0..inf
 		## replace_scope = { root = country this = country }
-		<sprite> = {
+		union[sprite] = {
 			## cardinality = 0..inf
 			alias_name[trigger] = alias_match_left[trigger]
 		}
 		## cardinality = 0..inf
-		<sprite> = bool
+		union[sprite] = bool
 	}
 	## cardinality = 0..1
-	overlay = <sprite>
+	overlay = union[sprite]
 
 	## cardinality = 0..1
 	text_icon = <focus_style>
@@ -488,10 +485,7 @@ shared_focus = {
 	bypass_if_unavailable = no
 
 	## cardinality = 0..inf
-	will_lead_to_war_with = scope[country]
-
-	## cardinality = 0..inf
-	will_lead_to_war_with = enum[country_tags]
+	will_lead_to_war_with = union[country_tags_and_scope]
 
 	## cardinality = 0..inf
 	prerequisite = {
@@ -649,7 +643,7 @@ continous_focus_tree = {
 		id = localisation
 
 		## cardinality = ~1..inf
-		icon = <sprite>
+		icon = union[sprite]
 
 		## cardinality = ~1..inf
 		icon = {
@@ -661,7 +655,7 @@ continous_focus_tree = {
 			}
 
 			## cardinality = ~1..1
-			value = <sprite>
+			value = union[sprite]
 		}
 
 		### The cost in daily political power gain to take this focus compared to not having any focus selected
@@ -723,7 +717,6 @@ continous_focus_tree = {
 	}
 }
 
-
 style = {
 	## cardinality = 1..1
 	name = scalar
@@ -735,13 +728,13 @@ style = {
 	default = no
 
 	## cardinality = 1..1
-	unavailable = <sprite>
+	unavailable = union[sprite]
 	## cardinality = 1..1
-	completed = <sprite>
+	completed = union[sprite]
 	## cardinality = 1..1
-	available = <sprite>
+	available = union[sprite]
 	## cardinality = 1..1
-	current = <sprite>
+	current = union[sprite]
 }
 
 search_filter_prios = {

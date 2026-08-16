@@ -20,7 +20,7 @@ unit_medal = {
 	}
 	
 	frame = int
-	icon = <sprite>
+	icon = union[sprite]
 
 	cost = @cost
 	cost = int

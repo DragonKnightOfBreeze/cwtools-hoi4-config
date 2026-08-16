@@ -50,7 +50,7 @@ alias[effect:add_power_balance_value] = {
 alias[effect:set_power_balance_gfx] = {
 	id = <balance_of_power>
 	side = value[bop_side]
-	gfx = <sprite>
+	gfx = union[sprite]
 	# Bugged vanilla gfx definition, do not remove
 	gfx = GFX_bop_ITA_mussolini_improved_side
 	gfx = GFX_bop_ITA_mussolini_side
@@ -122,7 +122,7 @@ alias[effect:random_state_division] = single_alias_right[random_effect_clause]
 ### Change divisions in scope to selected template
 ## scope = unit
 alias[effect:change_division_template] = {
-	division_template = value[division_template_name]
+	division_template = scalar
 }
 
 ### Set unit org to a specific value
@@ -130,10 +130,7 @@ alias[effect:change_division_template] = {
 alias[effect:set_unit_organization] = float
 
 ## scope = country
-alias[effect:remove_civil_war_target] = scope[country]
-
-## scope = country
-alias[effect:remove_civil_war_target] = enum[country_tags]
+alias[effect:remove_civil_war_target] = union[country_tags_and_scope]
 
 ### Destroys the currently-scoped division.
 ## scope = unit

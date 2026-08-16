@@ -3,13 +3,13 @@ types = {
     type[intelligence_agency] = {
         path = "game/common/intelligence_agencies"
         images = {
-            picture = picture # <sprite>
+            picture = picture # union[sprite]
         }
     }
 }
 
 intelligence_agency = {
-	picture = <sprite>
+	picture = union[sprite]
     names = {
         ## cardinality = 0..inf
         localisation

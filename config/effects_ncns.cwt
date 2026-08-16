@@ -133,13 +133,9 @@ alias[effect:strategic_state_location] = {
 	<strategic_location.state> = enum[provinces]
 }
 
-### BUGGED AS OF NCNS BETA. Add technology tree icons from a target tag, not in tech details. Can be used multiple times for the same tag
-## scope = country
-alias[effect:select_tech_tree_icon_origin] = scope[country]
-
 ### BUGGED AS OF NCNS BETA - changes icons only in tech tree view, not in tech details. Add technology tree icons from a target tag. Can be used multiple times for the same tag
 ## scope = country
-alias[effect:select_tech_tree_icon_origin] = enum[country_tags]
+alias[effect:select_tech_tree_icon_origin] = union[country_tags_and_scope]
 
 ### Example: add_faction_power_projection = 100
 ###
@@ -206,7 +202,7 @@ alias[effect:create_faction_from_template] = {
 	## cardinality = 0..1
 	name = localisation
 	## cardinality = 0..1
-	icon = <sprite>
+	icon = union[sprite]
 	## cardinality = 0..1
 	color = { #TODO find limits of float
 		## cardinality = 3..3
@@ -259,7 +255,7 @@ alias[effect:every_collection_element] = {
 	## cardinality = 1..inf
 	alias_name[effect] = alias_match_left[effect]
 }
- 
+
 ### Sets wheter the current countries faction can make changes to the faction research section
 ## scope = { any }
 alias[effect:set_faction_research_unlocked] = bool

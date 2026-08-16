@@ -26,26 +26,26 @@ special_project = {
 		## cardinality = 0..1
 		always = bool
 		## cardinality = 0..inf
-		tag = scope[country]
+		tag = union[country_tags_and_scope]
 		## cardinality = 0..inf
-		original_tag = scope[country]
+		original_tag = union[country_tags_and_scope]
 		## cardinality = 0..inf
 		has_dlc = enum[dlc]
 		## cardinality = 0..inf
 		NOT = {
 			## cardinality = 0..inf
-			tag = scope[country]
+			tag = union[country_tags_and_scope]
 			## cardinality = 0..inf
-			original_tag = scope[country]
+			original_tag = union[country_tags_and_scope]
 			## cardinality = 0..inf
 			has_dlc = enum[dlc]
 		}
 		## cardinality = 0..inf
 		AND = {
 			## cardinality = 0..inf
-			tag = scope[country]
+			tag = union[country_tags_and_scope]
 			## cardinality = 0..inf
-			original_tag = scope[country]
+			original_tag = union[country_tags_and_scope]
 			## cardinality = 0..inf
 			has_dlc = enum[dlc]
 		}
@@ -141,7 +141,7 @@ special_project = {
 	###
 	### GFX key of the icon used to illustrate the Project
 	## cardinality = 0..1
-	icon = <sprite>
+	icon = union[sprite]
 	
 	### Supports multiple tags passed in brackets { tag1 tag2 }
 	###
@@ -159,7 +159,7 @@ special_project = {
 	###
 	### GFX key of the background texture of the project when it is being researched
 	## cardinality = 0..1
-	blueprint_image = <sprite>
+	blueprint_image = union[sprite]
 
 	### - Oil is not allowed here.
 	### - special project cost is always evaluated AFTER production lines resource cost
@@ -218,9 +218,6 @@ special_project = {
 	### Bonus given when the Project is fully researched (i.e. at the end of the last Prototyping phase)
 	## cardinality = 0..1
 	project_output = single_alias_right[sp_iteration_output]
-
-
-	#### PROTOTYPES
 
 	### - see **game/common/special_projects/prototype_rewards**
 	### - "Generic rewards" are coming from the prototype reward DB and can be used in several projects
@@ -299,7 +296,7 @@ single_alias[sp_proto_reward] = {
 	###
 	### GFX key of the icon used to illustrate the Project
 	## cardinality = 0..1
-	icon = <sprite>
+	icon = union[sprite]
 
 	# Optional
 	# Set an allowed trigger for the reward - Defaults to true
@@ -399,13 +396,13 @@ single_alias[sp_proto_reward] = {
 
 specialization = {
 	## cardinality = 0..1
-	blueprint_image = <sprite>
+	blueprint_image = union[sprite]
 	color = {
 		## cardinality = 3..3
 		int
 	}
 	## cardinality = 0..1
-	program_background = <sprite>
+	program_background = union[sprite]
 }
 
 single_alias[sp_iteration_output] = {

@@ -89,11 +89,11 @@ decision_category = {
 		}
 	}
 	## cardinality = 0..1
-	picture = <sprite>
+	picture = union[sprite]
 	## cardinality = 0..1
 	picture = {
 		## cardinality = ~1..inf
-		<sprite> = {
+		union[sprite] = {
 			alias_name[trigger] = alias_match_left[trigger]
 		}
 	}
@@ -141,7 +141,7 @@ decision_category = {
 
 	## cardinality = 0..inf
 	custom_icon = {
-		tag = enum[country_tags]
+		tag = union[country_tags_and_scope]
 		value = scalar
 		desc = localisation
 		visible = {
@@ -231,7 +231,7 @@ decision = {
 	}
 
 	## cardinality = 0..1
-	cosmetic_tag = enum[country_tags]
+	cosmetic_tag = union[country_tags_and_scope]
 	## cardinality = 0..1
 	cosmetic_ideology = <ideology>
 	## cardinality = 0..1
@@ -362,7 +362,6 @@ decision = {
 		highlight_color_while_active = int
 	}
 
-
 	## cardinality = 0..1
 	highlight_color_before_active = int
 	## cardinality = 0..1
@@ -468,9 +467,7 @@ decision = {
 		## cardinality = 0..1
 		targets = {
 			## cardinality = 0..inf
-			scope[country]
-			## cardinality = 0..inf
-			enum[country_tags]
+			union[country_tags_and_scope]
 			## cardinality = 0..inf
 			value[variable]
 			## cardinality = 0..inf
@@ -523,10 +520,7 @@ decision = {
 	}
 
 	## cardinality = 0..inf
-	enum[war_with_on] = scope[country]
-
-	## cardinality = 0..inf
-	enum[war_with_on] = enum[country_tags]
+	enum[war_with_on] = union[country_tags_and_scope]
 
 	## cardinality = 0..inf
 	enum[war_with_target_on] = bool

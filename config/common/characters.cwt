@@ -77,30 +77,30 @@ character = {
         ## cardinality = 0..1
         civilian = {
             ## cardinality = 0..1
-            large = <sprite>
+            large = union[sprite]
             ## cardinality = 0..1
-            small = <sprite>
+            small = union[sprite]
         }
         ## cardinality = 0..1
         army = {
             ## cardinality = 0..1
-            large = <sprite>
+            large = union[sprite]
             ## cardinality = 0..1
-            small = <sprite>
+            small = union[sprite]
         }
         ## cardinality = 0..1
         navy = {
             ## cardinality = 0..1
-            large = <sprite>
+            large = union[sprite]
             ## cardinality = 0..1
-            small = <sprite>
+            small = union[sprite]
         }
         ## cardinality = 0..1
         operative = {
             ## cardinality = 0..1
-            large = <sprite>
+            large = union[sprite]
             ## cardinality = 0..1
-            small = <sprite>
+            small = union[sprite]
         }
     }
 	subtype[uninstanced] = {
@@ -362,30 +362,30 @@ character = {
                 ## cardinality = 0..1
                 civilian = {
                     ## cardinality = 0..1
-                    large = <sprite>
+                    large = union[sprite]
                     ## cardinality = 0..1
-                    small = <sprite>
+                    small = union[sprite]
                 }
                 ## cardinality = 0..1
                 army = {
                     ## cardinality = 0..1
-                    large = <sprite>
+                    large = union[sprite]
                     ## cardinality = 0..1
-                    small = <sprite>
+                    small = union[sprite]
                 }
                 ## cardinality = 0..1
                 navy = {
                     ## cardinality = 0..1
-                    large = <sprite>
+                    large = union[sprite]
                     ## cardinality = 0..1
-                    small = <sprite>
+                    small = union[sprite]
                 }
                 ## cardinality = 0..1
                 operative = {
                     ## cardinality = 0..1
-                    large = <sprite>
+                    large = union[sprite]
                     ## cardinality = 0..1
-                    small = <sprite>
+                    small = union[sprite]
                 }
             }
 			## replace_scope = { this = any root = country }

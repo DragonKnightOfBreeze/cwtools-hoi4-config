@@ -17,7 +17,7 @@ bookmark = {
 	name = localisation
 	desc = localisation
 	date = date_field[y.m.d.h]
-	picture = <sprite>
+	picture = union[sprite]
 	default_country = union[country_tags_and_scope]
 
     ## cardinality = 0..1

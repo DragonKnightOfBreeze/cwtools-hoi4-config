@@ -4,7 +4,7 @@ types = {
 		path_strict = yes
 		images = {
 			## optional
-			icon = icon # <sprite>
+			icon = icon # union[sprite]
 		}
 	}
 }
@@ -13,7 +13,7 @@ dynamic_modifier = {
 	## cardinality = 0..1
 	## severity = warning
 	### Optional, will show up in guis if icon is specified.
-	icon = <sprite>
+	icon = union[sprite]
 
 	## cardinality = 0..1
 	attacker_modifier = yes

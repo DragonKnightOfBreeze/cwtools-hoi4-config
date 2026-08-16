@@ -45,7 +45,7 @@ types = {
 			subtype[!hidden] = {
 				## primary
 				## optional
-				picture = picture # <sprite>, can be triggered or/and multiple
+				picture = picture # union[sprite], can be triggered or/and multiple
 			}
 		}
 	}
@@ -65,7 +65,7 @@ event = {
 	}
 	## cardinality = 0..1
 	## severity = warning
-	picture = <sprite>
+	picture = union[sprite]
 	## cardinality = 0..inf
 	desc = localisation
 	## cardinality = 0..inf

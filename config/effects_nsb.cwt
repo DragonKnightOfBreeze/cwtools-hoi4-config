@@ -398,7 +398,7 @@ alias[effect:retire_character] = scope[character]
 alias[effect:set_character_name] = localisation_inline
 ### renames character
 ## scope = { character unit_leader }
-alias[effect:set_character_name] = <sprite>
+alias[effect:set_character_name] = union[sprite]
 ### renames character
 ## scope = { country character unit_leader }
 alias[effect:set_character_name] = {

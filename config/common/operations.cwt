@@ -8,8 +8,8 @@ types = {
 			desc = desc
 		}
 		images = {
-			icon = icon # <sprite>
-			map_icon = map_icon # <sprite>
+			icon = icon # union[sprite]
+			map_icon = map_icon # union[sprite]
 		}
 	}
 }
@@ -18,8 +18,8 @@ operation = {
 	name = localisation
 	desc = localisation
 
-	icon = <sprite>
-	map_icon = <sprite>
+	icon = union[sprite]
+	map_icon = union[sprite]
 
 	#outcome = <operation_phase>
 

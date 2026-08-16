@@ -408,6 +408,8 @@ alias[effect:else_if] = {
 
 ### Use after (else_)if for a catch-all case.
 alias[effect:else] = {
+    ## cardinality = ~1..1
+    limit = { alias_name[trigger] = alias_match_left[trigger] }
 	alias_name[effect] = alias_match_left[effect]
 }
 
@@ -486,8 +488,8 @@ alias[effect:create_unit] = {
 		## cardinality = 0..1
 		portraits = {
 			army = {
-				large = <sprite>
-				small = <sprite>
+				large = union[sprite]
+				small = union[sprite]
 			}
 		}
 	}
@@ -691,7 +693,7 @@ alias[effect:create_navy_leader] = {
 	portrait_path = scalar
 	## cardinality = 0..1
 	## severity = warning
-	gfx = <sprite>
+	gfx = union[sprite]
 	### Sets starting traits for this leader. If empty, sets no traits. If missing, assigns a random trait
 	## cardinality = ~1..1
 	traits = {
@@ -919,17 +921,12 @@ alias[effect:add_building_construction] = {
 	level = int_variable_field
 	## cardinality = 0..1
 	instant_build = bool
-}
-
-### Starts building construction for amount of levels in specified state or province.
-## scope = state
-alias[effect:add_building_construction] = {
-	type = <building.provincial>
-	level = int_variable_field
-	## cardinality = 0..1
-	instant_build = bool
+    ## cardinality = 0..1
 	province = enum[provinces]
+    ## cardinality = 0..1
 	province = {
+        ## cardinality = 1..inf
+        id = enum[provinces]
 		## cardinality = 0..1
 		all_provinces = bool
 		## cardinality = 0..1
@@ -951,24 +948,6 @@ alias[effect:add_building_construction] = {
 		### Picks the first valid after reduction
 		## cardinality = 0..1
 		first = bool
-	}
-	province = {
-		## cardinality = 1..inf
-		id = enum[provinces]
-		## cardinality = 0..1
-		limit_to_coastal = bool
-		## cardinality = 0..1
-		limit_to_naval_base = bool
-		## cardinality = 0..1
-		limit_to_supply_node = bool
-		## cardinality = 0..1
-		limit_to_border = bool
-		## cardinality = 0..1
-		limit_to_victory_point = bool
-		## cardinality = 0..1
-		limit_to_victory_point = int
-		## cardinality = 0..1
-		level = int_variable_field
 	}
 }
 
@@ -1520,7 +1499,7 @@ alias[effect:create_field_marshal] = {
 	portrait_path = scalar
 	## cardinality = 0..1
 	## severity = warning
-	gfx = <sprite>
+	gfx = union[sprite]
 	### Sets starting traits for this leader. If empty, sets no traits. If missing, assigns a random trait.
 	traits = {
 		## cardinality = 0..inf
@@ -1559,7 +1538,7 @@ alias[effect:create_corps_commander] = {
 	portrait_path = scalar
 	## cardinality = 0..1
 	## severity = warning
-	gfx = <sprite>
+	gfx = union[sprite]
 	### Sets starting traits for this leader. If empty, sets no traits. If missing, assigns a random trait
 	## cardinality = ~1..1
 	traits = {
@@ -1715,7 +1694,7 @@ alias[effect:create_equipment_variant] = {
 	## cardinality = 0..1
 	icon = filepath
 	## cardinality = 0..1
-	icon = <sprite>
+	icon = union[sprite]
 	## cardinality = 0..1
 	model = <entity>
 	### Who designed that equipment

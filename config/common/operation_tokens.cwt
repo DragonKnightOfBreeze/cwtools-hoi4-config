@@ -6,8 +6,8 @@ types = {
 			desc = desc
 		}
 		images = {
-			icon = icon # <sprite>
-			text_icon = text_icon # <sprite>
+			icon = icon # union[sprite]
+			text_icon = text_icon # union[sprite]
 		}
 	}
 }
@@ -21,9 +21,9 @@ operation_token = {
 	desc = localisation
 
 	### Every token needs an icon for display purposes
-    icon = <sprite>
+    icon = union[sprite]
 
-    text_icon = <sprite>
+    text_icon = union[sprite]
 
 	### Every token can have any number of targeted modifier listed as demonstrated below. Those will be applied to the relation between the origin country and the target country of the operation. For as long as the origin country that receives the token posses the token, when the token is consumed the modifiers will go away
     ## cardinality = 0..inf

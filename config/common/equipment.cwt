@@ -98,7 +98,7 @@ types = {
 		path = "game/common/units/critical_parts"
 		images = {
 			## optional
-			icon = icon|frame # <sprite>
+			icon = icon|frame # union[sprite]
 		}
 	}
 	type[duplicate_archetypes] = {
@@ -637,7 +637,7 @@ module = {
 
 critical_part = {
 	## severity = warning
-	icon = <sprite>
+	icon = union[sprite]
 	frame = int
 	## cardinality = 0..1
 	stat_penalties = {

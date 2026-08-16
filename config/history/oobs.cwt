@@ -119,7 +119,7 @@ oob = {
 			## cardinality = 0..inf
 			### Defines a unique name for the division's commander
 			officer = {
-				name = scalar
+				name = localisation
 				### Defines a unique portraits for this unit'ss division commander
 				## cardinality = 0..1
 				portraits = {

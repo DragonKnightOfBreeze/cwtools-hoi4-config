@@ -455,7 +455,7 @@ alias[effect:create_country_leader] = {
 	picture = scalar
 	ideology = <sub_ideology>
 	## cardinality = 0..1
-	expire = datetime_field
+	expire = date_field
 	## cardinality = 0..1
 	traits = {
 		## cardinality = ~1..inf
@@ -2300,7 +2300,7 @@ alias[effect:add_logistics] = int
 ## scope = country
 alias[effect:add_offsite_building] = {
 	type = <building>
-	level = int_variable_field
+	level = union[variables_union]
 }
 
 #wiki doesn't know

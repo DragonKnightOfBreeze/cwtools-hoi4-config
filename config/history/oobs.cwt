@@ -90,7 +90,7 @@ oob = {
 				name_order = int
 			}
 			location = enum[provinces]
-			division_template = value[division_template_name]
+			division_template = scalar
 			### Defines a unique name for this unit's division commander
 			## cardinality = 0..1
 			unique = {
@@ -256,7 +256,7 @@ oob = {
 				create_if_missing = bool
 				amount = int
 				## cardinality = 0..1
-				version_name = value[variant_name]
+				version_name = scalar
 			}
 			## cardinality = 0..inf
 			value[bba_air_variants] = {
@@ -267,7 +267,7 @@ oob = {
 				create_if_missing = bool
 				amount = int
 				## cardinality = 0..1
-				version_name = value[variant_name]
+				version_name = scalar
 			}
 			## cardinality = 0..inf
 			### Order is important. Ace will be assigned to the wing above.
@@ -301,7 +301,7 @@ oob = {
 				create_if_missing = bool
 				amount = int
 				## cardinality = 0..1
-				version_name = value[variant_name]
+				version_name = scalar
 			}
 			## cardinality = 0..inf
 			value[bba_air_variants] = {
@@ -312,7 +312,7 @@ oob = {
 				create_if_missing = bool
 				amount = int
 				## cardinality = 0..1
-				version_name = value[variant_name]
+				version_name = scalar
 			}
 			## cardinality = 0..inf
 			### Order is important. Ace will be assigned to the wing above.

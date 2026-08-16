@@ -667,10 +667,10 @@ alias[effect:damage_units] = {
 	ratio = bool
 	### you can limit army templates
 	## cardinality = 0..1
-	template = value[division_template_name]
+	template = scalar
 	### you can limit army templates
 	## cardinality = 0..1
-	division_template = value[division_template_name]
+	division_template = scalar
 	### Damage armies
 	## cardinality = 0..1
 	army = bool

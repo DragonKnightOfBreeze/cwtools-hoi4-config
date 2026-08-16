@@ -552,7 +552,7 @@ alias[effect:division_template] = single_alias_right[division_template_clause]
 ### Adds units to a division template.
 ## scope = country
 alias[effect:add_units_to_division_template] = {
-	template_name = value[division_template_name]
+	template_name = scalar
 	## cardinality = 0..1
 	regiments = {
 		## cardinality = 1..25
@@ -2002,7 +2002,7 @@ alias[effect:create_production_license] = {
 		version = int
 		### Optional. Select the variant with the given name
 		## cardinality = 0..1
-		version_name = value[variant_name]
+		version_name = scalar
 	}
 	### Optional. Cost factor for production of the equipment
 	## cardinality = 0..1
@@ -2408,27 +2408,27 @@ alias[effect:cancel_border_war] = {
 ### Set lock status for a division template.
 ## scope = country
 alias[effect:set_division_template_lock] = {
-	division_template = value[division_template_name]
+	division_template = scalar
 	is_locked = bool
 }
 
 ### Set cap for a division template.
 ## scope = country
 alias[effect:set_division_template_cap] = {
-	division_template = value[division_template_name]
+	division_template = scalar
 	division_cap = int_variable_field
 }
 
 ### Remove cap for a division template.
 ## scope = country
 alias[effect:clear_division_template_cap] = {
-	division_template = value[division_template_name]
+	division_template = scalar
 }
 
 ### Set division template to allow force recruiting. force_allow_recruiting defaults to true if unset
 ## scope = country
 alias[effect:set_division_force_allow_recruiting] = {
-	division_template = value[division_template_name]
+	division_template = scalar
 	## cardinality = 0..1
 	force_allow_recruiting = bool
 }
@@ -2436,7 +2436,7 @@ alias[effect:set_division_force_allow_recruiting] = {
 ### Delete a template and its units.
 ## scope = country
 alias[effect:delete_unit_template_and_units] = {
-	division_template = value[division_template_name]
+	division_template = scalar
 	## cardinality = 0..1
 	disband = bool
 }

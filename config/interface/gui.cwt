@@ -607,7 +607,6 @@ alias[gui:extendedScrollbarType] = {
 	##cardinality = 0..1
 	setTrackFrameOnChange = bool
     ##cardinality  = 1..1
-    ###Slider for scroll bar
     slider = {
         name = value_set[gui_element_name]
         alias_name[gui_image] = alias_match_left[gui_image]
@@ -615,7 +614,6 @@ alias[gui:extendedScrollbarType] = {
         alias_name[gui_localization] = alias_match_left[gui_localization]
     }
     ##cardinality  = 1..1
-    ###Slider for scroll bar
     track = {
         name = value_set[gui_element_name]
         alias_name[gui_image] = alias_match_left[gui_image]
@@ -623,7 +621,6 @@ alias[gui:extendedScrollbarType] = {
 		alias_name[gui_localization] = alias_match_left[gui_localization]
     }
     ##cardinality  = 0..1
-    ###Increase button
     increaseButton = {
         name = value_set[gui_element_name]
         alias_name[gui_image] = alias_match_left[gui_image]
@@ -632,7 +629,6 @@ alias[gui:extendedScrollbarType] = {
         alias_name[gui_localization] = alias_match_left[gui_localization]
     }
     ##cardinality  = 0..1
-    ###Decrease button
     decreaseButton = {
         name = value_set[gui_element_name]
         alias_name[gui_image] = alias_match_left[gui_image]
@@ -641,13 +637,6 @@ alias[gui:extendedScrollbarType] = {
         alias_name[gui_localization] = alias_match_left[gui_localization]
     }
     ##cardinality  = 0..1
-    ###Decrease button
-    slider = {
-        name = value_set[gui_element_name]
-        alias_name[gui_image] = alias_match_left[gui_image]
-        position = single_alias_right[gui_position]
-        alias_name[gui_localization] = alias_match_left[gui_localization]
-    }
 }
 #GUI Standard Functions
 ### Position of element. Absolute in px, % of screen, or % of parent.
@@ -710,7 +699,6 @@ single_alias[gui_size_coordinates] = {
 }
 ###Size of element. Absolute in px, % of screen, or % of parent.
 alias[gui_standard:size] = single_alias_right[gui_size]
-alias[gui_standard:size] = single_alias_right[gui_size_coordinates]
 alias[gui_standard:margin] = {
     ## cardinality = 0..1
     top = int
@@ -761,8 +749,8 @@ alias[gui_image:disabledSpriteType] = union[sprite]
 alias[gui_image:disabledSprite] = union[sprite]
 alias[gui_image:backGround] = union[sprite]
 alias[gui_image:textureFile] = union[sprite]
-alias[gui_image:textureFile1] = filepath
-alias[gui_image:textureFile2] = filepath
+alias[gui_image:textureFile1] = union[sprite]
+alias[gui_image:textureFile2] = union[sprite]
 ### Image Sprite
 single_alias[gui_image:any_image_type] = {
     alias_name[gui_image:spriteType] = alias_match_left[gui_image:spriteType]

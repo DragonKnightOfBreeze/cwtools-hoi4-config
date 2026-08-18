@@ -55,7 +55,7 @@ single_alias[portraits] = {
 
 single_alias[genderportrait] = {
 	## cardinality = 0..inf
-	<sprite>
+	union[sprite]
 	## cardinality = 0..inf
 	filepath
 }

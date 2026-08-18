@@ -170,9 +170,7 @@ alias[effect:add_equipment_subsidy] = {
     ## cardinality = 0..1
     seller_tags = {
         ## cardinality = 0..inf
-        enum[country_tags]
-        ## cardinality = 0..inf
-        scope[country]
+        union[country_tags_and_scope]
     }
 }
 
@@ -186,7 +184,7 @@ alias[effect:set_mio_name_key] = <scripted_loc>
 
 ### Set the icon GFX for the military industrial organization in scope
 ## scope = military_industrial_organization
-alias[effect:set_mio_icon] = <sprite>
+alias[effect:set_mio_icon] = union[sprite]
 
 ### Set flag in the military industrial organization in scope
 ## scope = military_industrial_organization
@@ -242,17 +240,13 @@ alias[effect:every_military_industrial_organization] = single_alias_right[every_
 
 ### Give market access to x
 ## scope = country
-alias[effect:give_market_access] = enum[country_tags]
-
-### Give market access to x
-## scope = country
-alias[effect:give_market_access] = scope[country]
+alias[effect:give_market_access] = union[country_tags_and_scope]
 
 ### Creates a purchase contract between the countries
 ## scope = any
 alias[effect:create_purchase_contract] = {
-    seller = scope[country]
-    buyer = scope[country]
+    seller = union[country_tags_and_scope]
+    buyer = union[country_tags_and_scope]
     civilian_factories = int
     ## cardinality = 1..inf
     equipment = {

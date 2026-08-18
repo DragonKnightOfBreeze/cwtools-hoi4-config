@@ -118,18 +118,13 @@ alias[trigger:has_war_with_major] = bool
 ### Checks if country has war with wargoal against target
 ## scope = country
 alias[trigger:has_war_with_wargoal_against] = {
-	target = scope[country]
-	target = enum[country_tags]
+	target = union[country_tags_and_scope]
 	type = <wargoal>
 }
 
 ### Checks if country has war with any wargoal against target
 ## scope = country
-alias[trigger:has_war_with_wargoal_against] = scope[country]
-
-### Checks if country has war with any wargoal against target
-## scope = country
-alias[trigger:has_war_with_wargoal_against] = enum[country_tags]
+alias[trigger:has_war_with_wargoal_against] = union[country_tags_and_scope]
 
 ## scope = { character unit_leader }
 alias[trigger:is_hired_as_advisor] = bool
@@ -158,17 +153,14 @@ alias[trigger:pc_is_state_claimed] = bool
 
 ### Checks if the current scope was claimed by the specified country during the peace conference.
 ## scope = state
-alias[trigger:pc_is_state_claimed_by] = scope[country]
+alias[trigger:pc_is_state_claimed_by] = union[country_tags_and_scope]
 ### Checks if the current scope was claimed by the specified country during the peace conference.
 ## scope = state
-alias[trigger:pc_is_state_outside_influence_for_winner] = enum[country_tags]
+alias[trigger:pc_is_state_outside_influence_for_winner] = union[country_tags_and_scope]
 
 ### Checks if the current state is outside of the influence of the specified winner country.
 ## scope = state
-alias[trigger:pc_is_state_outside_influence_for_winner] = scope[country]
-### Checks if the current state is outside of the influence of the specified winner country.
-## scope = state
-alias[trigger:pc_is_state_outside_influence_for_winner] = enum[country_tags]
+alias[trigger:pc_is_state_outside_influence_for_winner] = union[country_tags_and_scope]
 
 ### Compares the amount of turns that have passed during the peace conference with a number.
 ## scope = any

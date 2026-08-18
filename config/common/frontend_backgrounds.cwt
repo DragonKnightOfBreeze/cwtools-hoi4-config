@@ -9,5 +9,5 @@ frontend_background = {
     ## cardinality = 0..1
     locale = enum[language]
     ## cardinality = 0..1
-    gfx = <sprite>
+    gfx = union[sprite]
 }

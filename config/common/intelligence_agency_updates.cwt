@@ -7,9 +7,9 @@ types = {
         path = "game/common/intelligence_agency_upgrades"
         skip_root_key = any
         images = {
-            picture = picture # <sprite>
+            picture = picture # union[sprite]
             ## optional
-            frame = frame # <sprite>
+            frame = frame # union[sprite]
         }
 	}
 }
@@ -17,10 +17,10 @@ types = {
 ### Note : There is no "description" field. To add a description, you only need to add an entry "upgrade name" + "_desc" in the localisation files.
 ## replace_scope = { root = country this = country }
 intelligence_agency_upgrade = {
-    picture = <sprite>
+    picture = union[sprite]
     ## cardinality = 0..1
     ### GFX entry of the border for the icon, without the suffixe (suffix are _available, _completed and _unavailable ) Optional, "upgrade_frame_1" by default.
-    frame = <sprite>
+    frame = union[sprite]
     ## cardinality = 0..1
     ### Optional, "click_default" by default.
     sound = <soundeffect>

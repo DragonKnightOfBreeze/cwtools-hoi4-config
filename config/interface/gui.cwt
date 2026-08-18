@@ -238,17 +238,17 @@ alias[gui:buttonType] = {
     alias_name[gui_standard] = alias_match_left[gui_standard]
     alias_name[gui_image] = alias_match_left[gui_image]
     ## cardinality = 0..1
-    buttonSpriteType = <sprite>
+    buttonSpriteType = union[sprite]
     ## cardinality = 0..1
-    buttonSprite = <sprite>
+    buttonSprite = union[sprite]
     ## cardinality = 0..1
-    hoverSpriteType = <sprite>
+    hoverSpriteType = union[sprite]
     ## cardinality = 0..1
-    hoverSprite = <sprite>
+    hoverSprite = union[sprite]
     ## cardinality = 0..1
-    disabledSpriteType = <sprite>
+    disabledSpriteType = union[sprite]
     ## cardinality = 0..1
-    disabledSprite = <sprite>
+    disabledSprite = union[sprite]
     ## cardinality = 0..1
     buttonText = localisation
     ## cardinality = 0..1
@@ -352,7 +352,7 @@ alias[gui:listBoxType] = {
     ## cardinality = 0..1
     offset = { x = int y = int }
     ## cardinality = 0..1
-    backGround = <sprite>
+    backGround = union[sprite]
 }
 
 ### Dynamic List
@@ -385,7 +385,7 @@ alias[gui:iconType] = {
     ### Name referenced by scripted gui
     name = value_set[iconType_name]
     name = value_set[gui_element_name]
-    ##cardinality = ~1..1
+    ##cardinality = ~0..1
     alias_name[any_image_type] = alias_match_left[any_image_type]
     alias_name[gui_image] = alias_match_left[gui_image]
     alias_name[gui_standard] = alias_match_left[gui_standard]
@@ -441,7 +441,7 @@ alias[gui:instantTextBoxType] = {
     ## cardinality = 0..1
     #DEBUG
     ### Missing Description, need testing
-    textureFile = <sprite>
+    textureFile = union[sprite]
     ## cardinality = 0..1
     #DEBUG
     ### Vertical alignment in text box
@@ -488,7 +488,7 @@ alias[gui:editBoxType] = {
     ## cardinality = 0..1
     #DEBUG
     ### Missing Descriptiion, need testing
-    textureFile = <sprite>
+    textureFile = union[sprite]
     ## cardinality = 0..1
     textureFile = filepath
     ## cardinality = 0..1
@@ -548,15 +548,15 @@ alias[gui:scrollbarType] = {
     ## cardinality = 4..4
     guiButtonType = {
         name = value_set[gui_element_name]
-        quadTextureSprite = <sprite>
+        quadTextureSprite = union[sprite]
         ## cardinality = 0..1
-        spriteType = <sprite>
+        spriteType = union[sprite]
         ## cardinality = 0..1
-        buttonSpriteType = <sprite>
+        buttonSpriteType = union[sprite]
         ## cardinality = 0..1
-        hoverSpriteType = <sprite>
+        hoverSpriteType = union[sprite]
         ## cardinality = 0..1
-        disabledSpriteType = <sprite>
+        disabledSpriteType = union[sprite]
         position = single_alias_right[gui_position]
         ## cardinality = 0..1
         clicksound = <soundeffect>
@@ -607,7 +607,6 @@ alias[gui:extendedScrollbarType] = {
 	##cardinality = 0..1
 	setTrackFrameOnChange = bool
     ##cardinality  = 1..1
-    ###Slider for scroll bar
     slider = {
         name = value_set[gui_element_name]
         alias_name[gui_image] = alias_match_left[gui_image]
@@ -615,7 +614,6 @@ alias[gui:extendedScrollbarType] = {
         alias_name[gui_localization] = alias_match_left[gui_localization]
     }
     ##cardinality  = 1..1
-    ###Slider for scroll bar
     track = {
         name = value_set[gui_element_name]
         alias_name[gui_image] = alias_match_left[gui_image]
@@ -623,7 +621,6 @@ alias[gui:extendedScrollbarType] = {
 		alias_name[gui_localization] = alias_match_left[gui_localization]
     }
     ##cardinality  = 0..1
-    ###Increase button
     increaseButton = {
         name = value_set[gui_element_name]
         alias_name[gui_image] = alias_match_left[gui_image]
@@ -632,7 +629,6 @@ alias[gui:extendedScrollbarType] = {
         alias_name[gui_localization] = alias_match_left[gui_localization]
     }
     ##cardinality  = 0..1
-    ###Decrease button
     decreaseButton = {
         name = value_set[gui_element_name]
         alias_name[gui_image] = alias_match_left[gui_image]
@@ -641,13 +637,6 @@ alias[gui:extendedScrollbarType] = {
         alias_name[gui_localization] = alias_match_left[gui_localization]
     }
     ##cardinality  = 0..1
-    ###Decrease button
-    slider = {
-        name = value_set[gui_element_name]
-        alias_name[gui_image] = alias_match_left[gui_image]
-        position = single_alias_right[gui_position]
-        alias_name[gui_localization] = alias_match_left[gui_localization]
-    }
 }
 #GUI Standard Functions
 ### Position of element. Absolute in px, % of screen, or % of parent.
@@ -710,7 +699,6 @@ single_alias[gui_size_coordinates] = {
 }
 ###Size of element. Absolute in px, % of screen, or % of parent.
 alias[gui_standard:size] = single_alias_right[gui_size]
-alias[gui_standard:size] = single_alias_right[gui_size_coordinates]
 alias[gui_standard:margin] = {
     ## cardinality = 0..1
     top = int
@@ -744,25 +732,25 @@ alias[gui_standard:vertical_scroll_step] = int
 
 #GUI Image
 ### Sprite for image
-alias[gui_image:spriteType] = <sprite>
+alias[gui_image:spriteType] = union[sprite]
 # Bugged vanilla gfx definition, do not remove
 alias[gui_image:spriteType] = "GFX_power_balance_left"
 alias[gui_image:spriteType] = "GFX_power_balance_right"
 ### Tiliing Sprite
-alias[gui_image:quadTextureSprite] = <sprite>
+alias[gui_image:quadTextureSprite] = union[sprite]
 # Bugged vanilla gfx definition, do not remove
 alias[gui_image:quadTextureSprite] = "GFX_bop_glow_effect"
 ### Alternate sprite field names used by widgets and older vanilla GUI.
-alias[gui_image:buttonSpriteType] = <sprite>
-alias[gui_image:buttonSprite] = <sprite>
-alias[gui_image:hoverSpriteType] = <sprite>
-alias[gui_image:hoverSprite] = <sprite>
-alias[gui_image:disabledSpriteType] = <sprite>
-alias[gui_image:disabledSprite] = <sprite>
-alias[gui_image:backGround] = <sprite>
-alias[gui_image:textureFile] = <sprite>
-alias[gui_image:textureFile1] = filepath
-alias[gui_image:textureFile2] = filepath
+alias[gui_image:buttonSpriteType] = union[sprite]
+alias[gui_image:buttonSprite] = union[sprite]
+alias[gui_image:hoverSpriteType] = union[sprite]
+alias[gui_image:hoverSprite] = union[sprite]
+alias[gui_image:disabledSpriteType] = union[sprite]
+alias[gui_image:disabledSprite] = union[sprite]
+alias[gui_image:backGround] = union[sprite]
+alias[gui_image:textureFile] = union[sprite]
+alias[gui_image:textureFile1] = union[sprite]
+alias[gui_image:textureFile2] = union[sprite]
 ### Image Sprite
 single_alias[gui_image:any_image_type] = {
     alias_name[gui_image:spriteType] = alias_match_left[gui_image:spriteType]

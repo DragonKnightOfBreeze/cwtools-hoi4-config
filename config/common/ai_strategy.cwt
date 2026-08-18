@@ -18,7 +18,7 @@ ai_strategy = {
 	## cardinality = 0..1
 	targets = {
 		## cardinality = ~1..inf
-		scope[country]
+		union[country_tags_and_scope]
 	}
 	## cardinality = 0..1
 	enable_reverse = {
@@ -176,8 +176,7 @@ alias[ai_strategy_rule:ai_strategy] = {
 }
 alias[ai_strategy_rule:ai_strategy] = {
 	type = enum[ai_diplo_strats]
-	id = enum[country_tags]
-	id = scope[country]
+	id = union[country_tags_and_scope]
 	value = int
 }
 alias[ai_strategy_rule:ai_strategy] = {
@@ -187,8 +186,7 @@ alias[ai_strategy_rule:ai_strategy] = {
 }
 alias[ai_strategy_rule:ai_strategy] = {
 	type = enum[ai_diplo_strats_no_value]
-	id = enum[country_tags]
-	id = scope[country]
+	id = union[country_tags_and_scope]
 }
 alias[ai_strategy_rule:ai_strategy] = {
 	type = recruit_scientist
@@ -198,13 +196,9 @@ alias[ai_strategy_rule:ai_strategy] = {
 alias[ai_strategy_rule:ai_strategy] = {
 	type = dont_join_wars_with
 	## cardinality = 0..1
-	id = enum[country_tags]
+	id = union[country_tags_and_scope]
 	## cardinality = 0..1
-	id = scope[country]
-	## cardinality = 0..1
-	target_country = enum[country_tags]
-	## cardinality = 0..1
-	target_country = scope[country]
+	target_country = union[country_tags_and_scope]
 	value = int
 }
 alias[ai_strategy_rule:ai_strategy] = {
@@ -245,8 +239,7 @@ alias[ai_strategy_rule:ai_strategy] = {
 }
 alias[ai_strategy_rule:ai_strategy] = {
 	type = enum[diplo_action_strats]
-	id = scope[country]
-	id = enum[country_tags]
+	id = union[country_tags_and_scope]
 	target = enum[diplomatic_relations]
 	value = int
 }
@@ -268,7 +261,7 @@ alias[ai_strategy_rule:ai_strategy] = {
 }
 alias[ai_strategy_rule:ai_strategy] = {
 	type = scorched_earth_prio
-	id = scope[country]
+	id = union[country_tags_and_scope]
 	### No clue what this does in scorched_earth_prio context
 	## cardinality = 0..1
 	value = int
@@ -298,10 +291,10 @@ alias[ai_strategy_rule:ai_strategy] = {
 alias[ai_strategy_rule:ai_strategy] = {
 	type = front_control
 	## cardinality = 0..inf
-	tag = scope[country]
+	tag = union[country_tags_and_scope]
 	### Vanilla uses ID with a country tag only in several spots. Treat this syntax as questionable
 	## cardinality = 0..1
-	id = scope[country]
+	id = union[country_tags_and_scope]
 	## cardinality = 0..inf
 	state = <state>
 	## cardinality = 0..inf
@@ -338,9 +331,9 @@ alias[ai_strategy_rule:ai_strategy] = {
 alias[ai_strategy_rule:ai_strategy] = {
 	type = enum[unit_requests]
 	## cardinality = 0..inf
-	tag = scope[country]
+	tag = union[country_tags_and_scope]
 	## cardinality = 0..inf
-	id = scope[country]
+	id = union[country_tags_and_scope]
 	## cardinality = 0..inf
 	state = <state>
 	## cardinality = 0..inf
@@ -377,14 +370,14 @@ alias[ai_strategy_rule:ai_strategy] = {
 	type = asking_foreign_garrison
 	value = int
 	## cardinality = 0..1
-	id = scope[country]
+	id = union[country_tags_and_scope]
 }
 alias[ai_strategy_rule:ai_strategy] = {
 	type = operative_mission
 	mission = enum[operative_missions]
 	value = int
 	## cardinality = 0..1
-	mission_target = scope[country]
+	mission_target = union[country_tags_and_scope]
 	## cardinality = 0..inf
 	state = <state>
 	## cardinality = 0..1
@@ -399,7 +392,7 @@ alias[ai_strategy_rule:ai_strategy] = {
 	# TODO
 	# operation = token:operation?
 	value = int
-	operation_target = scope[country]
+	operation_target = union[country_tags_and_scope]
 	operation_target = variable_field
 }
 alias[ai_strategy_rule:ai_strategy] = {
@@ -407,9 +400,7 @@ alias[ai_strategy_rule:ai_strategy] = {
 	## cardinality = 0..1
 	equipment_type = <equipment>
 	## cardinality = 0..1
-	seller = scope[country]
-	## cardinality = 0..1
-	seller = enum[country_tags]
+	seller = union[country_tags_and_scope]
 	value = int
 }
 
@@ -417,7 +408,7 @@ alias[ai_strategy_rule:ai_strategy] = {
 	type = force_concentration_front_factor
 	### Target a specific country. Can specify multiple.
 	## cardinality = 0..inf
-	tag = scope[country]
+	tag = union[country_tags_and_scope]
 	### Target a state. Can specify multiple.
 	## cardinality = 0..inf	
 	state = <state>		
@@ -452,7 +443,7 @@ alias[ai_strategy_rule:ai_strategy] = {
 	type = force_concentration_target_weight
 	### Target a specific country. Can specify multiple.
 	## cardinality = 0..inf
-	tag = scope[country]
+	tag = union[country_tags_and_scope]
 	### Target a state. Can specify multiple.
 	## cardinality = 0..inf	
 	state = <state>		
@@ -482,13 +473,13 @@ alias[ai_strategy_rule:ai_strategy] = {
 
 alias[ai_strategy_rule:ai_strategy] = {
 	type = convoy_raiding_target
-	id = scope[country]
+	id = union[country_tags_and_scope]
 	value = int[0..100]
 }
 
 alias[ai_strategy_rule:ai_strategy] = {
 	type = naval_blockade
-	target_country = scope[country]
+	target_country = union[country_tags_and_scope]
 	id = <strategic_region>
 	value = int[0..100]
 }

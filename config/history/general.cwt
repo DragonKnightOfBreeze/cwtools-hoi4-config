@@ -15,7 +15,7 @@ general_history = {
 	hq_template = single_alias_right[general_hq_template_clause]
 
 	## cardinality = 0..inf
-	enum[country_tags] = {
+	union[country_tags_and_scope] = {
 		## cardinality = 0..inf
 		division_template = single_alias_right[division_template_clause]
 

@@ -243,7 +243,7 @@ alias[effect:add_faction_initiative] = int #TODO check possible values and varia
 ## push_scope = any
 alias[effect:every_collection_element] = {
 	### A reference to another collection that will be used as input
-	input = collection:<collection>
+	input = scope[collection]
 	### A reference to another collection that will be used as input
 	input = enum[built_in_collections]
 	### Anonymous collection

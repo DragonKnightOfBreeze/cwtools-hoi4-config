@@ -80,6 +80,7 @@ ideology = {
         alias_name[modifier] = alias_match_left[modifier]
     }
 
+    ## cardinality = 0..1
     ## push_scope = country
     ### Modifiers applied to countries with a faction leader of this ideology.
     faction_modifiers = {

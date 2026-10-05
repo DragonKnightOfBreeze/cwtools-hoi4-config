@@ -1,0 +1,19 @@
+# Override Config (Hearts of Iron IV)
+#
+# See `cwt/core/00_overrides.cwt` for the format, strategies, confidence labels and sources.
+# Only game-specific entries are listed here; unmatched paths default to `lios`.
+#
+# The official wiki does not provide a per-folder override strategy list for HOI4. In general, a
+# file with the same name and path replaces the whole file, and the evaluation order decides
+# precedence for overlapping definitions. No per-folder entries are currently known.
+#
+# Game-specific source:
+# - Official Hearts of Iron 4 Wiki, "Modding" > "Universal modding concepts" > "Loading files":
+#   https://hoi4.paradoxwikis.com/Modding
+#
+# See: docs/en/ref-config-format.md#config-override
+# Version: 3.0.4-dev
+# Date: 2026-10-02
+
+overrides = {
+}

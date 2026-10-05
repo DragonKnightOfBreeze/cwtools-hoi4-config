@@ -921,7 +921,7 @@ values = {
 		# ========================
 		# DATABASE DYNAMIC VARIABLES
 		# ========================
-		mtth:<mtth>
+        scope[mtth]
 
 		# ========================
 		# RANDOM DYNAMIC VARIABLES
@@ -1253,9 +1253,10 @@ values = {
 
 unions = {
     union[variables_union] = {
-        single_alias_right[math_expression]
-        mtth:<mtth>
+        # single_alias_right[math_expression]
         value[variable]
         var:value[variable]
+        scope[any]
+        scope[mtth]
     }
 }

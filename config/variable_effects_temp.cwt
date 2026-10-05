@@ -1,6 +1,6 @@
 single_alias[set_var_equals_value_clause] = {
     ## cardinality = 1..2
-    value_set[variable] = mtth:<mtth>
+    value_set[variable] = union[variables_union]
 	## cardinality = 1..2
 	value_set[variable] = value[variable]
 	## cardinality = 1..2
@@ -34,7 +34,7 @@ single_alias[var_and_value_clause] = {
 	var = value[variable]
     value[variable] = variable_field
     value[variable] = single_alias_right[math_expression]
-    value[variable] = mtth:<mtth>
+    value[variable] = scope[mtth]
 	#### This exists to cull unsupported values. Values above provide some autofill
     value[variable] = scalar
 	## cardinality = 0..1

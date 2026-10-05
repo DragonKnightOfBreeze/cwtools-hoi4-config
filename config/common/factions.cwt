@@ -228,13 +228,13 @@ faction_goal = {
 			# For both collections: SCOPE = faction leader: COUNTRY
 			#
 			## cardinality = 0..1
-			total_amount_collection = collection:<collection>
+			total_amount_collection = scope[collection]
 			## cardinality = 0..1
 			total_amount_collection = enum[built_in_collections]
 			## cardinality = 0..1
 			total_amount_collection = single_alias_right[anonymous_collection]
 			## cardinality = 0..1
-			completed_amount_collection = collection:<collection>
+			completed_amount_collection = scope[collection]
 			## cardinality = 0..1
 			completed_amount_collection = enum[built_in_collections]
 			## cardinality = 0..1

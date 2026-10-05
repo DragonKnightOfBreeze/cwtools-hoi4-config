@@ -42,7 +42,7 @@ collection = {
 	### A reference to another collection that will be used as input
 	input = enum[built_in_collections]
 	### A reference to another collection that will be used as input
-	input = collection:<collection>
+	input = scope[collection]
 	### Constants - very limited support
 	input = value[constant]
 	### A reference to a loc key. Optional
@@ -95,7 +95,7 @@ single_alias[anonymous_collection] = {
 	### A reference to another collection that will be used as input
 	input = enum[built_in_collections]
 	### A reference to another collection that will be used as input
-	input = collection:<collection>
+	input = scope[collection]
 	### Constants - very limited support
 	input = value[constant]
 	### A reference to a loc key. Optional
